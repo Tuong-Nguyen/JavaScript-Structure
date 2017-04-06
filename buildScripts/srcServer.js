@@ -1,12 +1,12 @@
 /**
  * Created by admin1 on 4/6/2017.
  */
-var path = require('path');
-var open = require('open');
-var express = require('express');
+import path from 'path';
+import open from 'open';
+import express from 'express';
 
-var port = 3000;
-var app = express();
+const port = 3000;
+let app = express();
 
 // Set up route
 app.get('/', function (req, res) {
