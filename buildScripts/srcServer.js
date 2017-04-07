@@ -28,4 +28,4 @@ app.listen(port, function (error) {
   } else {
     open('http://localhost:' + port);
   }
-})
+});
