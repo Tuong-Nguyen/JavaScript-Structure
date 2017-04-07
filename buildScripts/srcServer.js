@@ -7,6 +7,8 @@ import express from 'express';
 import webpack from 'webpack';
 import configWebpack from '../webpack.config.dev';
 
+/* eslint-disable no-console */
+
 const port = 3000;
 let app = express();
 
