@@ -4,9 +4,18 @@
 import path from 'path';
 import open from 'open';
 import express from 'express';
+import webpack from 'webpack';
+import configWebpack from '../webpack.config.dev';
 
 const port = 3000;
 let app = express();
+
+let compiler = webpack(configWebpack);
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: configWebpack.output.publicPath
+}));
 
 // Set up route
 app.get('/', function (req, res) {
@@ -14,7 +23,7 @@ app.get('/', function (req, res) {
 });
 
 app.listen(port, function (error) {
-  if(error){
+  if (error) {
     console.log(error);
   } else {
     open('http://localhost:' + port);
