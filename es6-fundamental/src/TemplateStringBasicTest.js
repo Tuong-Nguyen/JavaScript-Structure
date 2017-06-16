@@ -6,7 +6,7 @@
 
 import {assert} from 'chai';
 
-describe('a template string, is wrapped in ` (backticks) instead of \' or "', function() {
+xdescribe('a template string, is wrapped in ` (backticks) instead of \' or "', function() {
 
   describe('by default, behaves like a normal string', function() {
 
