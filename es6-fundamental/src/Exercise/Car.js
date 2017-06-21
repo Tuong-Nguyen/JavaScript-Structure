@@ -1,10 +1,10 @@
 /**
  * Created by nkim on 6/20/2017.
  */
-import {Velhicle} from './Velhicle';
+import {Vehicle} from './Vehicle';
 import {assert} from 'chai';
 
-class Car extends Velhicle {
+export class Car extends Vehicle {
   constructor(license, model, latlong, make, miles){
     super(license, model, latlong);
     this.make = make;
@@ -16,7 +16,7 @@ class Car extends Velhicle {
   }
 }
 
-fdescribe('Test', () => {
+describe('Test', () => {
   "use strict";
   it('Test1', () => {
     let a = new Car('aaa', 'bbb', '20', 'suzuki', 1000);
