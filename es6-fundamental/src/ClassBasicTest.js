@@ -3,7 +3,7 @@
 
 import {assert} from 'chai';
 
-fdescribe('class creation', () => {
+describe('class creation', () => {
 
   it('is as simple as `class XXX {}`', function() {
     class TestClass {};
