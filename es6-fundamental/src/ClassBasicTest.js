@@ -3,7 +3,7 @@
 
 import {assert} from 'chai';
 
-describe('class creation', () => {
+fdescribe('class creation', () => {
 
   it('is as simple as `class XXX {}`', function() {
     class TestClass {};
@@ -13,12 +13,9 @@ describe('class creation', () => {
   });
 
   it('class is block scoped', () => {
-    class Inside {}
-    {
-      class Inside {}
-      assert.equal(typeof Inside, 'function');
-    }
-    assert.equal(typeof Inside, 'function');
+    class Outside {}
+    {class Inside {}}
+    assert.equal(typeof Inside, 'undefined');
   });
 
   it('special method is `constructor`', function() {
@@ -54,8 +51,8 @@ describe('class creation', () => {
   });
 
   it('anonymous class', () => {
-    const instance = {};
-    assert.equal(typeof instance, 'object');
+    let classType = typeof class {};
+    assert.equal(classType, 'function');
   });
 
 });
