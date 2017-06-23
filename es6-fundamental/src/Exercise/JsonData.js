@@ -2,7 +2,7 @@
  * Created by nkim on 6/21/2017.
  */
 
-export const data = [
+const data = [
   {
     license: 'QRS678',
     type: 'drone',
@@ -60,4 +60,4 @@ export const data = [
     latlong: '40.778878 -73.958435'
   }
 ];
-//export default data;
+export default data;

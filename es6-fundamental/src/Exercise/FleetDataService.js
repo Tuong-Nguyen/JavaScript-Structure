@@ -2,7 +2,7 @@
  * Created by nkim on 6/21/2017.
  */
 
-import {data} from './JsonData';
+import data from './JsonData';
 import {DataError} from './DataError';
 import {Car} from './Car';
 import {Drone} from './Drone';
