@@ -11,7 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.3.0"
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-mongo": "^0.7.0",
+    "koa-router": "^7.2.1",
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "eslint": "^4.0.0",
