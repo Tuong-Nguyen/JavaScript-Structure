@@ -9,27 +9,31 @@ const router = require('./route');
 const app = new Koa();
 module.exports = app;
 
-app.use(bodyParser());
 
-app.use(mongo({
-  host: '192.168.0.103',
-  port: 27017,
-  db: 'koa-mongodb',
-  max: 100,
-  min: 1
-}));
+bootstrap();
 
-app.use(router.routes());
+/**
+ * Set up middlewares
+ */
+function bootstrap() {
+  app.use(bodyParser());
 
-app.use(async (ctx) => {
+  app.use(mongo({
+    host: '192.168.0.103',
+    port: 27017,
+    db: 'koa-mongodb',
+    max: 100,
+    min: 1
+  }));
 
-  ctx.body = 'Hello World!';
-});
+  app.use(router.routes());
 
+  app.use(async (ctx) => {
 
-app.listen(3000, () => {
-  console.log('Server start on port 3000');
-});
+    ctx.body = 'Hello World!';
+  });
+}
+
 
 
 
