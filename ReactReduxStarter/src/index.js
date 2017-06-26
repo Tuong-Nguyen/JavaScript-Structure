@@ -3,9 +3,30 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
-import {SkiDayCount} from './components/SkiDayCount';
+import {SkiDayList} from './components/SkiDayList';
 
 window.React = React;
 
-render(<SkiDayCount total={50} powder={20} backcountry={10} goal={100} />
+render(<SkiDayList days={
+    [
+      {
+        resort: "SquaW Valley",
+        date: new Date('6/1/2017'),
+        powder: true,
+        backcountry: false
+      },
+      {
+        resort: "Kirkwood",
+        date: new Date('6/15/2017'),
+        powder: false,
+        backcountry: false
+      },
+      {
+        resort: "Mt. Tallac",
+        date: new Date('6/26/2017'),
+        powder: false,
+        backcountry: true
+      }
+    ]
+  } />
   , document.getElementById('root'));
