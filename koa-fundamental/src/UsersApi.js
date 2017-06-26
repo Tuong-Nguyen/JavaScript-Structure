@@ -24,8 +24,11 @@ async function addUser(ctx, next){
 async function getUser(ctx, next){
   const userId = ctx.params.id;
 
-  const users = await ctx.mongo.collection('users').findOne({_id: mongo.ObjectId(userId)});
-
-  ctx.response.body = users;
-  ctx.response.status = 200;
+  const user = await ctx.mongo.collection('users').findOne({_id: mongo.ObjectId(userId)});
+  if(!user) {
+    ctx.throw(404, 'Not found');
+  } else {
+    ctx.response.body = user;
+    ctx.response.status = 200;
+  }
 }

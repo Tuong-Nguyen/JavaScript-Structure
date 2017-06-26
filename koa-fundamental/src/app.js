@@ -1,6 +1,7 @@
 /**
  * Created by QuanLe on 6/25/2017.
  */
+require('dotenv').config();
 
 const app = require('./server');
 

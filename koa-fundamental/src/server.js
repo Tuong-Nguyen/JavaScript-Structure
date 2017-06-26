@@ -19,9 +19,9 @@ function bootstrap() {
   app.use(bodyParser());
 
   app.use(mongo({
-    host: '192.168.0.103',
-    port: 27017,
-    db: 'koa-mongodb',
+    host: process.env.MONGO_HOST,
+    port: process.env.MONGO_PORT,
+    db: process.env.MONGO_DB,
     max: 100,
     min: 1
   }));

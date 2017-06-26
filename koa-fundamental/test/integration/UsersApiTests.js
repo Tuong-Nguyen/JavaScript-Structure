@@ -1,7 +1,9 @@
 /**
  * Created by QuanLe on 6/24/2017.
  */
+require('dotenv').config({path: './.env'});
 const app = require('../../src/server');
+
 const request = require('supertest')(app.listen());
 
 describe('User API', () => {
