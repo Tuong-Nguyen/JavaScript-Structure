@@ -37,6 +37,12 @@ export const SkiDayCount = ({total, powder, backcountry, goal}) => (
     </div>
   </div>
 );
+SkiDayCount.defaultProps = {
+  total: 50,
+  powder:10,
+  backcountry:15,
+  goal:100
+};
 // export class SkiDayCount extends React.Component{
 //   render(){
 //     return (
