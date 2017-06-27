@@ -31,13 +31,8 @@ export const App = createClass({
     };
   },
   countDays(filter) {
-    return this.state.allSkiDays.filter(function(day){
-      if(filter) {
-        return day[filter];
-      } else {
-        return day;
-      }
-    }).length;
+    const {allSkiDays} = this.state; // <=> const allSkiDays = this.state.allSkiDays
+    return allSkiDays.filter((day) => (filter) ? day[filter] : day).length;
   },
   render() {
     return (
