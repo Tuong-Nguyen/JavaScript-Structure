@@ -6,6 +6,8 @@ import { render } from 'react-dom';
 import {SkiDayList} from './components/SkiDayList';
 import {SkiDayCount} from './components/SkiDayCount';
 import {App} from './components/App';
+import {Whoops404} from './components/Whoops404';
+import {Router, Route, hashHistory} from 'react-router';
 
 window.React = React;
 
@@ -35,4 +37,8 @@ window.React = React;
 //     ]
 //   } />
 //   , document.getElementById('root'));
-render(<App/>, document.getElementById('root'));
+render(
+  <Router history={hashHistory}>
+    <Route path="/" component={App} />
+    <Route path="*" component={Whoops404} />
+  </Router>, document.getElementById('root'));
