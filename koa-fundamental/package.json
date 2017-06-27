@@ -16,6 +16,7 @@
     "koa-bodyparser": "^4.2.0",
     "koa-mongo": "^0.7.0",
     "koa-router": "^7.2.1",
+    "mongodb-migrations": "^0.8.5",
     "superagent": "^3.5.2"
   },
   "devDependencies": {

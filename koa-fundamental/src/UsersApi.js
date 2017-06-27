@@ -24,7 +24,7 @@ async function addUser(ctx, next){
 async function getUser(ctx, next){
   const userId = ctx.params.id;
 
-  const user = await ctx.mongo.collection('users').findOne({_id: mongo.ObjectId(userId)});
+  const user = await ctx.mongo.collection('users').findOne({_id: userId});
   if(!user) {
     ctx.throw(404, 'Not found');
   } else {
