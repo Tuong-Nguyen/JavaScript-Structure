@@ -46,7 +46,7 @@ describe('User API', () => {
   });
 
   describe('# Get user', () => {
-    it.only('with existing user id returns the user', (done) => {
+    it('with existing user id returns the user', (done) => {
       const userId = dbSetup.existingUserIds[0];
       request.get(`/user/${userId}`)
         .set('Accept', 'application/json')
@@ -71,6 +71,22 @@ describe('User API', () => {
       const url = `/user/${userId}`;
       request.put(url)
         .send({age: 20, height: 1.5})
+        .expect(404, done);
+    });
+  });
+
+  describe('# Delete user', () => {
+    it('with existing user', (done) => {
+      const userId = dbSetup.existingUserIds[2];
+      const url = `/user/${userId}`;
+      request.delete(url)
+        .expect(200, done);
+    });
+
+    it('with non existing Id return 404', (done) => {
+      const userId = '123';
+      const url = `/user/${userId}`;
+      request.delete(url)
         .expect(404, done);
     });
   });

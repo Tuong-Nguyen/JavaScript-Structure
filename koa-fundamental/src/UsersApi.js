@@ -7,7 +7,8 @@ const mongo = require('koa-mongo');
 module.exports = {
   addUser,
   getUser,
-  updateUser
+  updateUser,
+  deleteUser
 };
 
 async function addUser(ctx, next) {
@@ -44,6 +45,17 @@ async function updateUser(ctx, next) {
   } else {
     ctx.set('location', `/user/${userId}`);
     ctx.response.status = 204;
+  }
+}
+
+async function deleteUser(ctx, next) {
+  const userId = ctx.params.id;
+
+  const result = await ctx.mongo.collection('users').remove({_id: userId});
+  if (result.result.n === 0) {
+    ctx.throw(404, 'Not found');
+  } else {
+    ctx.response.status = 200;
   }
 }
 
