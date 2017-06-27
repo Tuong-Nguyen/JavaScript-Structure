@@ -1,12 +1,12 @@
-import MainMenu from './ui/MainMenu'
+import MainMenu from './ui/MainMenu';
 
-export const Left = ({ children }) => 
+export const Left = ({ children }) =>
 	<div className="page">
 		<MainMenu className="main-menu"/>
 		{children}
 	</div>
 
-export const Right = ({ children }) => 
+export const Right = ({ children }) =>
 	<div className="page">
 		{children}
 		<MainMenu className="main-menu"/>

@@ -1,4 +1,4 @@
-import MainMenu from './MainMenu'
+import MainMenu from './MainMenu';
 
 const Home = () =>
     <div className="home">
