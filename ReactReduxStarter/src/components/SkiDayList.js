@@ -39,4 +39,4 @@ SkiDayList.propTypes = {
       return null;
     }
   }
-}
+};
