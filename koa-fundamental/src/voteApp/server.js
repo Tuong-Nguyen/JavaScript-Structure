@@ -1,9 +1,7 @@
 /**
- * Created by nctuong on 6/23/2017.
+ * Created by nctuong on 6/27/2017.
  */
-const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
-const mongo = require('koa-mongo');
+
 const router = require('./route');
 
 const app = new Koa();
@@ -27,14 +25,4 @@ function bootstrap() {
   }));
 
   app.use(router.routes());
-
-  app.use(async (ctx, next) => {
-
-    ctx.body = 'Hello World!';
-  });
 }
-
-
-
-
-

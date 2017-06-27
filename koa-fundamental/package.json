@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
-    "start-dev": "set DEBUG=koa* && npm start"
+    "start-dev": "set DEBUG=koa* && npm start",
+    "start-voteapp": "node src/voteApp/app.js"
   },
   "author": "",
   "license": "ISC",
