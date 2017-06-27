@@ -17,6 +17,7 @@
     "koa-bodyparser": "^4.2.0",
     "koa-mongo": "^0.7.0",
     "koa-router": "^7.2.1",
+    "koa-static": "^3.0.0",
     "koa-views": "^6.0.2",
     "mongodb-migrations": "^0.8.5",
     "pug": "^2.0.0-rc.2",
