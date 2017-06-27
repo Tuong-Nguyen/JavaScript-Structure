@@ -2,9 +2,19 @@
  * Created by lnthao on 6/27/2017.
  */
 import {PropTypes} from 'react';
-export const AddDayForm = ({resort, date, powder, backcountry}) => {
+export const AddDayForm = ({resort, date, powder, backcountry, onNewDay}) => {
   let _resort, _date, _powder, _backcountry;
   const submit = (e) => {
+    onNewDay({
+      resort: _resort.value,
+      date: _date.value,
+      powder: _powder.checked,
+      backcountry: _backcountry.checked
+    });
+    _resort.value = '';
+    _date.value = '';
+    _powder.checked = false;
+    _backcountry.checked = false;
     e.preventDefault();
     console.log('resort', _resort.value);
     console.log('date', _date.value);
