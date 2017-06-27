@@ -2,15 +2,19 @@
  * Created by nctuong on 6/26/2017.
  */
 
-const addedUserId = '111111111111111111111111';
+const userIds = ['211111111111111111111111', '211111111111111111111112', '211111111111111111111113', '211111111111111111111114'];
 
 module.exports = {
   id: 'Create a user',
 
-  existingUserId: addedUserId,
+  existingUserIds: userIds,
 
   up(done){
-    this.db.collection('users').insertOne({_id: addedUserId, name: 'Marcus', age: 42, height: 1.96}, done);
+    const users = [];
+    for(let id of userIds){
+      users.push(Object.assign({_id: id}, {name: 'Marcus', age: 42, height: 1.96}));
+    }
+    this.db.collection('users').insert(users, done);
   },
 
   down(done){

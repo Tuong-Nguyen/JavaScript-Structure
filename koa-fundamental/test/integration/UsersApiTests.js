@@ -46,8 +46,8 @@ describe('User API', () => {
   });
 
   describe('# Get user', () => {
-    it('with existing user id returns the user', (done) => {
-      const userId = dbSetup.existingUserId;
+    it.only('with existing user id returns the user', (done) => {
+      const userId = dbSetup.existingUserIds[0];
       request.get(`/user/${userId}`)
         .set('Accept', 'application/json')
         .expect('Content-type', /json/)
@@ -58,7 +58,7 @@ describe('User API', () => {
 
   describe('# Update user', () => {
     it('with new age return 204', (done) => {
-      const userId = dbSetup.existingUserId;
+      const userId = dbSetup.existingUserIds[1];
       const url = `/user/${userId}`;
       request.put(url)
         .send({age: 20, height: 1.5})
