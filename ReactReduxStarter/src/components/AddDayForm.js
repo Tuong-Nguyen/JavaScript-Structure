@@ -1,7 +1,41 @@
 /**
  * Created by lnthao on 6/27/2017.
  */
-import {PropTypes} from 'react';
+import {Component, PropTypes} from 'react';
+const resorts = [
+  "Alphine Meadows",
+  "Boreal",
+  "Diamond Peak",
+  "Donner Ski Ranch",
+  "Heavenly",
+  "Homewood",
+  "Kirkwood",
+  "Mt.Rose",
+  "Northstar",
+  "Squaw Valley",
+  "Sugar Bowl"
+];
+class Autocomplete extends Component {
+  get value() {
+    return this.refs.inputResort.value;
+  }
+  set value(inputValue){
+    this.refs.inputResort.value = inputValue;
+  }
+  render(){
+    return (
+      <div>
+        <input ref="inputResort" type="text" list="resorts"/>
+        <datalist id="resorts">
+          {this.props.options.map(
+            (opt, i) => <option key={i}>{opt}</option>
+          )}
+        </datalist>
+      </div>
+    );
+  }
+}
+
 export const AddDayForm = ({resort, date, powder, backcountry, onNewDay}) => {
   let _resort, _date, _powder, _backcountry;
   const submit = (e) => {
@@ -25,14 +59,12 @@ export const AddDayForm = ({resort, date, powder, backcountry, onNewDay}) => {
   return (
     <form onSubmit={submit} className="add-day">
       <label htmlFor="resort">Resort Name</label>
-      <input id="resort"
-             type="text"
-             defaultValue={resort}
+      <Autocomplete options={resorts}
              ref={input => _resort = input}
              required/>
       <label htmlFor="date">Date</label>
       <input id="date"
-             type="text"
+             type="date"
              defaultValue={date}
              ref={input => _date = input}
              required/>
