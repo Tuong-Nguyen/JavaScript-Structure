@@ -6,12 +6,13 @@ const mongo = require('koa-mongo');
 
 module.exports = {
   addUser,
-  getUser
+  getUser,
+  updateUser
 };
 
-async function addUser(ctx, next){
+async function addUser(ctx, next) {
   const user = ctx.request.body;
-  if(!user.name){
+  if (!user.name) {
     ctx.throw(400, "name required");
   }
 
@@ -21,14 +22,28 @@ async function addUser(ctx, next){
   ctx.response.status = 200;
 }
 
-async function getUser(ctx, next){
+async function getUser(ctx, next) {
   const userId = ctx.params.id;
 
   const user = await ctx.mongo.collection('users').findOne({_id: userId});
-  if(!user) {
+  if (!user) {
     ctx.throw(404, 'Not found');
   } else {
     ctx.response.body = user;
     ctx.response.status = 200;
   }
 }
+
+async function updateUser(ctx, next) {
+  const userId = ctx.params.id;
+  const userUpdatedInfo = ctx.request.body;
+
+  const result = await ctx.mongo.collection('users').update({_id: userId}, {$set: {userUpdatedInfo}});
+  if (result.result.nModified === 0) {
+    ctx.throw(404, 'Not found');
+  } else {
+    ctx.set('location', `/user/${userId}`);
+    ctx.response.status = 204;
+  }
+}
+
