@@ -3,7 +3,9 @@
  */
 const superTest = require('supertest');
 
-require('dotenv').config({path: `${__dirname}/.env`});
+const nconf = require('nconf');
+nconf.file({file: `${__dirname}/env.json`});
+
 const app = require('../../server').listen();
 
 beforeEach(function(){

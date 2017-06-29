@@ -2,6 +2,7 @@
  * Created by nctuong on 6/27/2017.
  */
 
+const nconf = require('nconf');
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const mongo = require('koa-mongo');
@@ -21,9 +22,9 @@ function bootstrap() {
   app.use(bodyParser());
 
   app.use(mongo({
-    host: process.env.MONGO_HOST,
-    port: process.env.MONGO_PORT,
-    db: process.env.MONGO_DB,
+    host: nconf.get("Database:host"),
+    port: nconf.get("Database:port"),
+    db: nconf.get("Database:db"),
     max: 100,
     min: 1
   }));

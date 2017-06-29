@@ -5,7 +5,8 @@
 /**
  * Created by QuanLe on 6/25/2017.
  */
-require('dotenv').config({path: `${__dirname}/.env`});
+const nconf = require('nconf');
+nconf.file({file: `${__dirname}/env.json`});
 
 const app = require('./server');
 

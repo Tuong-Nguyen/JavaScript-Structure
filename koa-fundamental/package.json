@@ -20,6 +20,7 @@
     "koa-static": "^3.0.0",
     "koa-views": "^6.0.2",
     "mongodb-migrations": "^0.8.5",
+    "nconf": "^0.8.4",
     "pug": "^2.0.0-rc.2",
     "superagent": "^3.5.2"
   },
