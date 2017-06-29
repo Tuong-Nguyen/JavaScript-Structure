@@ -5,7 +5,7 @@
 /**
  * Created by QuanLe on 6/25/2017.
  */
-require('dotenv').config(`${__dirname}/.env`);
+require('dotenv').config({path: `${__dirname}/.env`});
 
 const app = require('./server');
 

@@ -1,0 +1,20 @@
+extends layout
+
+block title
+  | New question
+
+block content
+  h1 Create a new question
+  form(name='questionForm' action='/question' method='post').form-horizontal
+    div.form-group
+      label(for='questionTitle').col-sm-2.control-label.lead Question:
+      div.col-sm-10
+        input(type='text' id='questionTitle' name='title' placeholder='Question text').form-control
+    div.form-group
+      label(for='tagString').col-sm-2.control-label.lead Tags:
+      div.col-sm-10
+        input(type='text' id='tagString' name='tagString' placeholder='patient poll, exit doors, 2014').form-control
+    div.form-group
+      div.col-sm-2 &nbsp;
+      div.col-sm-10
+        input(type='submit' value='Add question').btn.btn-primary

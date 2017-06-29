@@ -3,7 +3,7 @@
  */
 
 const {showHomeView} = require('./HomeController');
-const {showQuestionView, addQuestion, showEdit, updateQuestion} = require('./QuestionController');
+const {showNewQuestion, createQuestion, showEdit, updateQuestion} = require('./QuestionController');
 const {showCommentView, showVoteView, addComment, addVote} = require('./VoteController');
 const {showResultView, buildResult} = require('./ResultController');
 
@@ -15,8 +15,8 @@ module.exports = router;
 
 router.get('/', '/', showHomeView);
 
-// router.get('New Question form', '/question', showQuestionView);
-// router.post('Add new Question', '/question', addQuestion);
+router.get('New Question form', '/question', showNewQuestion);
+router.post('Add new Question', '/question', createQuestion);
 // router.get('Edit Question form', '/question/:id', showEdit);
 // router.post('Update question', '/question/:id', updateQuestion);
 //

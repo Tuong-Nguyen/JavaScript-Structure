@@ -3,5 +3,10 @@ extends layout
 block title
   | Koa Vote
 block content
-    h1 Current polls
-    p Will be listed here...
+    h1 Current questions
+    div.row.marketing
+        div.col-lg-6
+          h4 title
+          a(href='/vote?questionId=' role='button').btn.btn-info.btn-xs Vote here
+          a(href='/question/' role='button').btn.btn-info.btn-xs Update here
+    a(href='/question' role='button').btn.btn-primary.btn-lg Create a new question
