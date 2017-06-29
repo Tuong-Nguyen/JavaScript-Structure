@@ -31,6 +31,13 @@ async function createQuestion(context, next) {
 
 function parseTags(tags){
   tags = tags.split(',');
-  tags.forEach(tag => tag.trim());
-  return tags;
+  const tagSet = new Set();
+  for(tag of tags){
+    const trimedTag = tag.trim();
+    if(trimedTag.length !== 0) {
+      tagSet.add(trimedTag);
+    }
+  }
+
+  return Array.from(tagSet);
 }
