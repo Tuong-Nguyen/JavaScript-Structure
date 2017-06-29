@@ -4,7 +4,10 @@
 const superTest = require('supertest');
 
 const nconf = require('nconf');
-nconf.file({file: `${__dirname}/env.json`});
+
+
+nconf.file({file: `${__dirname}/config.json`});
+
 
 const app = require('../../server').listen();
 
