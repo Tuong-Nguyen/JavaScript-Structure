@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.css" />
+</head>
+<body>
+    <div class="container">
+        <button class="btn-danger"><a href="/" style="color: #ffffff">Home</a></button>
+        <button class="btn-success"><a href="./user/register" style="color: #ffffff">Register</a></button>
+        <button class="btn-warning"><a href="./user/1" style="color: #ffffff">Profile</a></button>
+        <button class="btn-primary"><a href="./user/manager" style="color: #ffffff">Manager</a></button>
+    </div>
+    <div class="container">
+        {% block content %}custom content{% endblock %}
+    </div>
+</body>
+</html>

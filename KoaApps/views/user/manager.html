@@ -1,0 +1,13 @@
+{% extends '../layout.html' %}
+{% block title %} Register {% endblock %}
+{% block content %}
+<form action="../user/" method="post">
+
+    <div class="container">
+        <div class="col-md-3"><label>name: </label></div>
+        <div class="col-md-9"><label><input value='{{name}}' name="name" /> </label></div>
+        <div class="col-md-3"><label>age: </label></div>
+        <div class="col-md-9"><label><input value='{{age}}' name="age" /> </label></div>
+    </div>
+</form>
+{% endblock %}

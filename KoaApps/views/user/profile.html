@@ -1,0 +1,15 @@
+{% extends '../layout.html' %}
+{% block title %} User's profile {% endblock %}
+{% block content %}
+    <form action="../user/{{_id}}" method="post">
+        <div class="container">
+            <div class="col-md-3"><label>name: </label></div>
+            <div class="col-md-9"><label><input value='{{name}}' name="name" /> </label></div>
+            <div class="col-md-3"><label>age: </label></div>
+            <div class="col-md-9"><label><input value='{{age}}' name="age" /> </label></div>
+        </div>
+        <div class="container">
+            <button class="btn-success" type="submit">Update Profile</button>
+        </div>
+    </form>
+{% endblock %}
