@@ -1,5 +1,5 @@
 import MainMenu from './MainMenu';
-
+import '../../stylesheets/style.css'
 const Home = () =>
     <div className="home">
         <MainMenu className="home-page-menu"/>

@@ -4,6 +4,7 @@ import { App } from './components/App-ES6';
 import { Whoops404 } from './components/Whoops404';
 import { Router, Route, hashHistory } from 'react-router';
 import routes from './routes';
+import MemberList from './components/ui/MemberList';
 
 window.React = React
 
@@ -20,12 +21,6 @@ render(routes, document.getElementById('react-container'))
 //   document.getElementById('react-container')
 // )
 
-//multi params
-//1
-//<Route path="list-days(/:filter)(/:test)" component={App} />
-//2
-//   <Route path="list-days" component={App} >
-//     <Route path=":filter" component={App} >
-//         <Route path=":order" component={App} />
-//     </Route>
-//   </Route>
+// render(
+//   <MemberList />,
+//   document.getElementById('react-container'))

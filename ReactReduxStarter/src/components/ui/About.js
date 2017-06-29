@@ -1,6 +1,6 @@
-const About = ({children}) => (
+import '../../stylesheets/style.css';
+const About = () => (
    <div className="about">
-        {children}
         <h1>About</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque iaculis erat non dignissim malesuada.
             Mauris in elit quis lectus auctor pharetra. Cras fermentum leo est, a aliquet ligula cursus a. Ut vitae leo

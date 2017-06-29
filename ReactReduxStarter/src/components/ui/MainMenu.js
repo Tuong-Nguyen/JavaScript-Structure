@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import FaHome from 'react-icons/lib/fa/home';
+import '../../stylesheets/style.css'
 
 const MainMenu = () => {
     return (

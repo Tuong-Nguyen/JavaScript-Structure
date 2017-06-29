@@ -1,18 +1,9 @@
 import MainMenu from './ui/MainMenu';
-// export const Left = ( props ) =>
-// 	<div className="page">
-// 		<MainMenu className="main-menu"/>
-//     <h1>{props.location.pathname}</h1>
-//     <h1>{props.params.filter}</h1>
-// 		{props.children}
-//
-// 	</div>
+import '../stylesheets/style.css';
+
 export const Left = ({children}) =>
   <div className="page">
     <MainMenu className="main-menu"/>
-    {/*<h1>pathname.parent : {props.location.pathname}</h1>*/}
-    {/*<h1>pathname.child : {props.children.props.location.pathname}</h1>*/}
-    {console.log(children)}
     {children}
   </div>
 
