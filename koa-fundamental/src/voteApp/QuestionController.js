@@ -12,7 +12,11 @@ async function showNewQuestion(context, next) {
 }
 
 async function createQuestion(context, next) {
-  const question = context.request.body;
+  const formData = context.request.body;
+  const question = {
+    title: formData.title,
+    tags: parseTags(formData.tagString)
+  };
   try {
     const result = await context.mongo.collection('questions').insertOne(question);
     if(result.insertedCount > 0) {
@@ -23,4 +27,10 @@ async function createQuestion(context, next) {
   catch(error) {
    context.throw(500, error);
   }
+}
+
+function parseTags(tags){
+  tags = tags.split(',');
+  tags.forEach(tag => tag.trim());
+  return tags;
 }
