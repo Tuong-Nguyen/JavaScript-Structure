@@ -1,51 +1,30 @@
-/**
- * Created by nkim on 6/26/2017.
- */
-import { createClass } from 'react';
-import { SkiDayList } from './SkiDayList';
-import { SkiDayCount } from './SkiDayCount';
+// This component handles the App template used on every page.
+import React, {PropTypes} from 'react';
+import Header from './common/Header';
+import {connect} from 'react-redux';
 
-export const App = createClass({
-  getInitialState() {
-    return {
-      allSkiDays: [
-        {
-          resort: "Squaw Valley",
-          date: new Date("1/2/2016"),
-          powder: false,
-          backcountry: false
-        },
-        {
-          resort: "Kirkwood",
-          date: new Date("3/28/2016"),
-          powder: false,
-          backcountry: false
-        },
-        {
-          resort: "Mt. Tallac",
-          date: new Date("4/2/2016"),
-          powder: false,
-          backcountry: true
-        }
-      ]
-    };
-  },
-  countDays(filter){
-    const { allSkiDays } = this.state;
-    return allSkiDays.filter((day) => (filter) ? day[filter] : day).length;
-  },
+class App extends React.Component {
   render() {
     return (
-      <div className="app">
-        <SkiDayList days={this.state.allSkiDays}/>
-        <SkiDayCount total={this.countDays()}
-                     powder={this.countDays(
-                          "powder"
-                     )}
-                     backcountry={this.countDays(
-                       "backcountry"
-                     )}/>
+      <div className="container-fluid">
+        <Header
+          loading={this.props.loading}
+        />
+        {this.props.children}
       </div>
     );
   }
-});
+}
+
+App.propTypes = {
+  children: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    loading: state.ajaxCallsInProgress > 0
+  };
+}
+
+export default connect(mapStateToProps)(App);

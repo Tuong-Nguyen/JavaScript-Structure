@@ -11,7 +11,7 @@ class Member extends Component {
   }
 
   shouldComponentUpdate(nextProps){
-    console.log("should");
+    console.log("should " + nextProps.email);
     return this.props.admin !== nextProps.admin;
   }
 
@@ -20,12 +20,16 @@ class Member extends Component {
     this.style = {backgroundColor: (nextProps.admin) ? 'green' : 'purple'};
   }
 
+  componentDidUpdate(prevProps) {
+    console.log("did " + prevProps.admin);
+  }
+
 
   render() {
 
     const { name, thumbnail, email, admin, makeAdmin, removeAdmin } = this.props;
       return (
-          <div className="member">
+          <div className="member" style={this.style}>
             <h1>{name} {(admin) ? <FaShield /> : null}</h1>
             {(admin) ?
               <a onClick={() => removeAdmin(email)}>Remove Admin</a> :

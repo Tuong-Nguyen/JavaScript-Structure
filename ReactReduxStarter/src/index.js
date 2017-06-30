@@ -1,14 +1,24 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { App } from './components/App-ES6';
-import { Whoops404 } from './components/Whoops404';
+import { App } from './components/SkiDayApp/App-ES6';
+import { Whoops404 } from './components/SkiDayApp/Whoops404';
 import { Router, Route, hashHistory } from 'react-router';
 import routes from './routes';
 import MemberList from './components/ui/MemberList';
+import configureStore from './store/configureStore';
+import {Provider} from 'react-redux';
+import './styles/styles.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+const store = configureStore();
 
 window.React = React
 
-render(routes, document.getElementById('react-container'))
+render(
+  <Provider store={store}>
+    {routes}
+  </Provider>
+  , document.getElementById('app'))
 // render(
 //   <Router history={hashHistory}>
 //     <Route path="/" component={App}/>

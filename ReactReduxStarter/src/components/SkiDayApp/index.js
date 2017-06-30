@@ -1,5 +1,5 @@
-import MainMenu from './ui/MainMenu';
-import '../stylesheets/style.css';
+import MainMenu from '../ui/MainMenu';
+import '../../stylesheets/style.css';
 
 export const Left = ({children}) =>
   <div className="page">
