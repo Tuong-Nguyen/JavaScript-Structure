@@ -60,7 +60,7 @@ io.on( 'connection', ( ctx, data ) => {
         console.log(ctx.socket.id)
         let room = ctx.socket.rooms;
         console.log(room);
-        ctx.socket.broadcast.to(room.name).emit('chatReply', msg);
+        ctx.socket.broadcast.to('roomA').emit('chatReply', msg);
     })
 
     var time = setInterval(function () {
