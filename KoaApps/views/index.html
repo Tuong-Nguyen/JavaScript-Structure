@@ -2,4 +2,49 @@
 {% block title %} HOME {% endblock %}
 {% block content %}
     Aloha home page with layout.
+    <div>
+        <label id="randomID">broadcast message</label>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 center-block">
+                    <input class="form-control" type="text" id="txtChat" />
+                </div>
+                <div class="col-md-3 center-block">
+                    <button class="btn-primary" onclick="send()">Send</button>
+                </div>
+            </div>
+            <div id="chatView">
+
+            </div>
+        </div>
+
+    </div>
+    <script src="/resources/socket.io.js"></script>
+    <script>
+        console.log(io);
+        var socket = io('http://localhost:3000');
+        // the 'news' is the same with socket.emit on the server
+        socket.on('hello', function (data) {
+            console.log(data);
+            socket.emit('message', { my: 'data' });
+            socket.emit('food', 'meat','50$', function (msg) {
+                console.log(msg);
+            });
+        });
+        socket.on('broadcast',function (data) {
+            document.getElementById('randomID').innerHTML = data;
+        });
+        socket.on('volatile',function (data) {
+            console.log(data);
+        });
+        function send() {
+            let content = document.getElementById('txtChat').value;
+            socket.emit('chat', content);
+        }
+        socket.on('chatReply', function (msg) {
+            document.getElementById('chatView').innerHTML += msg + '</br>'
+        })
+    </script>
+
 {% endblock %}

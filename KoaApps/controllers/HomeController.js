@@ -8,6 +8,7 @@ const render = require('./lib/render.js');
 const serve = require('koa-static');
 const parse = require('co-body');
 const mongo = require('koa-mongo');
+const IO = require('koa-socket');
 // const views = require('koa-views');
 //
 // app.use(views(__dirname + './../views/',{
@@ -18,13 +19,54 @@ const mongo = require('koa-mongo');
 
 app.use(serve(__dirname + './../'));
 
-app.use(mongo({
-    host: 'localhost',//'192.168.104.45', localhost
-    port: 27017,
-    db: 'mydb',
-    max: 100,
-    min: 1
-}));
+// app.use(mongo({
+//     host: '192.168.104.45',//'192.168.104.45', localhost
+//     port: 27017,
+//     db: 'mydb',
+//     max: 100,
+//     min: 1
+// }));
+
+//socket io
+var io = new IO();
+io.attach(app);
+//connection handler
+var join = true;
+io.on( 'connection', ( ctx, data ) => {
+    if(join){
+        ctx.socket.join('roomA');
+        join = !join;
+    }else{
+        ctx.socket.join('roomB');
+        join = !join;
+    }
+    ctx.socket.volatile.emit('volatile', 'the volatile');
+    ctx.socket.emit('hello', 'world');
+    // the 'message' is the socket.emit from client
+    ctx.socket.on('message', function (data) {
+        console.log(data);
+    });
+    ctx.socket.on('disconnect', function () {
+        console.log('disconnect');
+    })
+
+    ctx.socket.on('food', function (name, price, fn) {
+        console.log(name);
+        console.log(price);
+        fn(name + ' ' + price);
+    });
+
+    ctx.socket.on('chat', function (msg) {
+        console.log(ctx.socket.id)
+        let room = ctx.socket.rooms;
+        console.log(room);
+        ctx.socket.broadcast.to(room.name).emit('chatReply', msg);
+    })
+
+    var time = setInterval(function () {
+        ctx.socket.broadcast.emit('broadcast', Math.random());
+    }, 1000);
+});
 
 app.use(router.get('/',async function (ctx, next) {
     //ctx.body = await ctx.render('index');
@@ -85,7 +127,9 @@ app.use(router.post('/user/:id',async function getProfile(ctx,id, next) {
     }
 }));
 
-app.listen(3000, ()=>{
+app.listen( 3000, ()=>{
     "use strict";
    console.log('Listening on port 3000');
 });
+
+

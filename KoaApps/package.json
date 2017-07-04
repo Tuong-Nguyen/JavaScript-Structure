@@ -20,6 +20,7 @@
     "koa": "^2.3.0",
     "koa-mongo": "^0.7.0",
     "koa-route": "^3.2.0",
+    "koa-socket": "^4.4.0",
     "koa-static": "^3.0.0",
     "koa-views": "^6.0.2",
     "mocha": "^3.4.2",
