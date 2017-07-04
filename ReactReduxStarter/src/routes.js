@@ -21,14 +21,11 @@ import CoursesPage from './components/course/CoursesPage';
 //     </Router>
 // );
 
-const routes = (
-  <Router history={hashHistory}>
+export default (
     <Route path="/" component={App}>
       <IndexRoute component={HomePage} />
       <Route path="courses" component={CoursesPage} />
       <Route path="about" component={AboutPage} />
     </Route>
-  </Router>
 );
 
-export default routes;

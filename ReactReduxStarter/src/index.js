@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { App } from './components/SkiDayApp/App-ES6';
 import { Whoops404 } from './components/SkiDayApp/Whoops404';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import MemberList from './components/ui/MemberList';
 import configureStore from './store/configureStore';
@@ -16,7 +16,7 @@ window.React = React
 
 render(
   <Provider store={store}>
-    {routes}
+    <Router history={browserHistory} routes={routes} />
   </Provider>
   , document.getElementById('app'))
 // render(
@@ -34,3 +34,5 @@ render(
 // render(
 //   <MemberList />,
 //   document.getElementById('react-container'))
+
+
