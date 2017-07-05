@@ -7,7 +7,7 @@ import initialState from './initialState';
 export default function courseReducer(state = initialState.courses, action){
   console.log('Reducer - courseReducer');
   switch (action.type) {
-    case types.LOAD_COURSE_SUCCESS:
+    case types.LOAD_COURSES_SUCCESS:
       return action.courses;
     default:
       return state;

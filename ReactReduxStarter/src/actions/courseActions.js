@@ -5,8 +5,8 @@ import * as types from './actionTypes';
 import courseApi from '../api/mockCourseApi';
 
 export function loadCoursesSuccess(courses){
-  console.log('Action - LOAD_COURSE_SUCCESS');
-  return {type: types.LOAD_COURSE_SUCCESS, courses};
+  console.log('Action - LOAD_COURSES_SUCCESS');
+  return {type: types.LOAD_COURSES_SUCCESS, courses};
 }
 
 export function loadCourses(){
