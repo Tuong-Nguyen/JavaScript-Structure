@@ -10,6 +10,7 @@ import CourseForm from './CourseForm';
 class ManageCoursePage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    console.log("ManageCoursePage constructor");
     this.state = {
       course: Object.assign({}, props.course),
       errors: {}
@@ -83,15 +84,15 @@ function mapStateToProps(state, ownProps){
   if (courseId && state.courses.length > 0) {
     course = getCourseById(state.courses, courseId);
   }
-  // const authorsFormattedForDropdown = state.authors.map(author => {
-  //   return {
-  //     value: author.id,
-  //     text: author.firstName + ' ' + author.lastName
-  //   }
-  // });
+  const authorsFormattedForDropdown = state.authors.map(author => {
+    return {
+      value: author.id,
+      text: author.firstName + ' ' + author.lastName
+    }
+  });
   return {
     course: course,
-    authors: []//authorsFormattedForDropdown
+    authors: authorsFormattedForDropdown
   };
 }
 

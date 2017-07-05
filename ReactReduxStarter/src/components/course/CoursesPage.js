@@ -11,6 +11,7 @@ import {browserHistory} from 'react-router';
 class CoursesPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    console.log("CoursesPage constructor");
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
   }
 
@@ -19,6 +20,7 @@ class CoursesPage extends React.Component {
   }
 
   render() {
+    console.log("CoursesPage render");
     const {courses} = this.props;
     return (
       <div>

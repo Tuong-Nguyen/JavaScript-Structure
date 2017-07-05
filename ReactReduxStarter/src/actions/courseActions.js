@@ -5,17 +5,14 @@ import * as types from './actionTypes';
 import courseApi from '../api/mockCourseApi';
 
 export function loadCoursesSuccess(courses){
-  console.log('Action - LOAD_COURSES_SUCCESS');
   return {type: types.LOAD_COURSES_SUCCESS, courses};
 }
 
 export function createCourseSuccess(course){
-  console.log('Action - CREATE_COURSE_SUCCESS');
   return {type: types.CREATE_COURSE_SUCCESS, course};
 }
 
 export function updateCourseSuccess(course){
-  console.log('Action - UPDATE_COURSE_SUCCESS');
   return {type: types.UPDATE_COURSE_SUCCESS, course};
 }
 
