@@ -8,9 +8,10 @@ import thunk from 'redux-thunk';
 
 export default function configureStore(initialState) {
   console.log('configureStore');
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   return createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk, reduxImmutableStateInvariant())
+    composeEnhancers(applyMiddleware(thunk, reduxImmutableStateInvariant()))
   );
 }
