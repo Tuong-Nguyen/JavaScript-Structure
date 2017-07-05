@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 
 export default function configureStore(initialState) {
   console.log('configureStore');
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
   return createStore(
     rootReducer,
     initialState,
