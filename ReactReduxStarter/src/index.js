@@ -6,11 +6,13 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import MemberList from './components/ui/MemberList';
 import configureStore from './store/configureStore';
+import {loadCourses} from './actions/courseActions';
 import {Provider} from 'react-redux';
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore();
+store.dispatch(loadCourses());
 
 window.React = React
 
