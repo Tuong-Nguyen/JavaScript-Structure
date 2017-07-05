@@ -6,6 +6,7 @@ import rootReducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 
 export default function configureStore(initialState) {
+  console.log('configureStore');
   return createStore(
     rootReducer,
     initialState,
