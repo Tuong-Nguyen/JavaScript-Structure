@@ -5,6 +5,7 @@ import {Link} from 'react-router';
 import HomeIcon from 'react-icons/lib/fa/home';
 import AddDayIcon from 'react-icons/lib/fa/calendar-plus-o';
 import ListDayIcon from 'react-icons/lib/fa/table';
+import React from 'react';
 
 export const Menu = () =>
 <nav className="menu">
@@ -17,4 +18,4 @@ export const Menu = () =>
   <Link to="/list-days" activeClassName="selected">
     <ListDayIcon/>
   </Link>
-</nav>
+</nav>;

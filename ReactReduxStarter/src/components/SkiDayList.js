@@ -5,7 +5,7 @@ import Terrain from 'react-icons/lib/md/terrain';
 import SnowFlake from 'react-icons/lib/ti/weather-snow';
 import Calendar from 'react-icons/lib/fa/calendar';
 import {SkiDayRow} from './SkiDayRow';
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 export const SkiDayList = ({days, filter}) => {
@@ -43,7 +43,7 @@ export const SkiDayList = ({days, filter}) => {
     </table>
     </div>
   );
-}
+};
 
 SkiDayList.propTypes = {
   days: function(props) {
@@ -58,5 +58,6 @@ SkiDayList.propTypes = {
     } else {
       return null;
     }
-  }
+  },
+  filter: PropTypes.string
 };

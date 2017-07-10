@@ -2,7 +2,7 @@
  * Created by lnthao on 6/23/2017.
  */
 import '../stylesheets/index.scss';
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import Calendar from 'react-icons/lib/fa/calendar';
 import SnowFlake from 'react-icons/lib/ti/weather-snow';
 import Terrain from 'react-icons/lib/md/terrain';
@@ -46,9 +46,9 @@ SkiDayCount.defaultProps = {
 SkiDayCount.propTypes = {
   total: PropTypes.number,
   powder: PropTypes.number,
-  backcountry: PropTypes.number
-
-}
+  backcountry: PropTypes.number,
+  goal: PropTypes.number
+};
 // export class SkiDayCount extends React.Component{
 //   render(){
 //     return (
