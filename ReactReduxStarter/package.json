@@ -60,6 +60,7 @@
     "jsdom": "8.5.0",
     "mocha": "2.4.5",
     "nock": "8.0.0",
+    "node-sass": "^4.5.3",
     "npm-run-all": "1.8.0",
     "open": "0.0.5",
     "react-addons-test-utils": "15.0.2",
