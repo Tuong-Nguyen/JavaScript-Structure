@@ -4,7 +4,7 @@
 import React, {Component, PropTypes} from 'react';
 import {SkiDayList} from './SkiDayList';
 import {SkiDayCount} from './SkiDayCount';
-import {AddDayForm} from './AddDayForm';
+import AddDayForm from './AddDayForm';
 import {Menu} from './Menu';
 
 export class App extends Component {

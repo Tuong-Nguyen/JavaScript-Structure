@@ -18,55 +18,70 @@ const resorts = [
   "Sugar Bowl"
 ];
 
-export const AddDayForm = ({resort, date, powder, backcountry, onNewDay}) => {
-  let _resort, _date, _powder, _backcountry;
-  const submit = (e) => {
-    onNewDay({
-      resort: _resort.value,
-      date: _date.value,
-      powder: _powder.checked,
-      backcountry: _backcountry.checked
+export default class AddDayForm extends Component {
+
+  submit(e) {
+    this.props.onNewDay({
+      resort: this._resort.value,
+      date: this._date.value,
+      powder: this._powder.checked,
+      backcountry: this._backcountry.checked
     });
-    _resort.value = '';
-    _date.value = '';
-    _powder.checked = false;
-    _backcountry.checked = false;
+    this._resort.value = '';
+    this._date.value = '';
+    this._powder.checked = false;
+    this._backcountry.checked = false;
     e.preventDefault();
-  };
+  }
 
+  setResort(element) {
+    this._resort = element;
+  }
 
+  setDate(element) {
+    this._date = element;
+  }
 
+  setPowder(element){
+    this._powder = element;
+  }
 
-  return (
-    <form onSubmit={submit} className="add-day">
-      <label htmlFor="resort">Resort Name</label>
-      <Autocomplete options={resorts}
-             ref={input => _resort = input}
-             required/>
-      <label htmlFor="date">Date</label>
-      <input id="date"
-             type="date"
-             defaultValue={date}
-             ref={input => _date = input}
-             required/>
-      <div>
-        <input id="powder"
-               type="checkbox"
-               defaultChecked={powder}
-               ref={input => _powder = input}/>
-        <label htmlFor="powder">Powder Day</label>
-      </div>
-      <div>
-        <input id="backcountry"
-               type="checkbox"
-               defaultChecked={backcountry}
-               ref={input => _backcountry = input}/>
-        <label htmlFor="backcountry">Backcountry Day</label>
-      </div>
-      <button>Add Day</button>
-    </form>
-  );
-};
+  setBackCountry(element){
+    this._backcountry = element;
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.submit} className="add-day">
+        <label htmlFor="resort">Resort Name</label>
+        <Autocomplete options={resorts}
+                      ref={this.setResort}
+                      required/>
+        <label htmlFor="date">Date</label>
+        <input id="date"
+               type="date"
+               defaultValue={this.props.date}
+               ref={this.setDate}
+               required/>
+        <div>
+          <input id="powder"
+                 type="checkbox"
+                 defaultChecked={this.props.powder}
+                 ref={this.setPowder}/>
+          <label htmlFor="powder">Powder Day</label>
+        </div>
+        <div>
+          <input id="backcountry"
+                 type="checkbox"
+                 defaultChecked={this.props.backcountry}
+                 ref={this.setBackCountry}/>
+          <label htmlFor="backcountry">Backcountry Day</label>
+        </div>
+        <button>Add Day</button>
+      </form>
+    );
+  }
+}
 
 AddDayForm.defaultProps = {
   resort: "Kirkwood",
