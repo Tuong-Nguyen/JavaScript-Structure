@@ -20,6 +20,15 @@ const resorts = [
 
 export default class AddDayForm extends Component {
 
+  constructor(props){
+    super(props);
+    this.setResort = this.setResort.bind(this);
+    this.setDate = this.setDate.bind(this);
+    this.setPowder = this.setPowder.bind(this);
+    this.setBackCountry = this.setBackCountry.bind(this);
+    this.submit = this.submit.bind(this);
+  }
+
   submit(e) {
     this.props.onNewDay({
       resort: this._resort.value,
