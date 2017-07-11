@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
   debug: true,
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   noInfo: false,
   entry: {
     index: [
@@ -36,8 +36,8 @@ export default {
       chunks: ['index']
     }),
     new HtmlWebpackPlugin({
-      title: 'Practice React',
       filename: 'practice.html',
+      template: 'src/index.html',
       chunks: ['practice']
     })
   ],
