@@ -15,7 +15,7 @@ export class SkiDayCounter extends Component{
   }
 
   calcGoalProgress(total, goal) {
-    return SkiDayCounter.percentToDecimal(total/goal);
+    return this.percentToDecimal(total/goal);
   }
 
   render(){
