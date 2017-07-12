@@ -7,6 +7,12 @@ export class AddUser extends Component{
   }
   submit(e){
     e.preventDefault();
+    let newUser = {
+      name: this.refs.name.value,
+      age: this.refs.age.value,
+      gender: this.refs.gender.value
+    };
+    this.props.onAddUser(newUser);
     console.log(this.refs.name.value);
     console.log(this.refs.age.value);
     console.log(this.refs.gender.value);

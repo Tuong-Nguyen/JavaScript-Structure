@@ -35,7 +35,7 @@ export class App extends React.Component {
     this.setState({
       value: [...this.state.value, newUser]
     });
-
+    alert("Successful!");
   }
   makeAdmin(users){
     this.setState({value: users});

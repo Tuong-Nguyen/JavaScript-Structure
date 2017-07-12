@@ -6,11 +6,6 @@ import './../../resources/bootstrap-3.3.7-dist/css/bootstrap.min.css';
 import { Member } from './member'
 
 export class MemberList extends Component{
-
-  shouldComponentUpdate(nextProps){
-    console.log(this.props.users !== nextProps.users);
-    return (this.props.users !== nextProps.users);
-  }
   render(){
     const {users, makeAdmin} = this.props;
     const onMakeAdmin = (index)=>{
