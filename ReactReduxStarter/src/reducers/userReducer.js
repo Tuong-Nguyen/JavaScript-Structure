@@ -7,7 +7,7 @@ export default function userReducer(state = [], action) {
       console.log('add user!');
       return [...state, Object.assign({}, action.user)];
     default:
-      console.log('do nothing');
+      console.log('reducer do nothing');
       return state;
   }
 }

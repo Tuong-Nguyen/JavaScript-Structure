@@ -6,6 +6,8 @@ import {Router, Route, hashHistory} from 'react-router';
 import {Menu} from './menu';
 import {AddUser} from './AddUser_StateLess';
 import {MemberList} from './MemberList';
+import {connect} from 'react-redux';
+import {addUser} from './../actions/userActions';
 
 var userList = [
   {name: 'ABC', age: 34, gender: 'male', admin: true},
@@ -24,7 +26,7 @@ export const Home = () =>(
   </div>
 );
 
-export class App extends React.Component {
+class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {value: userList};
@@ -32,10 +34,11 @@ export class App extends React.Component {
     this.makeAdmin = this.makeAdmin.bind(this);
   }
   addUser(newUser){
-    this.setState({
-      value: [...this.state.value, newUser]
-    });
-    alert("Successful!");
+    //this.props.dispatch(addUser(newUser));
+    this.props.createUser(newUser);
+    // this.setState({
+    //   value: [...this.state.value, ...this.props.users]
+    // });
   }
   makeAdmin(users){
     this.setState({value: users});
@@ -47,7 +50,7 @@ export class App extends React.Component {
         {(this.props.location.pathname === "/userlist") ?
           <UserList users={this.state.value}/> :
         (this.props.location.pathname === "/members") ?
-          <MemberList users={this.state.value}
+          <MemberList users={this.props.users}
                   makeAdmin={this.makeAdmin}/> :
         (this.props.location.pathname === "/adduser") ?
           <AddUser onAddUser={this.addUser}/>:
@@ -59,3 +62,15 @@ export class App extends React.Component {
     );
   }
 }
+function mapStateToProps(state, ownProps) {
+  return {
+    users: state.userReducer
+  };
+
+}
+function mapDispatchToProps(dispatch){
+  return{
+    createUser: user => dispatch(addUser(user))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);

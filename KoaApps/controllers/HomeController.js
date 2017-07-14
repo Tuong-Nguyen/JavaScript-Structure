@@ -19,13 +19,13 @@ const IO = require('koa-socket');
 
 app.use(serve(__dirname + './../'));
 
-// app.use(mongo({
-//     host: '192.168.104.45',//'192.168.104.45', localhost
-//     port: 27017,
-//     db: 'mydb',
-//     max: 100,
-//     min: 1
-// }));
+app.use(mongo({
+    host: '192.168.104.45',//'192.168.104.45', localhost
+    port: 27017,
+    db: 'mydb',
+    max: 100,
+    min: 1
+}));
 
 //socket io
 var io = new IO();

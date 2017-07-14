@@ -9,10 +9,9 @@ import * as abc from './lib/JsonTitle';
 import {UserList} from "./components/UserList_State";
 import {Router, Route, hashHistory} from 'react-router';
 import {Menu} from './components/menu';
-import {App, PageNotFound} from './components/App';
+import App, { PageNotFound} from './components/App';
 import configStore from './stores/configStore';
 import {Provider} from 'react-redux';
-
 const store = configStore();
 window.React = React;
 render(
