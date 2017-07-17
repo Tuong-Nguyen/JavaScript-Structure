@@ -56,5 +56,22 @@ describe("Simple User Http Crud API", () => {
                .expect(/1.96/)
                .expect(200, done);
        });
+
+       it("Updates an existing user", (done) => {
+           const updateName = "Older Marcus";
+          const existedUserId = migrations.existingUserIds[0];
+          const url = '/user/' + existedUserId;
+
+          request
+              .put(url)
+              .send({name: updateName, age: 43, height: 1.94})
+              .expect("location", url)
+              .expect(204, done);
+          request
+              .get(url)
+              .set("Accept", "application/json")
+              .expect("Content-type", /json/)
+              .expect(updateName);
+       });
    });
 });

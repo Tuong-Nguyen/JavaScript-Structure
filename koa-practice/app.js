@@ -36,6 +36,18 @@ router.get('/user/:id', async(ctx, next) => {
     next();
 });
 
+router.put('/user/:id', async (ctx, next) => {
+    let user = ctx.request.body;
+    const id = ctx.params.id;
+    if (!user.name) {
+        ctx.throw(400, "name required");
+    }
+    const updated = await ctx.mongo.collection('users').updateOne({_id: id}, user);
+    ctx.response.set('location', '/user/' + id);
+    ctx.response.status = 204;
+    next();
+});
+
 app.use(bodyParser());
 app.use(router.routes());
 
