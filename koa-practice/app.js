@@ -48,6 +48,13 @@ router.put('/user/:id', async (ctx, next) => {
     next();
 });
 
+router.del('/user/:id', async(ctx, next) => {
+    const id = ctx.params.id;
+    const user = await ctx.mongo.collection('users').deleteOne({_id: id});
+    ctx.response.status = 200;
+    next();
+});
+
 app.use(bodyParser());
 app.use(router.routes());
 

@@ -73,5 +73,13 @@ describe("Simple User Http Crud API", () => {
               .expect("Content-type", /json/)
               .expect(updateName);
        });
+
+       it("deletes an existing user", (done) => {
+           const existedUserId = migrations.existingUserIds[0];
+           const url = '/user/' + existedUserId;
+           request
+               .del(url)
+               .expect(200, done);
+       });
    });
 });
