@@ -1,0 +1,25 @@
+{
+  "name": "koa-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --harmony app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-mongo": "^1.2.1",
+    "koa-router": "^7.2.1",
+    "mocha": "^3.4.2",
+    "mongodb-migrations": "^0.8.5",
+    "nconf": "^0.8.4",
+    "supertest": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0"
+  }
+}
