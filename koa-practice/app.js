@@ -8,6 +8,7 @@ const bodyParser = require('koa-bodyparser');
 const router = require("koa-router")();
 const mongo = require('koa-mongo');
 const nconf = require('nconf');
+const userRoutes = require('./userRoutes');
 
 nconf.file({file: `${__dirname}/env.json`});
 
@@ -17,43 +18,10 @@ app.use(mongo({
     db: nconf.get('database:db')
 }));
 
-router.post('/user', async (ctx, next) => {
-    let user = ctx.request.body;
-    if (!user.name) {
-        ctx.throw(400, "name required");
-    }
-    const inserted = await ctx.mongo.collection('users').insert(user);
-    ctx.response.set('location', '/user/' + inserted.ops[0]._id.toString());
-    ctx.response.status = 200;
-    next();
-});
-
-router.get('/user/:id', async(ctx, next) => {
-    const id = ctx.params.id;
-    const user = await ctx.mongo.collection('users').findOne({_id: id});
-    ctx.response.body = user;
-    ctx.response.status = 200;
-    next();
-});
-
-router.put('/user/:id', async (ctx, next) => {
-    let user = ctx.request.body;
-    const id = ctx.params.id;
-    if (!user.name) {
-        ctx.throw(400, "name required");
-    }
-    const updated = await ctx.mongo.collection('users').updateOne({_id: id}, user);
-    ctx.response.set('location', '/user/' + id);
-    ctx.response.status = 204;
-    next();
-});
-
-router.del('/user/:id', async(ctx, next) => {
-    const id = ctx.params.id;
-    const user = await ctx.mongo.collection('users').deleteOne({_id: id});
-    ctx.response.status = 200;
-    next();
-});
+router.post('/user', userRoutes.addUser);
+router.get('/user/:id', userRoutes.getUser);
+router.put('/user/:id', userRoutes.updateUser);
+router.del('/user/:id', userRoutes.deleteUser);
 
 app.use(bodyParser());
 app.use(router.routes());
