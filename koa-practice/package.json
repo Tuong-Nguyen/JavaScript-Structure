@@ -14,9 +14,11 @@
     "koa-bodyparser": "^4.2.0",
     "koa-mongo": "^1.2.1",
     "koa-router": "^7.2.1",
+    "koa-views": "^6.0.2",
     "mocha": "^3.4.2",
     "mongodb-migrations": "^0.8.5",
     "nconf": "^0.8.4",
+    "pug": "^2.0.0-rc.2",
     "supertest": "^3.0.0"
   },
   "devDependencies": {

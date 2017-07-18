@@ -9,6 +9,7 @@ const router = require("koa-router")();
 const mongo = require('koa-mongo');
 const nconf = require('nconf');
 const userRoutes = require('./userRoutes');
+const render = require('./lib/render');
 
 nconf.file({file: `${__dirname}/env.json`});
 
@@ -22,7 +23,11 @@ router.post('/user', userRoutes.addUser);
 router.get('/user/:id', userRoutes.getUser);
 router.put('/user/:id', userRoutes.updateUser);
 router.del('/user/:id', userRoutes.deleteUser);
+router.get('/',  async(ctx, next)=>{
+    await ctx.render("home.pug");
+});
 
+app.use(render);
 app.use(bodyParser());
 app.use(router.routes());
 
