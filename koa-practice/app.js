@@ -8,11 +8,16 @@ const bodyParser = require('koa-bodyparser');
 const router = require("koa-router")();
 const mongo = require('koa-mongo');
 const nconf = require('nconf');
+const serve = require('koa-static');
+
 const userRoutes = require('./routes/userRoutes');
 const homeRoutes = require('./routes/homeRoutes');
 const render = require('./lib/render');
 
 nconf.file({file: `${__dirname}/env.json`});
+
+// App configuration
+app.use(serve(__dirname + "/public"));
 
 app.use(mongo({
     host: nconf.get('database:host'),
