@@ -1,0 +1,17 @@
+extends layout
+block title
+    h1 Create a new Question
+block content
+    form(name='questionForm', action='/question', method='post', class='form-horizontal')
+        div(class='form-group')
+            label(for='questionTitle', class='col-sm-2 control-label lead') Question Title
+            div(class='col-sm-10')
+                input(type='text', id='questionTitle', name='questionTitle', placeholder='A Question text')
+        div(class='form-group')
+            label(for='tagString', class='col-sm-2 control-label lead') Tag String
+            div(class='col-sm-10')
+                input(type='text', id='tagString', name='tagString', placeholder='patient poll, 2017')
+        div(class='form-group')
+            div(class='col-sm-2') &nbsp;
+            div(class='col-sm-10')
+                input(type='submit', value='Add question', class='btn btn-primary')

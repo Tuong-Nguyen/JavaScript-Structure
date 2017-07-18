@@ -9,9 +9,6 @@ const router = require("koa-router")();
 const mongo = require('koa-mongo');
 const nconf = require('nconf');
 const serve = require('koa-static');
-
-const userRoutes = require('./routes/userRoutes');
-const homeRoutes = require('./routes/homeRoutes');
 const render = require('./lib/render');
 
 nconf.file({file: `${__dirname}/env.json`});
@@ -25,11 +22,17 @@ app.use(mongo({
     db: nconf.get('database:db')
 }));
 
+const userRoutes = require('./routes/userRoutes');
 router.post('/user', userRoutes.addUser);
 router.get('/user/:id', userRoutes.getUser);
 router.put('/user/:id', userRoutes.updateUser);
 router.del('/user/:id', userRoutes.deleteUser);
+
+const homeRoutes = require('./routes/homeRoutes');
 router.get('/', homeRoutes.showHome);
+
+const questionRoutes = require('./routes/questionRoutes');
+router.get('/question', questionRoutes.showAddQuestion);
 
 app.use(render);
 app.use(bodyParser());
