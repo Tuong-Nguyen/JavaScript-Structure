@@ -5,7 +5,7 @@
 import React, {Component} from 'react';
 import {SkiDayCounter} from "./SkiDayCounter";
 import {SkiDayList} from "./SkiDayList";
-import {AddDayForm} from "./AddDayForm";
+import AddDayForm from "./AddDayForm";
 import './../../stylesheets/index.scss';
 import {Menu} from "./Menu";
 
