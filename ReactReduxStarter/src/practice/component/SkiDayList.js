@@ -8,7 +8,7 @@ import {Link} from 'react-router';
 
 export const SkiDayList = ({days, filter}) => {
   let filteredDays = days;
-  if (filter.match(/powder|backcountry/)) {
+  if (filter && filter.match(/powder|backcountry/)) {
     filteredDays = days.filter((day) => day[filter] === true);
   }
 
