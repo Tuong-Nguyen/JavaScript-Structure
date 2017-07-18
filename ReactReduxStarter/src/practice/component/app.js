@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import {SkiDayCounter} from "./SkiDayCounter";
 import {SkiDayList} from "./SkiDayList";
+import {AddDayForm} from "./AddDayForm";
 
 export default class App extends Component {
 
@@ -45,12 +46,16 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <SkiDayList days={this.state.allSkiDays}/>
-        <SkiDayCounter
-          total={this.countDays()}
-          powder={this.countDays('powder')}
-          backcountry={this.countDays('backcountry')}
-          goal={100}/>
+        {this.props.location.pathname === '/' ?
+          <SkiDayCounter
+            total={this.countDays()}
+            powder={this.countDays('powder')}
+            backcountry={this.countDays('backcountry')}
+            goal={100}/> :
+          this.props.location.pathname === '/add-day' ?
+            <AddDayForm /> :
+            <SkiDayList days={this.state.allSkiDays}/>
+        }
       </div>
     );
   }
