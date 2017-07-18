@@ -2,11 +2,11 @@
  * Created by lnthao on 7/14/2017.
  */
 const nconf = require('nconf');
-nconf.file({file: `${__dirname}/env.test.json`});
+nconf.file({file: `${__dirname}/env.json`});
 
-var app = require("./app.js");
+var app = require("../app.js");
 var request = require("supertest").agent(app.listen());
-var migrations = require("./migrations.js");
+var migrations = require("../migrations/userMigrations.js");
 const mm = require("mongodb-migrations");
 
 describe("Simple User Http Crud API", () => {

@@ -33,6 +33,7 @@ router.get('/', homeRoutes.showHome);
 
 const questionRoutes = require('./routes/questionRoutes');
 router.get('/question', questionRoutes.showAddQuestion);
+router.post('/question', questionRoutes.addQuestion);
 
 app.use(render);
 app.use(bodyParser());
