@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { render } from 'react-dom';
 import { SkiDayCount } from './SkiDayCount';
 import {UserList} from "./UserList_State";
@@ -7,7 +7,9 @@ import {Menu} from './menu';
 import {AddUser} from './AddUser_StateLess';
 import {MemberList} from './MemberList';
 import {connect} from 'react-redux';
-import {addUser} from './../actions/userActions';
+import * as UserAction from './../actions/userActions';
+import {bindActionCreators} from 'redux';
+import toastr from 'toastr';
 
 var userList = [
   {name: 'ABC', age: 34, gender: 'male', admin: true},
@@ -27,15 +29,21 @@ export const Home = () =>(
 );
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
+  constructor(props, context){
+    super(props, context);
     this.state = {value: userList};
     this.addUser = this.addUser.bind(this);
     this.makeAdmin = this.makeAdmin.bind(this);
+    this.props.actions.loadAllUsersWithThunk();
   }
   addUser(newUser){
-    //this.props.dispatch(addUser(newUser));
-    this.props.createUser(newUser);
+    //this.props.dispatch(UserAction.addUser(newUser));
+    this.props.actions.saveUser(newUser).then(() => {
+      toastr.success("Save successfully!");
+      this.context.router.push('/members');
+    }).catch(error =>{
+      toastr.error(error.message);
+    });
     // this.setState({
     //   value: [...this.state.value, ...this.props.users]
     // });
@@ -62,6 +70,11 @@ class App extends React.Component {
     );
   }
 }
+//Pull in the React Router context so router is available on this.context.router.
+App.contextTypes = {
+  router: PropTypes.object
+};
+
 function mapStateToProps(state, ownProps) {
   return {
     users: state.userReducer
@@ -70,7 +83,7 @@ function mapStateToProps(state, ownProps) {
 }
 function mapDispatchToProps(dispatch){
   return{
-    createUser: user => dispatch(addUser(user))
+    actions: bindActionCreators(UserAction, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
