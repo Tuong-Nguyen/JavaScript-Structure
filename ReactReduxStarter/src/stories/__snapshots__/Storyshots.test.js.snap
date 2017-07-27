@@ -1,0 +1,902 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots AboutPage default view 1`] = `
+<div>
+  <h1>
+    About
+  </h1>
+  <p>
+    This application uses React, Redux, React Router and a variety of other helpful libraries.
+  </p>
+</div>
+`;
+
+exports[`Storyshots Button custom styles 1`] = `
+<button
+  onClick={undefined}
+  style={
+    Object {
+      "color": "#2337ff",
+      "fontSize": 20,
+      "textTransform": "uppercase",
+    }
+  }
+>
+  Hello
+</button>
+`;
+
+exports[`Storyshots Button default view 1`] = `
+<pre>
+  process.env.STORYBOOK_CLOUD_URL: 
+  process.env.STORYBOOK_CLOUD_APPID: 
+  process.env.STORYBOOK_CLOUD_DATABASE: 
+</pre>
+`;
+
+exports[`Storyshots Button link button 1`] = `
+<button
+  onClick={[Function]}
+  style={Object {}}
+>
+  Next Story
+</button>
+`;
+
+exports[`Storyshots Button some emojies as the text 1`] = `
+<button
+  onClick={undefined}
+  style={Object {}}
+>
+  😀 😎 👍 💯
+</button>
+`;
+
+exports[`Storyshots CourseForm Errors with empty input 1`] = `
+<form>
+  <h1>
+    Manage Course
+  </h1>
+  <div
+    className="form-group has-error"
+  >
+    <label
+      htmlFor="title"
+    >
+      Title
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="title"
+        onChange=""
+        placeholder={undefined}
+        type="text"
+        value={undefined}
+      />
+      <div
+        className="alert alert-danger"
+      >
+        The title is empty
+      </div>
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="authorId"
+    >
+      Author
+    </label>
+    <div
+      className="field"
+    >
+      <select
+        className="form-control"
+        name="authorId"
+        onChange=""
+        value={undefined}
+      >
+        <option
+          value=""
+        >
+          Select Author
+        </option>
+        <option
+          value={undefined}
+        />
+      </select>
+      <div
+        className="alert alert-danger"
+      >
+        The title is empty
+      </div>
+    </div>
+  </div>
+  <div
+    className="form-group has-error"
+  >
+    <label
+      htmlFor="category"
+    >
+      Category
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="category"
+        onChange=""
+        placeholder={undefined}
+        type="text"
+        value={undefined}
+      />
+      <div
+        className="alert alert-danger"
+      >
+        The category isn't selected
+      </div>
+    </div>
+  </div>
+  <div
+    className="form-group has-error"
+  >
+    <label
+      htmlFor="length"
+    >
+      Length
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="length"
+        onChange=""
+        placeholder={undefined}
+        type="text"
+        value={undefined}
+      />
+      <div
+        className="alert alert-danger"
+      >
+        Validate the length of course
+      </div>
+    </div>
+  </div>
+  <input
+    className="btn btn-primary"
+    disabled={false}
+    onClick=""
+    type="submit"
+    value="Save"
+  />
+</form>
+`;
+
+exports[`Storyshots CourseForm Not saving with input 1`] = `
+<form>
+  <h1>
+    Manage Course
+  </h1>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="title"
+    >
+      Title
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="title"
+        onChange=""
+        placeholder={undefined}
+        type="text"
+        value="Clean Code: Writing Code for Humans"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="authorId"
+    >
+      Author
+    </label>
+    <div
+      className="field"
+    >
+      <select
+        className="form-control"
+        name="authorId"
+        onChange=""
+        value="cory-house"
+      >
+        <option
+          value=""
+        >
+          Select Author
+        </option>
+        <option
+          value="cory-house"
+        >
+          Cory House
+        </option>
+        <option
+          value="scott-allen"
+        >
+          Scott Allen
+        </option>
+        <option
+          value="dan-wahlin"
+        >
+          Dan Wahlin
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="category"
+    >
+      Category
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="category"
+        onChange=""
+        placeholder={undefined}
+        type="text"
+        value="Software Practices"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="length"
+    >
+      Length
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="length"
+        onChange=""
+        placeholder={undefined}
+        type="text"
+        value="3:10"
+      />
+    </div>
+  </div>
+  <input
+    className="btn btn-primary"
+    disabled={false}
+    onClick=""
+    type="submit"
+    value="Save"
+  />
+</form>
+`;
+
+exports[`Storyshots CourseForm Saving with input 1`] = `
+<form>
+  <h1>
+    Manage Course
+  </h1>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="title"
+    >
+      Title
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="title"
+        onChange=""
+        placeholder={undefined}
+        type="text"
+        value="Clean Code: Writing Code for Humans"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="authorId"
+    >
+      Author
+    </label>
+    <div
+      className="field"
+    >
+      <select
+        className="form-control"
+        name="authorId"
+        onChange=""
+        value="cory-house"
+      >
+        <option
+          value=""
+        >
+          Select Author
+        </option>
+        <option
+          value="cory-house"
+        >
+          Cory House
+        </option>
+        <option
+          value="scott-allen"
+        >
+          Scott Allen
+        </option>
+        <option
+          value="dan-wahlin"
+        >
+          Dan Wahlin
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="category"
+    >
+      Category
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="category"
+        onChange=""
+        placeholder={undefined}
+        type="text"
+        value="Software Practices"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="length"
+    >
+      Length
+    </label>
+    <div
+      className="field"
+    >
+      <input
+        className="form-control"
+        name="length"
+        onChange=""
+        placeholder={undefined}
+        type="text"
+        value="3:10"
+      />
+    </div>
+  </div>
+  <input
+    className="btn btn-primary"
+    disabled={true}
+    onClick=""
+    type="submit"
+    value="Saving..."
+  />
+</form>
+`;
+
+exports[`Storyshots CourseList with courses list 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <tr>
+      <th>
+         
+      </th>
+      <th>
+        Title
+      </th>
+      <th>
+        Author
+      </th>
+      <th>
+        Category
+      </th>
+      <th>
+        Length
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a
+          href="http://www.pluralsight.com/courses/react-flux-building-applications"
+          target="_blank"
+        >
+          Watch
+        </a>
+         
+      </td>
+      <td>
+        <a
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Building Applications in React and Flux
+        </a>
+      </td>
+      <td>
+        cory-house
+      </td>
+      <td>
+        JavaScript
+      </td>
+      <td>
+        5:08
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a
+          href="http://www.pluralsight.com/courses/writing-clean-code-humans"
+          target="_blank"
+        >
+          Watch
+        </a>
+         
+      </td>
+      <td>
+        <a
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Clean Code: Writing Code for Humans
+        </a>
+      </td>
+      <td>
+        cory-house
+      </td>
+      <td>
+        Software Practices
+      </td>
+      <td>
+        3:10
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a
+          href="http://www.pluralsight.com/courses/architecting-applications-dotnet"
+          target="_blank"
+        >
+          Watch
+        </a>
+         
+      </td>
+      <td>
+        <a
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Architecting Applications for the Real World
+        </a>
+      </td>
+      <td>
+        cory-house
+      </td>
+      <td>
+        Software Architecture
+      </td>
+      <td>
+        2:52
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a
+          href="http://www.pluralsight.com/courses/career-reboot-for-developer-mind"
+          target="_blank"
+        >
+          Watch
+        </a>
+         
+      </td>
+      <td>
+        <a
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Becoming an Outlier: Reprogramming the Developer Mind
+        </a>
+      </td>
+      <td>
+        cory-house
+      </td>
+      <td>
+        Career
+      </td>
+      <td>
+        2:30
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a
+          href="http://www.pluralsight.com/courses/web-components-shadow-dom"
+          target="_blank"
+        >
+          Watch
+        </a>
+         
+      </td>
+      <td>
+        <a
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Web Component Fundamentals
+        </a>
+      </td>
+      <td>
+        cory-house
+      </td>
+      <td>
+        HTML5
+      </td>
+      <td>
+        5:10
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Storyshots CourseList with empty courses list 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <tr>
+      <th>
+         
+      </th>
+      <th>
+        Title
+      </th>
+      <th>
+        Author
+      </th>
+      <th>
+        Category
+      </th>
+      <th>
+        Length
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a
+          href={undefined}
+          target="_blank"
+        >
+          Watch
+        </a>
+         
+      </td>
+      <td>
+        <a
+          onClick={[Function]}
+          style={Object {}}
+        />
+      </td>
+      <td />
+      <td />
+      <td />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Storyshots CourseListRow with course 1`] = `
+<tr>
+  <td>
+    <a
+      href="http://www.pluralsight.com/courses/writing-clean-code-humans"
+      target="_blank"
+    >
+      Watch
+    </a>
+     
+  </td>
+  <td>
+    <a
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Clean Code: Writing Code for Humans
+    </a>
+  </td>
+  <td>
+    cory-house
+  </td>
+  <td>
+    Software Practices
+  </td>
+  <td>
+    3:10
+  </td>
+</tr>
+`;
+
+exports[`Storyshots CourseListRow with empty course 1`] = `
+<tr>
+  <td>
+    <a
+      href={undefined}
+      target="_blank"
+    >
+      Watch
+    </a>
+     
+  </td>
+  <td>
+    <a
+      onClick={[Function]}
+      style={Object {}}
+    />
+  </td>
+  <td />
+  <td />
+  <td />
+</tr>
+`;
+
+exports[`Storyshots Header loading 1`] = `
+<nav>
+  <a
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Home
+  </a>
+   | 
+  <a
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Courses
+  </a>
+   | 
+  <a
+    onClick={[Function]}
+    style={Object {}}
+  >
+    About
+  </a>
+  <span
+    dots={20}
+    interval={100}
+  >
+    .
+     
+  </span>
+</nav>
+`;
+
+exports[`Storyshots Header not loading 1`] = `
+<nav>
+  <a
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Home
+  </a>
+   | 
+  <a
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Courses
+  </a>
+   | 
+  <a
+    onClick={[Function]}
+    style={Object {}}
+  >
+    About
+  </a>
+</nav>
+`;
+
+exports[`Storyshots HomePage default view 1`] = `
+<div
+  className="jumbotron"
+>
+  <h1>
+    Pluralsight Administration
+  </h1>
+  <p>
+    React, Redux and React Router in ES6 for ultra-responsive web apps.
+  </p>
+  <a
+    className="btn btn-primary btn-lg"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Learn more
+  </a>
+</div>
+`;
+
+exports[`Storyshots Loading dots default view 1`] = `
+<span
+  dots="1"
+  interval="100"
+>
+  .
+   
+</span>
+`;
+
+exports[`Storyshots SelectInput Empty authors 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    htmlFor="authorId"
+  >
+    Author
+  </label>
+  <div
+    className="field"
+  >
+    <select
+      className="form-control"
+      name="authorId"
+      onChange=""
+      value="1"
+    >
+      <option
+        value=""
+      >
+        Select Author
+      </option>
+    </select>
+    
+  </div>
+</div>
+`;
+
+exports[`Storyshots SelectInput Some authors 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    htmlFor="authorId"
+  >
+    Author
+  </label>
+  <div
+    className="field"
+  >
+    <select
+      className="form-control"
+      name="authorId"
+      onChange=""
+      value="1"
+    >
+      <option
+        value=""
+      >
+        Select Author
+      </option>
+      <option
+        value="cory-house"
+      >
+        Cory House
+      </option>
+      <option
+        value="scott-allen"
+      >
+        Scott Allen
+      </option>
+      <option
+        value="dan-wahlin"
+      >
+        Dan Wahlin
+      </option>
+    </select>
+    
+  </div>
+</div>
+`;
+
+exports[`Storyshots TextInput default view 1`] = `
+<div
+  className="form-group has-error"
+>
+  <label
+    htmlFor="category"
+  >
+    Category
+  </label>
+  <div
+    className="field"
+  >
+    <input
+      className="form-control"
+      name="category"
+      onChange=""
+      placeholder={undefined}
+      type="text"
+      value="JavaScript"
+    />
+    <div
+      className="alert alert-danger"
+    >
+      Error
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots materialUI.Button Flat button with UPPERCASE TEXT 1`] = `
+<button
+  className="MuiButtonBase-root-f MuiButton-root-1"
+  disabled={false}
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+  role="button"
+  tabIndex="0"
+  type="button"
+>
+  <span
+    className="MuiButton-label-3"
+  >
+    Hello world
+  </span>
+  <span
+    className="MuiTouchRipple-root-h"
+  />
+</button>
+`;
