@@ -24,7 +24,7 @@ export default class MaterialDrawer extends React.Component{
         <Menu/>
       </IconButton>
       <Drawer
-        anchor="left"
+        anchor={this.props.anchor}
         open='true'
          >
         <MaterialList/>

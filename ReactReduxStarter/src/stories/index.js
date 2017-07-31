@@ -17,3 +17,6 @@ import './materialUI/List.story';
 import './materialUI/Drawers.story';
 import './materialUI/TextField.story';
 import './materialUI/Paper.story';
+import './materialUI/Selection.story';
+import './materialUI/Table.story';
+import './materialUI/Tabs.story';
