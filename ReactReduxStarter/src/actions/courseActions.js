@@ -4,6 +4,7 @@
 import * as types from './actionTypes';
 import courseApi from '../api/mockCourseApi';
 import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
+import axios from 'axios';
 
 export function loadCoursesSuccess(courses){
   return {type: types.LOAD_COURSES_SUCCESS, courses};
@@ -25,7 +26,18 @@ export function loadCourses(){
     }).catch(error=>{
       throw(error);
     });
-  }
+  };
+}
+
+export function loadCoursesAPI(){
+  return function(dispatch){
+    dispatch(beginAjaxCall());
+    return axios.get('http://192.168.104.45:4001/courses').then(response => {
+      dispatch(loadCoursesSuccess(response.data));
+    }).catch(error => {
+      throw(error);
+    });
+  };
 }
 
 export function saveCourse(course){
