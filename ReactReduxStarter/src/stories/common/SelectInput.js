@@ -7,6 +7,7 @@ import { action } from '@storybook/addon-actions';
 import SelectInput from '../../components/common/SelectInput';
 import { authorsFormattedForDropdown } from '../../selectors/selectors';
 
+
 storiesOf('SelectInput', module)
   .add('Empty authors', () => (
     <SelectInput name="authorId"
