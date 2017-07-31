@@ -4,6 +4,7 @@
 import React from 'react';
 import {storiesOf} from  '@storybook/react';
 import Tabs, {Tab,Ta} from 'material-ui/Tabs';
+import TabsComponent from './../MaterialUiComponents/TabsComponent';
 
 const TabContainer = props =>(
   <div style={{ padding: 20 }}>
@@ -16,28 +17,27 @@ function onTabChange(event, i){
 }
 storiesOf("material-ui.Tabs", module)
   .add("Tabs", ()=>(
-    <div>
-      <Tabs index={index} onChange={onTabChange}>
-        <Tab label="Tab1" >
-          <div>
-          </div>
-        </Tab>
-        <Tab label="Tab1">
-        </Tab>
-        <Tab label="Tab1">
-        </Tab>
-      </Tabs>
-      {index === 0 &&
-      <TabContainer>
-        {'Item One'}
-      </TabContainer>}
-      {index === 1 &&
-      <TabContainer>
-        {'Item Two'}
-      </TabContainer>}
-      {index === 2 &&
-      <TabContainer>
-        {'Item Three'}
-      </TabContainer>}
-    </div>
+    <TabsComponent/>
   ));
+/*<div>
+  <Tabs index={index} onChange={onTabChange}>
+    <Tab index={0} label="Tab1">
+    </Tab>
+    <Tab index={1} label="Tab2">
+    </Tab>
+    <Tab index={2} label="Tab3">
+    </Tab>
+  </Tabs>
+  {index === 0 &&
+  <TabContainer>
+    {'Item One'}
+  </TabContainer>}
+  {index === 1 &&
+  <TabContainer>
+    {'Item Two'}
+  </TabContainer>}
+  {index === 2 &&
+  <TabContainer>
+    {'Item Three'}
+  </TabContainer>}
+</div>*/
