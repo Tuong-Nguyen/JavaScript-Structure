@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import ShotList from '../components/ShotList';
 
 const mapStateToProps = (state) => {
-	return {
-		shots: state.shots
-	};
+  return {
+    shots: state.shots
+  };
 };
 
 const VisiableShotList = connect(
-	mapStateToProps
+  mapStateToProps
 )(ShotList);
 
 export default VisiableShotList;

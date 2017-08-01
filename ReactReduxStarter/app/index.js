@@ -9,15 +9,15 @@ import reducers from './reducers';
 import { loadShots } from './actions';
 
 let store = createStore(
-	reducers,
-	applyMiddleware(thunkMiddleware)
+  reducers,
+  applyMiddleware(thunkMiddleware)
 );
 
 store.dispatch(loadShots());
 
 render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.querySelector('.container')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('.container')
 );
