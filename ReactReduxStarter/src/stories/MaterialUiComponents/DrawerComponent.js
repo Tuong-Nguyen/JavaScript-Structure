@@ -16,7 +16,7 @@ export default class MaterialDrawer extends React.Component{
   }
   menuCLick(){
     var status = !this.state.open;
-    this.setState = {open: status};
+    this.setState({open: status});
   }
   render(){
     return (<div>
@@ -25,7 +25,8 @@ export default class MaterialDrawer extends React.Component{
       </IconButton>
       <Drawer
         anchor={this.props.anchor}
-        open='true'
+        open={this.state.open}
+        onClick={this.menuCLick}
          >
         <MaterialList/>
       </Drawer>
