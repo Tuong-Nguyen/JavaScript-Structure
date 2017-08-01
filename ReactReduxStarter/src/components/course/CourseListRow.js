@@ -12,7 +12,9 @@ const CourseListRow = ({course}) => {
         <td>{course.authorId}</td>
         <td>{course.category}</td>
         <td>{course.length}</td>
+        <td><button className="btn btn-info" data-toggle="confirmation">Delete</button></td>
       </tr>
+
   );
 };
 

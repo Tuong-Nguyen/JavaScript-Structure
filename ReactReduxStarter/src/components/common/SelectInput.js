@@ -18,7 +18,7 @@ const SelectInput = ({name, label, onChange, defaultOption, value, error, option
             return <option key={option.value} value={option.value}>{option.text}</option>;
           })}
         </select>
-        {error && <div className="alert alert-danger">{error}</div>}
+        {/*{error && <div className="alert alert-danger">{error}</div>}*/}
       </div>
     </div>
   );
