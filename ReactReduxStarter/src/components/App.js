@@ -1,11 +1,8 @@
-/**
- * Created by lnthao on 6/26/2017.
- */
-import React, {Component, PropTypes} from 'react';
-import {SkiDayList} from './SkiDayList';
-import {SkiDayCount} from './SkiDayCount';
-import AddDayForm from './AddDayForm';
-import {Menu} from './Menu';
+import { Component } from 'react';
+import { SkiDayList } from "./SkiDayList";
+import { SkiDayCount } from "./SkiDayCount";
+import { AddDayForm } from "./AddDayForm";
+import { Menu } from "./Menu";
 
 export class App extends Component {
   constructor(props) {
@@ -13,14 +10,32 @@ export class App extends Component {
     this.state = {
       allSkiDays: [
         {
-          resort: "SquaW Valley",
-          date: '2017-06-01',
+          resort: "Squaw Valley",
+          date: "2017-01-01",
           powder: true,
           backcountry: false
+        },
+        {
+          resort: "Thanh",
+          date: "2017-01-02",
+          powder: false,
+          backcountry: true
+        },
+        {
+          resort: "HUY",
+          date: "2017-01-03",
+          powder: true,
+          backcountry: false
+        },
+        {
+          resort: "Mr.Tuong",
+          date: "2017-01-04",
+          powder: true,
+          backcountry: true
         }
       ]
-    };
-    this.addDay = this.addDay.bind(this);
+    }
+
   }
 
   addDay(newDay) {
@@ -29,31 +44,27 @@ export class App extends Component {
         ...this.state.allSkiDays,
         newDay
       ]
-    });
+    })
   }
-
   countDays(filter) {
-    const {allSkiDays} = this.state; // <=> const allSkiDays = this.state.allSkiDays
-    return allSkiDays.filter((day) => (filter) ? day[filter] : day).length;
+    return this.state.allSkiDays.filter((day) => (filter) ? day[filter] : day).length
   }
 
   render() {
     return (
       <div className="app">
         <Menu/>
-        {(this.props.location.pathname === "/") ? <SkiDayCount total={this.countDays()}
-                                                               powder={this.countDays("powder")}
-                                                               backcountry={this.countDays("backcountry")}/>
-          : (this.props.location.pathname === "/add-day") ? <AddDayForm onNewDay={this.addDay}/>
-            : <SkiDayList days={this.state.allSkiDays} filter={this.props.params.filter}/>
+        {(this.props.location.pathname === "/") ?
+          <SkiDayCount
+            total={this.countDays()}
+            powder={this.countDays("powder")}
+            backcountry={this.countDays("backcountry")}/> :
+          (this.props.location.pathname === "/add-day") ?
+            <AddDayForm onNewDay={newDay => this.addDay(newDay)} /> :
+            <SkiDayList days={this.state.allSkiDays}
+              filter={this.props.params.filter}/>
         }
       </div>
-    );
+    )
   }
 }
-
-App.propTypes = {
-  location: PropTypes.object,
-  params: PropTypes.object
-
-};
