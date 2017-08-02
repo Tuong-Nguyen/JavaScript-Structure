@@ -69,7 +69,7 @@ describe('call API', () => {
     };
     axios.put('http://192.168.104.45:4001/authors/' + id, author)
       .then((res) => {
-        expect(res.status).toEqual(200);
+        expect(res).toEqual(200);
       })
       .then(done, done);
   });
@@ -87,7 +87,7 @@ describe('call API', () => {
       .then(done, done);
   });
 
-  it('delete Author by id', (done) => {
+  xit('delete Author by id', (done) => {
       const id = "S1nSXtaUZ";
       axios.delete('http://192.168.104.45:4001/authors/' + id)
         .then((res) => {
@@ -107,11 +107,60 @@ describe('call API', () => {
   });
 
 
-  xit('get Courses', (done) => {
-    axios.get('http://192.168.104.45:4001/courses')
+  xit('cancel request get Courses', (done) => {
+
+    var CancelToken = axios.CancelToken;
+    var source = CancelToken.source();
+
+    axios.get('http://192.168.104.45:4001/courses', {
+      cancelToken: source.token
+    })
       .then((res) => {
-        expect(res.data.length).toEqual(5);
+        expect(res.data.length).toEqual(6);
+      })
+      .catch(function(thrown){
+        if(axios.isCancel(thrown)){
+          console.log(thrown);
+          console.log('Request canceled', thrown.message);
+        }
+        else
+        {
+          console.log("request isn't canceled");
+        }
+      })
+      .then(done, done);
+
+    source.cancel("by user");
+
+  });
+
+  it('intercepting request and response', (done) => {
+    axios.interceptors.request.use(function (config){
+      console.log("Intercept request");
+      console.log(config);
+      return config;
+    }, function (error) {
+      console.log("Intercept request error");
+      console.log(error);
+      return Promise.reject(error);
+    });
+
+    axios.interceptors.response.use(function (response){
+      console.log("Intercept response");
+      console.log(response);
+      return response;
+    }, function (error) {
+      console.log("Intercept response error");
+      console.log(error);
+      return Promise.reject(error);
+    });
+
+    axios.get('http://192.168.104.45:4001/courses/vbvvvvv')
+      .then((res) => {
+        console.log("Receive response");
+        expect(res.data.length).toEqual(6);
       })
       .then(done, done);
   });
+
 });
