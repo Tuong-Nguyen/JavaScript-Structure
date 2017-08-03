@@ -60,7 +60,7 @@ describe('call API', () => {
       .then(done, done);
   });
 
-  xit('update Author', (done) => {
+  it('update Author', (done) => {
     const id = "scott-allen";
     const author = {
       id: "scott-allen",
@@ -69,7 +69,7 @@ describe('call API', () => {
     };
     axios.put('http://192.168.104.45:4001/authors/' + id, author)
       .then((res) => {
-        expect(res).toEqual(200);
+        expect(res.status).toEqual(200);
       })
       .then(done, done);
   });
@@ -134,7 +134,7 @@ describe('call API', () => {
 
   });
 
-  it('intercepting request and response', (done) => {
+  xit('intercepting request and response', (done) => {
     axios.interceptors.request.use(function (config){
       console.log("Intercept request");
       console.log(config);

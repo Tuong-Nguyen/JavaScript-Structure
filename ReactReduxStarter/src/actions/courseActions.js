@@ -4,7 +4,7 @@
 import * as types from './actionTypes';
 import courseApi from '../api/mockCourseApi';
 import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
-import axios from 'axios';
+import CourseService from '../api/CourseService';
 
 export function loadCoursesSuccess(courses){
   return {type: types.LOAD_COURSES_SUCCESS, courses};
@@ -32,7 +32,7 @@ export function loadCourses(){
 export function loadCoursesAPI(){
   return function(dispatch){
     dispatch(beginAjaxCall());
-    return axios.get('http://192.168.104.45:4001/courses')
+    return CourseService.getAllCourses()
       .then(response => {
         dispatch(loadCoursesSuccess(response.data));
       }).catch(error => {
@@ -62,7 +62,7 @@ export function saveCourseAPI(course){
       console.log("Get index");
       console.log(existingIndex);
       if(existingIndex >= 0){
-        return axios.put('http://192.168.104.45:4001/courses/' + course.id, course)
+        return CourseService.updateAuthor(course.id, course)
           .then(response => {
             dispatch(updateCourseSuccess(response.data));
           })
@@ -74,7 +74,7 @@ export function saveCourseAPI(course){
 
     }
 
-    return axios.post('http://192.168.104.45:4001/courses', course)
+    return CourseService.addCourse(course)
       .then(response => {
         dispatch(createCourseSuccess(response.data));
       })
