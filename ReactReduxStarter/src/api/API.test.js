@@ -60,7 +60,7 @@ describe('call API', () => {
       .then(done, done);
   });
 
-  it('update Author', (done) => {
+  xit('update Author', (done) => {
     const id = "scott-allen";
     const author = {
       id: "scott-allen",
@@ -87,8 +87,8 @@ describe('call API', () => {
       .then(done, done);
   });
 
-  xit('delete Author by id', (done) => {
-      const id = "S1nSXtaUZ";
+  it('delete Author by id', (done) => {
+      const id = "HyPjp_bPW";
       axios.delete('http://192.168.104.45:4001/authors/' + id)
         .then((res) => {
           expect(res.status).toEqual(200);

@@ -5,6 +5,10 @@ import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 const CourseListRow = ({course}) => {
+  const sayHello = (e) => {
+      alert("Hello, you have clicked into " + e.target.tagName );
+  };
+
   return (
       <tr>
         <td><a href={course.watchHref} target="_blank">Watch</a> </td>
@@ -12,7 +16,7 @@ const CourseListRow = ({course}) => {
         <td>{course.authorId}</td>
         <td>{course.category}</td>
         <td>{course.length}</td>
-        <td><button className="btn btn-info" data-toggle="confirmation">Delete</button></td>
+        <td><button className="btn btn-info" onClick={sayHello}>Delete</button></td>
       </tr>
 
   );

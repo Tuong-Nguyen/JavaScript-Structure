@@ -19,11 +19,11 @@ class CourseService {
     return axios.post(baseURL, course);
   }
 
-  static updateAuthor(id, course){
+  static updateCourse(id, course){
     return axios.put(baseURL + id, course);
   }
 
-  static deleteAuthor(id){
+  static deleteCourse(id){
     return axios.delete(baseURL + id);
   }
 }
