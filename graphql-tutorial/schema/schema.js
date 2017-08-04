@@ -1,8 +1,12 @@
-import {GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLSchema, GraphQLList} from 'graphql';
+import {GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLSchema, GraphQLList, GraphQLNonNull} from 'graphql';
 import _ from 'lodash';
 import axios from 'axios';
 
-let UserType;
+const axiosInstance = axios.create({
+    baseURL: "http://localhost:3000/"
+});
+
+const mapResponseToData = (promise) => promise.then(res => res.data);
 
 const CompanyType = new GraphQLObjectType({
     name: 'Company',
@@ -13,14 +17,13 @@ const CompanyType = new GraphQLObjectType({
         users: {
             type: new GraphQLList(UserType),
             resolve(parentValue, args) {
-                return axios.get(`http://localhost:3000/companies/${parentValue.id}/users`)
-                    .then(response => response.data)
+                return mapResponseToData(axiosInstance.get(`companies/${parentValue.id}/users`));
             }
         }
     })
 });
 
-UserType = new GraphQLObjectType({
+const UserType = new GraphQLObjectType({
     name: 'User',
     fields: {
         id: {type: GraphQLString},
@@ -29,8 +32,7 @@ UserType = new GraphQLObjectType({
         company: {
             type: CompanyType,
             resolve(parentValue, args) {
-                return axios.get(`http://localhost:3000/companies/${parentValue.companyId}`)
-                    .then(response => response.data);
+                return mapResponseToData(axiosInstance.get(`companies/${parentValue.companyId}`));
             }
         }
     }
@@ -43,7 +45,7 @@ const RootQuery = new GraphQLObjectType({
             type: UserType,
             args: {id: {type: GraphQLString}},
             resolve(parentValue, args) {
-                return axios.get("http://localhost:3000/users")
+                return axiosInstance.get("users")
                     .then(response => response.data)
                     .then(users => _.find(users, {id: args.id}));
             }
@@ -52,13 +54,51 @@ const RootQuery = new GraphQLObjectType({
             type: CompanyType,
             args: {id: {type: GraphQLString}},
             resolve(parentValue, args) {
-                return axios.get(`http://localhost:3000/companies/${args.id}`)
-                    .then(response => response.data)
+                return mapResponseToData(axiosInstance.get(`companies/${args.id}`))
+            }
+        }
+    }
+});
+
+const mutation = new GraphQLObjectType({
+    name: "Mutation",
+    fields: {
+        addUser: {
+            type: UserType,
+            args: {
+                firstName: {type: new GraphQLNonNull(GraphQLString)},
+                age: {type: new GraphQLNonNull(GraphQLInt)},
+                companyId: {type: GraphQLString}
+            },
+            resolve(parentValue, args){
+                return mapResponseToData(axiosInstance.post(`users/`, {firstName: args.firstName, age: args.age, companyId: args.companyId}));
+            }
+        },
+        deleteUser: {
+            type: GraphQLString,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLString)}
+            },
+            resolve(parentValue, {id}){
+                return mapResponseToData(axiosInstance.delete(`users/${id}`));
+            }
+        },
+        updateUser: {
+            type: UserType,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLString)},
+                firstName: {type: GraphQLString},
+                age: {type: GraphQLInt},
+                companyId: {type: GraphQLString}
+            },
+            resolve(parentValue, {id, ...others}) {
+                return mapResponseToData(axiosInstance.patch(`users/${id}`, others));
             }
         }
     }
 });
 
 export const schema = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: mutation
 });
