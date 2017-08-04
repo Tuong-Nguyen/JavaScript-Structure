@@ -6,11 +6,11 @@ import { PropTypes } from 'react';
 
 const percentToDecimal = (decimal) => {
   return ((decimal * 100) + '%');
-}
+};
 
 const calcGoalProgress = (total, goal) => {
   return percentToDecimal(total/goal);
-}
+};
 
 export const SkiDayCount = ({total, powder, backcountry, goal}) => (
 
@@ -37,18 +37,18 @@ export const SkiDayCount = ({total, powder, backcountry, goal}) => (
           </span>
       </div>
     </div>
-)
+);
 
 SkiDayCount.defaultProps = {
       total: 50,
       powder: 50,
       backcountry: 15,
       goal: 75
-}
+};
 
 SkiDayCount.propTypes = {
   total: PropTypes.number.isRequired,
   powder: PropTypes.number,
   backcountry: PropTypes.number,
   goal: PropTypes.number
-}
+};

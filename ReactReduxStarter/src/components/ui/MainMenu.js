@@ -22,7 +22,7 @@ const MainMenu = () => {
         Members
       </Link>
     </nav>
-  )
-}
+  );
+};
 
-export default MainMenu
+export default MainMenu;

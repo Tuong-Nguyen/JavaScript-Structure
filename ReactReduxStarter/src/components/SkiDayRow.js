@@ -17,11 +17,11 @@ export const SkiDayRow = ({resort, date, powder, backcountry}) => (
       {(backcountry) ? <Terrain/> : null}
     </td>
   </tr>
-)
+);
 
 SkiDayRow.propTypes = {
   resort: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   powder: PropTypes.bool,
   backcountry: PropTypes.bool
-}
+};

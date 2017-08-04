@@ -6,17 +6,17 @@ export class Member extends Component {
   componentWillMount() {
     this.style = {
       backgroundColor: 'gray'
-    }
+    };
   }
 
   componentWillUpdate(nextProps) {
     this.style = {
       backgroundColor: nextProps.admin ? 'green' : 'gray'
-    }
+    };
   }
 
   shouldComponentUpdate(nextProps) {
-    return this.props.admin !== nextProps.admin
+    return this.props.admin !== nextProps.admin;
   }
 
   render() {
@@ -27,7 +27,7 @@ export class Member extends Component {
       admin,
       makeAdmin,
       removeAdmin
-    } = this.props
+    } = this.props;
 
     return  (
       <div className="member" style={this.style}>
@@ -39,6 +39,6 @@ export class Member extends Component {
         <img src={thumbnail} alt="profile picture" />
         <p><a href={`mailto:${email}`}>{email}</a></p>
       </div>
-    )
+    );
   }
 }

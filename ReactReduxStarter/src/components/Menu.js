@@ -14,5 +14,5 @@ export const Menu = () =>
     <Link to="/list-days" activeClassName="selected">
       <ListDaysIcon/>
     </Link>
-  </nav>
+  </nav>;
 

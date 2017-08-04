@@ -5,26 +5,26 @@ import {Member} from "./Member";
 
 export default class MemberList extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       members: [],
       loading: false,
       administrators: []
-    }
-    this.makeAdmin = this.makeAdmin.bind(this)
-    this.removeAdmin = this.removeAdmin.bind(this)
+    };
+    this.makeAdmin = this.makeAdmin.bind(this);
+    this.removeAdmin = this.removeAdmin.bind(this);
 
   }
 
   componentDidMount() {
-    this.setState({loading: true})
+    this.setState({loading: true});
     fetch('https://api.randomuser.me/?nat=US&results=15')
       .then(response => response.json())
       .then(json => json.results)
       .then(members => this.setState({
         members,
         loading: false
-      }))
+      }));
   }
 
   //function in compoennt
@@ -32,19 +32,19 @@ export default class MemberList extends Component {
     const administrators = [
       ...this.state.administrators,
       email
-    ]
-    this.setState({administrators})
+    ];
+    this.setState({administrators});
   }
 
   removeAdmin(email) {
     const administrators = this.state.administrators.filter(
       adminEmail => adminEmail !== email
-    )
-    this.setState({administrators})
+    );
+    this.setState({administrators});
   }
 
   render() {
-    const { members, loading } = this.state
+    const { members, loading } = this.state;
     return (
       <div className="member-list">
         <h1>Society Members</h1>
@@ -71,6 +71,6 @@ export default class MemberList extends Component {
         ) :
         <span>Currently 0 members</span>}
       </div>
-    )
+    );
   }
 }
