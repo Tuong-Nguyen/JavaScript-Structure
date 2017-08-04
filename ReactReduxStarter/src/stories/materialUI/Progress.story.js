@@ -13,7 +13,7 @@ storiesOf("material-ui.Progress", module)
     </div>
   )).add('Lineer Progress', ()=>(
   <div>
-    <LinearProgress />
+    <LinearProgress  />
     <LinearProgress color="accent"/>
   </div>
 ));

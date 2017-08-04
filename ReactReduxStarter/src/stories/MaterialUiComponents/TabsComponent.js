@@ -2,7 +2,7 @@
  * Created by nttao on 7/31/2017.
  */
 import React from 'react'
-import Tabs, {Tab,Ta} from 'material-ui/Tabs';
+import Tabs, {Tab} from 'material-ui/Tabs';
 
 const TabContainer = props =>(
   <div style={{ padding: 20 }}>
