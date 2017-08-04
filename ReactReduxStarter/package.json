@@ -4,30 +4,35 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
+    "axios": "^0.16.2",
+    "material-ui": "^1.0.0-beta.3",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1"
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-react": "^7.1.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "lint": "eslint app"
   },
   "author": "",
   "license": "ISC"

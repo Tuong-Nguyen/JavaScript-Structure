@@ -1,0 +1,18 @@
+@import 'variables';
+
+.header {
+  background-color: $dark-grey;
+}
+
+.logo {
+  float: left;
+}
+
+.nav-item {
+  float: left;
+
+  a {
+    text-decoration: none;
+    color: $light-grey;
+  }
+}

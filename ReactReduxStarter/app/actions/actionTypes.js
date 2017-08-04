@@ -1,2 +1,0 @@
-export const REQUEST_SHOTS = 'REQUEST_SHOTS';
-export const RECEIVE_SHOTS = 'RECEIVE_SHOTS';

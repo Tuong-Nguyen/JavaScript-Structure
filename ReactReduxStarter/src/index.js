@@ -2,17 +2,14 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import thunk from 'redux-thunk';
 
-import App from './components/App';
-import reducers from './reducers';
+import rootReducer from './reducers';
 import { loadShots } from './actions';
+import App from './app/App';
+import './styles/main.scss';
 
-let store = createStore(
-  reducers,
-  applyMiddleware(thunkMiddleware)
-);
-
+let store = createStore(rootReducer, applyMiddleware(thunk));
 store.dispatch(loadShots());
 
 render(

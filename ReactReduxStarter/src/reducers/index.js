@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import shots from './shots';
+
+import entities from './entityReducers';
 
 const dribbbleApp = combineReducers({
-  shots
+  entities
 });
 
 export default dribbbleApp;
