@@ -16,6 +16,7 @@ import Collapse from  'material-ui/transitions/Collapse';
 // eslint-disable-next-line import/namespace
 import avata from './../resources/avata.jpg';
 
+// TODO: move this class to other file, ex: in MaterialUiComponents folder
 class ComplexCard extends React.Component{
   constructor(){
     super();

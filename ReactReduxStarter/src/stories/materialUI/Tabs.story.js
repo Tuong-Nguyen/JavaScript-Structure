@@ -15,6 +15,10 @@ var index=0;
 function onTabChange(event, i){
   index = i;
 }
+// TODO: Add scrollable tabs
+// TODO: Add icon tabs
+// TODO: Add icon with text tabs
+// TODO: Add tabs has disabled tab
 storiesOf("material-ui.Tabs", module)
   .add("Tabs", ()=>(
     <TabsComponent/>

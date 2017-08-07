@@ -13,6 +13,7 @@ import grey from 'material-ui/colors/grey';
 // eslint-disable-next-line import/namespace
 import avata from './../resources/avata.jpg';
 
+// TODO: remove unused variable styleSheet
 const styleSheet = createStyleSheet('Chips', theme => ({
   chip: {
     margin: theme.spacing.unit
@@ -53,6 +54,7 @@ function AvataChip2(props) {
   );
 }
 
+// TODO: move this class to other file, ex: in MaterialUiComponents folder.
 class ArrayChips extends React.Component{
   constructor(){
     super();

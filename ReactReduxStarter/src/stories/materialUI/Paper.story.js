@@ -11,6 +11,8 @@ import Typography from 'material-ui/Typography';
 import img from './../resources/avata.jpg';
 
 storiesOf("material-ui.Paper", module)
+// TODO: Add paper with shadow depth 4dp
+// TODO: Add paper with not rounded corners
   .add("Paper", ()=>(
     <div>
       <Paper>

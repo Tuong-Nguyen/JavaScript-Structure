@@ -39,6 +39,7 @@ storiesOf ('material-ui.List', module)
     </ListItem>
   </List>
 ))
+// TODO: Add list with item that has secondary text
   .add('IconList', () =>(
     <List>
       <ListItem button onClick={action('clicked')}>

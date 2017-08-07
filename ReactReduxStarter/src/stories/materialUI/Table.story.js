@@ -18,6 +18,7 @@ const columnData = [
 
 var isSelected = id => columnData[id].selected = true;
 
+// TODO: Add table with numeric table cell
 storiesOf("material-ui.Table", module)
   .add("Text Table", ()=>(
     <div>

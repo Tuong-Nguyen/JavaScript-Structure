@@ -6,6 +6,9 @@ import {storiesOf} from '@storybook/react';
 import Progress, {CircularProgress, LinearProgress} from 'material-ui/Progress';
 
 storiesOf("material-ui.Progress", module)
+// TODO: Add circular determinate progress
+// TODO: Add circular interactive integration progress
+// TODO: Add linear determinate progress
   .add('Circular Progress', ()=>(
     <div>
       <CircularProgress size={50} />

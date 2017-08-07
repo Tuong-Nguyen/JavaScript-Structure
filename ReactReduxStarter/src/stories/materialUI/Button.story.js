@@ -18,12 +18,14 @@ storiesOf('materialUI.Button', module)
   ))
   .add('Primary raised button', () => (
     <Button raised classes={{
+      // TODO: color purple not working, please make it work or use primary color
       color: purple
     }}>
       Primary
     </Button>
   ))
   .add('Diable raised button', () => (
+    // TODO: color does not effect with disabled button
     <Button raised color="accent" disabled>
       Disabled
     </Button>
@@ -39,6 +41,7 @@ storiesOf('materialUI.Button', module)
     </IconButton>
   ))
   .add('Link button', () => (
+    // TODO: add more state for link button: open url in new tab
     <Button href="https://material-ui-1dab0.firebaseapp.com/component-demos/buttons#flat-buttons">
       Link
     </Button>

@@ -9,6 +9,7 @@ import {FormGroup, FormControlLabel} from 'material-ui/Form';
 import Switch from 'material-ui/Switch';
 
 storiesOf("material-ui.Selection", module)
+  // TODO: Add disable and custom color checkboxes
   .add("Check box", ()=>(
     <div>
       <FormGroup row>
@@ -17,6 +18,8 @@ storiesOf("material-ui.Selection", module)
       </FormGroup>
     </div>
     ))
+  // TODO: Add radio group with a label
+  // TODO: Add disabled radio button
   .add("Radio", ()=>(
     <div>
       <FormGroup>
@@ -29,6 +32,8 @@ storiesOf("material-ui.Selection", module)
       </FormGroup>
     </div>
   ))
+  // TODO: Add disabled and custom color switches
+  // TODO: Add switches with label
   .add("Switches", ()=>(
     <div>
       <FormGroup>
