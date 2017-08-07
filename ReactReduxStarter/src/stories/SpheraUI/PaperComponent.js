@@ -15,7 +15,8 @@ import avata from './../resources/avata.jpg';
 const styleSheet = createStyleSheet({
   root: {
     marginTop: 100,
-    width: '100%'
+    width: '100%',
+    borderLeft: '4px solid #FF5722'
   },
   title:{
     fontSize: 14,
@@ -27,13 +28,6 @@ const styleSheet = createStyleSheet({
   },
   infor:{
     margin:10
-  },
-  mark:{
-    width:5,
-    height:'100%',
-    backgroundColor: '#FF5722',
-    float: 'left',
-    marginLeft:8
   }
 });
 
@@ -52,7 +46,6 @@ class PaperComponent extends React.Component{
         <Paper className={classes.root}>
           <Grid container>
             <Grid xs="2">
-              <div className={classes.mark}></div>
               <Avata src={avata} className={classes.avata} />
             </Grid>
             <Grid xs="10">

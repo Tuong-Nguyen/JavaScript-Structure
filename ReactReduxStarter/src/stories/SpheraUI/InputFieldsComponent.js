@@ -5,8 +5,6 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import {withStyles, createStyleSheet} from 'material-ui/styles';
 import Menu, { MenuItem } from 'material-ui/Menu';
-import Search from 'material-ui-icons/Search';
-import IconButton from 'material-ui/IconButton';
 import Autocomplet from './AutocompleteTextField';
 const arr = [1,2,3,4,5];
 const suggestions = [
@@ -85,7 +83,7 @@ class InputFields extends React.Component{
         <TextField label="name" value={this.state.name} onChange={event => this.setState({ name: event.target.value })} className={classes.inputField}/>
         <TextField label="name" defaultValue="" className={classes.inputField}/>
         <TextField label="name" defaultValue="" className={classes.inputField}/>
-        <Autocomplet arrData={suggestions}/>
+        <Autocomplet arrData={suggestions} label="Country"/>
         <TextField label="name" value={arr[this.state.selectedIndex]} className={classes.inputField}
                    aria-haspopup="true"
                    aria-controls="tasksMenu"

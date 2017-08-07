@@ -31,9 +31,9 @@ class Autocomplet extends Component {
     this.onChange = this.onChange.bind(this);
   }
   renderInput(inputProps){
-    const {classes, value, ref, ...other} = inputProps;
+    const {classes, value, ref,label, ...other} = inputProps;
     return(
-      <TextField className={classes.inputField} value={value} inputRef={ref}
+      <TextField className={classes.inputField} label={label} value={value} inputRef={ref}
                  InputProps={{
                    classes: {
                      input: classes.input
@@ -94,7 +94,7 @@ class Autocomplet extends Component {
   });
 };
   render(){
-    const { classes } = this.props;
+    const { classes, label } = this.props;
     return(
       <Autosuggest
         renderInputComponent={this.renderInput}
@@ -104,6 +104,7 @@ class Autocomplet extends Component {
         getSuggestionValue={this.getSuggestionValue}
         renderSuggestion={this.renderSuggestion}
         inputProps={{
+          label:label,
           placeholder: 'Search a country (start with a)',
           classes: classes,
           value: this.state.value,

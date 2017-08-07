@@ -14,6 +14,10 @@ import Badge from 'material-ui/Badge';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
 import Tabs, {Tab} from 'material-ui/Tabs';
+import SearchBox from './SearchBox';
+import Notifications from 'material-ui-icons/Notifications';
+import Add from 'material-ui-icons/Add';
+import FilterList from 'material-ui-icons/FilterList';
 
 const styleSheet = createStyleSheet({
   root: {
@@ -29,6 +33,19 @@ const styleSheet = createStyleSheet({
     fontSize:12,
     textAlign:'left',
     color:"#FFFFFF"
+  },
+  notificationBar: {
+    marginLeft: 10,
+    float: 'right'
+  },
+  actionBar:{
+    float:'bottom',
+    display: "inherit",
+    alignItems: "inherit"
+  },
+  badge:{
+    marginTop:30,
+    marginRight:10
   }
 });
 
@@ -66,9 +83,32 @@ class Header extends React.Component{
                 </Tabs>
               </Typography>
             </div>
-            <IconButton><Search color="#FFFFFF"/></IconButton>
-            <TextField InputProps={{placeholder: 'search'}}/>
-            <Button color="contrast">Login</Button>
+            <SearchBox/>
+            <div>
+              <div className={classes.notificationBar}>
+                <Badge badgeContent={2} color="primary" classes={classes.badge}>
+                  <Notifications/>
+                </Badge>
+                <Button fab color="primary" style={{fontSize:20,
+                  width:40,
+                  height:40,
+                  padding:'none',
+                  marginLeft:10}}>
+                  JS
+                </Button>
+              </div>
+              <div className={classes.actionBar}>
+                <Button color="contrast" style={{
+                  height:20,
+                  fontSize:10
+                }}>
+                  <Add/> New Action
+                </Button>
+                <IconButton color="contrast">
+                  <FilterList/>
+                </IconButton>
+              </div>
+            </div>
             <MenuBar isOpen={this.state.isMenuOpen} openMenu={this.openMenu}/>
           </Toolbar>
         </AppBar>
