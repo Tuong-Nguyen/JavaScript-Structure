@@ -28,7 +28,7 @@ storiesOf("material-ui.Paper", module)
 // TODO: Add paper with not rounded corners
   .add("Paper With Not Rounded Corners", ()=>(
     <div>
-      <Paper elevation={1} square="true">
+      <Paper elevation={1} square>
         <Avatar alt="avata" src={img}></Avatar>
         <Typography type="headline" component="h3">
           Name

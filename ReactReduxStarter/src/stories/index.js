@@ -19,6 +19,7 @@ import './materialUI/TextField.story';
 import './materialUI/Paper.story';
 import './materialUI/Selection.story';
 import './materialUI/Table.story';
+import './materialUI/Grid.story';
 import './materialUI/Tabs.story';
 import './materialUI/Cards.story';
 import './materialUI/Chips.story';

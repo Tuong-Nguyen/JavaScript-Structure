@@ -7,8 +7,9 @@ import Search from 'material-ui-icons/Search';
 import IconButton from 'material-ui/IconButton';
 import {createMuiTheme, MuiThemeProvider, withStyles, createStyleSheet} from 'material-ui/styles';
 import Autosuggest from 'react-autosuggest';
+import Paper from 'material-ui/Paper';
 
-const suggestions = [
+const arrdata = [
   { label: 'Afghanistan' },
   { label: 'Aland Islands' },
   { label: 'Albania' },
@@ -75,37 +76,46 @@ class SearchBox extends React.Component{
   }
   renderInput(inputProps){
     const {classes, value, ref, ...other} = inputProps;
-    return(<input className={classes.searchInput} inputRef={ref} value={value}
-                      inputProps={{
-                        classes: {
-                          input: classes.input
-                        },
-                        ...other
-                      }}/>
+    return(
+      <TextField className={classes.searchInput} inputRef={ref} value={value}
+        InputProps={{
+          classes: {
+            input: classes.input
+          },
+          ...other
+        }}/>
     );
   }
-  renderSuggestion(suggestion){
-    return(
+  renderSuggestion(suggestion) {
+    return (
       <div>
-        <span>{suggestion.label}</span>
+        <span style={{color: "#000000"}}>{suggestion.label}</span>
       </div>
     );
   }
   getSuggestion({value}){
-    let suggestions = suggestions.filter(item =>
+    let suggestions = arrdata.filter(item =>
       item.label.toLowerCase().slice(0, value.length) === value.toLowerCase().trim()
     );
-    this.setState={
+    this.setState({
       suggestions: suggestions
-    }
+    });
   }
   clearSuggestion(){
-    this.setState={
+    this.setState({
       suggestions: []
-    }
+    })
   }
   getSuggestionValue(suggestion){
     return suggestion.label;
+  }
+  renderSuggestionsContainer(options) {
+    const { containerProps, children } = options;
+    return (
+      <Paper {...containerProps} square style={{position:"absolute", zIndex:100, width:200}}>
+        {children}
+      </Paper>
+    );
   }
   onChange(event, {newValue}){
     this.setState({
@@ -119,9 +129,10 @@ class SearchBox extends React.Component{
         <Search/><Autosuggest
         renderInputComponent = {this.renderInput}
         suggestions = {this.state.suggestions}
-        onSuggestionFetchRequested = {this.getSuggestion}
-        onSuggestionClearRequested = {this.clearSuggestion}
+        onSuggestionsFetchRequested = {this.getSuggestion}
+        onSuggestionsClearRequested = {this.clearSuggestion}
         renderSuggestion={this.renderSuggestion}
+        renderSuggestionsContainer = {this.renderSuggestionsContainer}
         getSuggestionValue={this.getSuggestionValue}
         inputProps={{
           classes: classes,
