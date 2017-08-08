@@ -14,6 +14,7 @@
 
 import './materialUI/Donut.story';
 import './materialUI/ButtonWithTheme.story';
+import './materialUI/ReactMotion.story';
 import './materialUI/Button.story';
 import './materialUI/List.story';
 import './materialUI/Drawers.story';
