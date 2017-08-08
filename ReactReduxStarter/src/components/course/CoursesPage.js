@@ -12,10 +12,6 @@ class CoursesPage extends Component {
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
   }
 
-  // courseRow(course, index) {
-  //   return <div key={index}>{course.title}</div>;
-  // }
-
   redirectToAddCoursePage() {
     browserHistory.push('/course');
   }

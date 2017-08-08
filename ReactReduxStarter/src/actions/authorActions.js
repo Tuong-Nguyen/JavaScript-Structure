@@ -22,15 +22,3 @@ export function loadAuthors() {
       });
   };
 }
-
-export function loadAuthorsAPI(){
-  return dispatch => {
-    dispatch(beginAjaxCall());
-    return axios.get("http://192.168.104.45:4001/authors")
-      .then(response => {
-        dispatch(loadAuthorsSuccess(response.data));
-      }).catch(error => {
-        throw(error);
-      });
-  };
-}

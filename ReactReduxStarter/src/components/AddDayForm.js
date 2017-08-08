@@ -15,18 +15,23 @@ const tahoeResorts = [
 ];
 
 class AutoComplete extends Component {
-
   constructor(props) {
     super(props);
-    this.onChange = this.props.onChange.bind(this);
+    this.getValue = this.getValue.bind(this);
+
   }
 
+  getValue(item){
+    let value = this.refs.inputResort.value;
+    return this.props.onChange(value);
+  }
   render() {
     return (
       <div>
-        <input ref={this.onChange}
+        <input ref="inputResort"
                type="text"
-               list="tahoe-resorts"/>
+               list="tahoe-resorts"
+               onChange={this.getValue}/>
         <datalist id="tahoe-resorts">
           {this.props.options.map(
             (opt, i) =>
@@ -41,14 +46,14 @@ class AutoComplete extends Component {
 }
 
 AutoComplete.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.string.isRequired,
   options: PropTypes.options
 };
 
- export default class AddDayForm extends Component {
+export default class AddDayForm extends Component {
   constructor(props) {
     super(props);
-    //this.setResort = this.setResort.bind(this);
+    this.setResort = this.setResort.bind(this);
     this.setDate = this.setDate.bind(this);
     this.setPowder = this.setPowder.bind(this);
     this.setBackCountry = this.setBackCountry.bind(this);
@@ -57,29 +62,21 @@ AutoComplete.propTypes = {
   submit(e) {
     e.preventDefault();
     this.props.onNewDay({
-      resort: this._resort.value,
+      resort: this._resort,
       date: this._date.value,
       powder: this._powder.checked,
       backcountry: this._backcountry.checked
     });
-    this._resort.value = '',
+    this._resort = '',
     this._date.value = '',
     this._powder.checked = false,
     this._backcountry.checked = false;
   }
 
-  onChange(value) {
+  setResort(value) {
+    console.log(value);
     this._resort = value;
   }
-
-  //Set value for props
-  // setResort(value) {
-  //   this._resort = value;
-  // }
-  //
-  // getResort() {
-  //   return this._resort.value
-  // }
 
   setDate(value) {
     this._date = value;
@@ -100,7 +97,7 @@ AutoComplete.propTypes = {
       <form onSubmit={(e) => this.submit(e)}  className="add-day">
         <label htmlFor="resort">Resort Name</label>
         <AutoComplete options={tahoeResorts}
-                      onChange={value => this.onChange(value)}
+                      onChange={this.setResort}
         />
 
         <label htmlFor="date">Date</label>

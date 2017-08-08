@@ -15,7 +15,8 @@
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm-run-all clean-dist test lint build:html",
     "build": "babel-node tools/build.js",
-    "postbuild": "babel-node tools/distServer.js"
+    "postbuild": "babel-node tools/distServer.js",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "author": "Cory House",
   "license": "MIT",
@@ -24,10 +25,10 @@
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
     "jquery": "2.2.3",
-    "material-ui": "^0.18.7",
+    "material-ui": "^1.0.0-beta.4",
     "prop-types": "^15.5.10",
-    "react": "15.0.2",
-    "react-dom": "15.0.2",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
     "react-icons": "^2.2.5",
     "react-redux": "4.4.5",
     "react-router": "2.4.0",
@@ -37,6 +38,7 @@
     "toastr": "2.1.2"
   },
   "devDependencies": {
+    "@storybook/react": "^3.2.3",
     "babel-cli": "6.8.0",
     "babel-core": "6.8.0",
     "babel-loader": "6.2.4",
