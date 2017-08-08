@@ -14,11 +14,9 @@ import IconButton from 'material-ui/IconButton';
 // eslint-disable-next-line import/namespace,import/default
 import avata from './../resources/avata.jpg';
 
-const avataImg = __dirname + './../resources/avata.jpg';
-console.log(avataImg);
 export const MaterialList = React.createClass({
     menuItemClick(){
-      console.log('clicked');
+      console.log('clicked')
     },
     render(){
       return (
@@ -75,7 +73,7 @@ export const MaterialList = React.createClass({
             <ListItemText primary="Help" />
           </ListItem>
         </List>
-      );
+      )
     }
   });
 

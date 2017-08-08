@@ -12,6 +12,8 @@
 // import './course/CourseList';
 // import './home/HomePage';
 
+import './materialUI/Donut.story';
+import './materialUI/ButtonWithTheme.story';
 import './materialUI/Button.story';
 import './materialUI/List.story';
 import './materialUI/Drawers.story';
