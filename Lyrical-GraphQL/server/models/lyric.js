@@ -18,6 +18,6 @@ LyricSchema.statics.like = function(id) {
       ++lyric.likes;
       return lyric.save();
     })
-}
+};
 
 mongoose.model('lyric', LyricSchema);
