@@ -12,64 +12,11 @@ import Share from  'material-ui-icons/Share';
 import Loyalty from  'material-ui-icons/Loyalty';
 import Expand from  'material-ui-icons/ExpandMore';
 import Collapse from  'material-ui/transitions/Collapse';
+import ComplexCard from './../MaterialUiComponents/ComplexCardComponent';
 
 // eslint-disable-next-line import/namespace
 import avata from './../resources/avata.jpg';
 
-// TODO: move this class to other file, ex: in MaterialUiComponents folder
-class ComplexCard extends React.Component{
-  constructor(){
-    super();
-    this.state = {
-      expanded: status
-    };
-    this.handleExpandClick= this.handleExpandClick.bind(this);
-  }
-  handleExpandClick(){
-    let status = !this.state.expanded
-    this.setState({
-      expanded: status
-    })
-  }
-  render(){
-    return (
-      <div>
-        <Card>
-          <CardMedia>
-            <img src={avata}/>
-          </CardMedia>
-          <CardContent>
-            <Typography type="headline" component="h2">
-              Headline
-            </Typography>
-            <Typography type="body1">
-              adjective
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <IconButton onClick={action("clicked")}><Share/></IconButton>
-            <IconButton onClick={action("clicked")}><Loyalty/></IconButton>
-            <IconButton
-              onClick={this.handleExpandClick}
-              aria-expanded={this.state.expanded}
-              aria-label="Show more"
-            >
-              <Expand />
-            </IconButton>
-          </CardActions>
-
-          <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
-            <CardContent>
-              <Typography type="headline" component="h2">
-                blablblasdnlasdjoakisdjas
-              </Typography>
-            </CardContent>
-          </Collapse>
-        </Card>
-      </div>
-    );
-  }
-};
 storiesOf('material-ui.Cards', module)
   .add('Simple', ()=>(
     <Card>

@@ -16,7 +16,13 @@ const styleSheet = createStyleSheet({
 const arr = [1,2,3,4,5];
 storiesOf("material-ui.TextFields", module)
 // TODO: Add input without label
+  .add("Text TextFields Without Label", ()=>(
+    <TextField id="txtID" margin="normal" />
+  ))
 // TODO: Add disabled input
+  .add("Disabled  TextFields", ()=>(
+    <TextField id="txtID" disabled label="ID" margin="normal"/>
+  ))
   .add("Text TextFields", ()=>(
       <TextField id="txtID" label="ID" margin="normal" helperText="The id will be used to login" />
   )).add("Password TextFields", ()=>(

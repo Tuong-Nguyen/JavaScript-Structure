@@ -28,8 +28,11 @@ storiesOf("material-ui.Table", module)
             <TableCell>
               Name
             </TableCell>
-            <TableCell>
+            <TableCell numeric>
               Age
+            </TableCell>
+            <TableCell>
+              Gender
             </TableCell>
             <TableCell>
               Gender
@@ -43,7 +46,7 @@ storiesOf("material-ui.Table", module)
               <TableCell>
                 {item.name}
               </TableCell>
-              <TableCell>
+              <TableCell numeric>
                 {item.age}
               </TableCell>
               <TableCell>

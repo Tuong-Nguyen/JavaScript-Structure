@@ -17,21 +17,19 @@ storiesOf('materialUI.Button', module)
     <Button>Hello world</Button>
   ))
   .add('Primary raised button', () => (
-    <Button raised classes={{
-      // TODO: color purple not working, please make it work or use primary color
-      color: purple
-    }}>
+    // TODO: color purple not working, please make it work or use primary color
+    <Button raised color="primary">
       Primary
     </Button>
   ))
   .add('Diable raised button', () => (
     // TODO: color does not effect with disabled button
-    <Button raised color="accent" disabled>
+    <Button raised disabled>
       Disabled
     </Button>
   ))
   .add('Floating button', () => (
-    <Button fab color="primary">
+    <Button fab color="accent">
       <Add/>
     </Button>
   ))
