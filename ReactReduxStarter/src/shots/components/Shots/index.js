@@ -15,7 +15,7 @@ function getAuthor(authorId, authors) {
   return author;
 }
 
-const ShotList = ({shots, authors}) => {
+const Shots = ({shots, authors}) => {
   const items = shots.map(shot =>
     <Shot
       shot={shot}
@@ -31,9 +31,9 @@ const ShotList = ({shots, authors}) => {
   );
 };
 
-ShotList.propTypes = {
+Shots.propTypes = {
   shots: PropTypes.array.isRequired,
   authors: PropTypes.array.isRequired
 };
 
-export default ShotList;
+export default Shots;

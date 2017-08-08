@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Header from '../../app/Header';
-import Menu from '../../app/Menu';
-import ShotList from './ShotList';
+import Header from '../components/Header';
+import Menu from '../components/Menu';
+import Shots from '../components/Shots';
 
 class FilterableShotList extends React.Component {
   constructor() {
@@ -27,7 +27,7 @@ class FilterableShotList extends React.Component {
           onQueryChange={this.handleQueryChange}
         />
         <Menu />
-        <ShotList
+        <Shots
           shots={this.props.shots}
           authors={this.props.authors}
         />

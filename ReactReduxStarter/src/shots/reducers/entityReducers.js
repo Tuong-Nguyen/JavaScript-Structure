@@ -1,4 +1,4 @@
-import { REQUEST_SHOTS, RECEIVE_SHOTS, REQUEST_AUTHOR, RECEIVE_AUTHOR } from '../actions';
+import { REQUEST_SHOTS, RECEIVE_SHOTS, REQUEST_AUTHOR, RECEIVE_AUTHOR } from '../actions/shotsActions';
 
 const initialState = {
   shots: [],
