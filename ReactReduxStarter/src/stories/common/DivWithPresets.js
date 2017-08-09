@@ -9,7 +9,6 @@ import Grid from 'material-ui/Grid';
 
 const styleSheet = createStyleSheet(theme => ({
   div: {
-    minWidth: 275,
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     borderRadius: 3,
     border: 0,
@@ -24,36 +23,74 @@ const DivWithPresets = ({classes}) => {
     <div>
       <Grid container spacing={16}>
         <Grid item xs={3}>
-          <Motion defaultStyle={{h:0}} style={{h: spring(500)}}>
+          <Motion defaultStyle={{h:0}} style={{h: spring(400)}}>
             {
-              ({h}) => <div className={classes.div} style={{height: h}}>
+              ({h}) => <div className={classes.div} style={{width: h}}>
                 {'Default is noWobble'}
               </div>
             }
           </Motion>
         </Grid>
         <Grid item xs={3}>
-          <Motion defaultStyle={{h:0}} style={{h: spring(500, presets.gentle)}}>
+          <Motion defaultStyle={{h:0}} style={{h: spring(400, presets.gentle)}}>
             {
-              ({h}) => <div className={classes.div} style={{height: h}}>
+              ({h}) => <div className={classes.div} style={{width: h}}>
                 {'Gentle'}
               </div>
             }
           </Motion>
         </Grid>
         <Grid item xs={3}>
-          <Motion defaultStyle={{h:0}} style={{h: spring(500, presets.wobbly)}}>
+          <Motion defaultStyle={{h:0}} style={{h: spring(400, presets.wobbly)}}>
             {
-              ({h}) => <div className={classes.div} style={{height: h}}>
+              ({h}) => <div className={classes.div} style={{width: h}}>
                 {'Wobbly'}
               </div>
             }
           </Motion>
         </Grid>
         <Grid item xs={3}>
-          <Motion defaultStyle={{h:0}} style={{h: spring(500, presets.stiff)}}>
+          <Motion defaultStyle={{h:0}} style={{h: spring(400, presets.stiff)}}>
             {
-              ({h}) => <div className={classes.div} style={{height: h}}>
+              ({h}) => <div className={classes.div} style={{width: h}}>
+                {'Stiff'}
+              </div>
+            }
+          </Motion>
+        </Grid>
+      </Grid>
+      <Grid container spacing={16}>
+        <Grid item xs={3}>
+          <Motion defaultStyle={{h:0}} style={{h: spring(200)}}>
+            {
+              ({h}) => <div className={classes.div} style={{width: h}}>
+                {'Default is noWobble'}
+              </div>
+            }
+          </Motion>
+        </Grid>
+        <Grid item xs={3}>
+          <Motion defaultStyle={{h:0}} style={{h: spring(200, presets.gentle)}}>
+            {
+              ({h}) => <div className={classes.div} style={{width: h}}>
+                {'Gentle'}
+              </div>
+            }
+          </Motion>
+        </Grid>
+        <Grid item xs={3}>
+          <Motion defaultStyle={{h:0}} style={{h: spring(200, presets.wobbly)}}>
+            {
+              ({h}) => <div className={classes.div} style={{width: h}}>
+                {'Wobbly'}
+              </div>
+            }
+          </Motion>
+        </Grid>
+        <Grid item xs={3}>
+          <Motion defaultStyle={{h:0}} style={{h: spring(200, presets.stiff)}}>
+            {
+              ({h}) => <div className={classes.div} style={{width: h}}>
                 {'Stiff'}
               </div>
             }
