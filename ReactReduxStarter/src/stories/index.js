@@ -1,1 +1,9 @@
 import '../components/Button.story';
+import './about/About.story';
+import './home/Home.story';
+import './common/Header.story';
+import './common/LoadingDots.story';
+import './common/TextInput.story';
+import './course/CourseForm.story';
+import './course/CourseList.story';
+import './course/CourseListRow.story';

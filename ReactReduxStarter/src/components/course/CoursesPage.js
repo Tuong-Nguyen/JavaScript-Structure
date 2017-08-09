@@ -6,15 +6,17 @@ import CourseList from './CourseList';
 import { browserHistory } from 'react-router';
 
 class CoursesPage extends Component {
+  static redirectToAddCoursePage() {
+    browserHistory.push('/course');
+  }
+
   constructor(props, context) {
     super(props, context);
 
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
   }
 
-  redirectToAddCoursePage() {
-    browserHistory.push('/course');
-  }
+
 
   render() {
     const { courses } = this.props;
@@ -47,5 +49,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(courseActions, dispatch)
   };
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
