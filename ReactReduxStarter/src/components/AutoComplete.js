@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 export class AutoComplete extends Component {
   constructor(props) {
     super(props);
-    console.log(props.options);
     this.getValue = this.getValue.bind(this);
   }
 
