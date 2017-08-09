@@ -28,8 +28,8 @@ SongList.propTypes = {
      */
     songs: PropTypes.arrayOf(PropTypes.shape({
 
-        id: PropTypes.string.required,
-        title: PropTypes.string.required
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
     })),
     /**
      * Song is loading or not
