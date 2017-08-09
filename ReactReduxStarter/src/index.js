@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import rootReducer from './shots/reducers';
+import rootReducer from './app/rootReducer';
 import { loadShots } from './shots/actions/shotsActions';
-import App from './shots/components/App';
+import App from './app/App';
 
 let store = createStore(rootReducer, applyMiddleware(thunk));
 store.dispatch(loadShots());

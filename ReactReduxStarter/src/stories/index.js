@@ -21,4 +21,4 @@ const ThemeDecorator = (storyFn) => (
 addDecorator(ThemeDecorator);
 
 // import is hoisting!!!
-require('../shots/components/Header/Header.story');
+require('../layout/Header/Header.story');

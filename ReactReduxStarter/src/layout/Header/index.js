@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import { AppBar, Toolbar } from 'material-ui';
 
-import Logo from './Logo';
+import Logo from '../Logo';
 import MainNav from './MainNav';
 import Account from './Account';
 import SearchBox from './SearchBox';

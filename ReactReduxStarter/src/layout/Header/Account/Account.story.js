@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Account from './index';
+import Account from '../../../index';
 
 storiesOf('Header.Account', module)
   .add('Account Navigation', () => (

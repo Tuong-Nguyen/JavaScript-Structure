@@ -26,7 +26,7 @@ const entities = (state = initialState, action) => {
           action.author,
           ...state.authors.slice(idx + 1, state.authors.length)
         ]
-      }
+      };
     default:
       return state;
   }

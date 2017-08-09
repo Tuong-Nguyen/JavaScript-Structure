@@ -2,20 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 
-import dribbbleLogo from './logo-small.png';
+import smallLogo from './logo-small.png';
+import largeLogo from './logo-hd.png';
 
 const styleSheet = createStyleSheet(theme => ({
   logo: {
     position: 'relative',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    display: 'inline-block'
   },
 
   overlay: {
     display: 'inline-block',
     position: 'absolute',
     left: 0,
-    width: 76,
-    height: 19,
+    width: '100%',
+    height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0)',
     transition: 'background-color 1s ease',
     
@@ -26,18 +28,25 @@ const styleSheet = createStyleSheet(theme => ({
 }));
 
 const Logo = (props) => {
-  const { classes } = props;
+  const { classes, size = 'small', width, height } = props;
+
+  let logo;
+  if (size === 'small') logo = smallLogo;
+  else logo = largeLogo;
 
   return (
     <a href="/" className={classes.logo}>
-      <img src={dribbbleLogo} alt="Dribbble" />
-      <div className={classes.overlay}></div>
+      <img src={logo} alt="Dribbble" width={width} height={height} />
+      <div className={classes.overlay}/>
     </a>
   );
 };
 
 Logo.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  size: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string
 };
 
 export default withStyles(styleSheet)(Logo);

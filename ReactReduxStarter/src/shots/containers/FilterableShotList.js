@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Header from '../components/Header';
+import Header from '../../layout/Header';
 import Menu from '../components/Menu';
 import Shots from '../components/Shots';
 
