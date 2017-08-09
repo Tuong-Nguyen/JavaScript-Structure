@@ -30,6 +30,12 @@ const cards = [
 ];
 
 storiesOf('Staggered Card', module)
-  .add('Default', () => (
+  .add('No item', () => (
+    <StaggeredCard cards={[]} />
+  ))
+  .add('One item', () => (
+    <StaggeredCard cards={[cards[0]]} />
+  ))
+  .add('Many items', () => (
     <StaggeredCard cards={cards} />
   ));
