@@ -24,9 +24,14 @@ const styleSheet = createStyleSheet(theme => ({
 }));
 
 const StaggedCard = ({cards, classes}) => {
+  const defaultStyle = [];
+  cards.map((card) => {
+    defaultStyle.push({h: 0});
+  });
+
   return (
     <StaggeredMotion
-      defaultStyles={[{h: 0}, {h: 0}, {h: 0}]}
+      defaultStyles={defaultStyle}
       styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
         return i === 0
           ? {h: spring(200)}
