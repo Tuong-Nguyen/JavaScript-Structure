@@ -25,8 +25,9 @@ const styleSheet = createStyleSheet(theme => ({
 
 const StaggedCard = ({cards, classes}) => {
   const defaultStyle = [];
+  const effect = {stiffness: 120, damping: 20};
   cards.map((card) => {
-    defaultStyle.push({h: 0});
+    defaultStyle.push({o: 0, h: 0});
   });
 
   return (
@@ -34,13 +35,13 @@ const StaggedCard = ({cards, classes}) => {
       defaultStyles={defaultStyle}
       styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
         return i === 0
-          ? {h: spring(200)}
-          : {h: spring(prevInterpolatedStyles[i - 1].h)}
+          ? {o: spring(1), h: spring(200, effect)}
+          : {o: spring(1), h: spring(prevInterpolatedStyles[i - 1].h, { stiffness: effect.stiffness + 20 * i, damping: effect.damping + 10 * i })}
       })}>
       {interpolatingStyles =>
       <div>
         {interpolatingStyles.map((style, i) =>
-        <div key={i} style={{height: style.h}}>
+        <div key={i} style={{opacity: style.o, height: style.h}}>
           <Card className={classes.card}>
             <CardContent>
               <Typography type="body1" className={classes.title}>

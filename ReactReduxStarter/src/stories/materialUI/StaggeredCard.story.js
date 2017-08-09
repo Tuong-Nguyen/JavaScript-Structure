@@ -26,6 +26,20 @@ const cards = [
     type: 'adjective',
     sample: 'a benevolent smile 2',
     meaning: 'well meaning and kindly 2.'
+  },
+  {
+    title: 'Word of the Day',
+    pronunciation: 'be•nev•o•lent',
+    type: 'adjective',
+    sample: 'a benevolent smile',
+    meaning: 'well meaning and kindly.'
+  },
+  {
+    title: 'Word of the Day 1',
+    pronunciation: 'be•nev•o•lent 1',
+    type: 'adjective',
+    sample: 'a benevolent smile 1',
+    meaning: 'well meaning and kindly 1.'
   }
 ];
 
