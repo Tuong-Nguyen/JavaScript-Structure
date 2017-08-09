@@ -8,8 +8,10 @@ storiesOf('SongList', module)
         const songs = [
             {id: '1', title: 'Run'}, {id: '2', title: 'My hear will go on'}, {id: '3', title: 'Safe and Sound'}
         ];
-        return (<SongList songs={songs} isLoading={false}/>);
+        return (
+            <SongList songs={songs} isLoading={false} />
+        );
     })
     .add('isLoading', () => {
-        return <SongList isLoading={true}/>
+        return (<SongList isLoading={true}/>);
     });
