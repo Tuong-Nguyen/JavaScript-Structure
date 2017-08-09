@@ -30,6 +30,7 @@
     "jquery": "^2.2.3",
     "material-ui": "^1.0.0-beta.2",
     "material-ui-icons": "^1.0.0-alpha.19",
+    "nock": "^9.0.14",
     "react": "^15.4.0",
     "react-confirm-bootstrap": "^3.1.4",
     "react-confirm-dialog": "^1.0.5",
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "@storybook/addon-storyshots": "^3.1.9",
+    "axios-mock-adapter": "^1.9.0",
     "babel-cli": "6.8.0",
     "babel-core": "6.8.0",
     "babel-jest": "^20.0.3",
@@ -71,7 +73,6 @@
     "jest-cli": "^20.0.4",
     "jsdom": "8.5.0",
     "mocha": "2.4.5",
-    "nock": "^8.0.0",
     "npm-run-all": "1.8.0",
     "open": "0.0.5",
     "react-addons-test-utils": "15.0.2",
