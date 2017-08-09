@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { AutoComplete } from './AutoComplete';
 
 const tahoeResorts = [
   "A10",
@@ -14,42 +15,6 @@ const tahoeResorts = [
   "A20"
 ];
 
-class AutoComplete extends Component {
-  constructor(props) {
-    super(props);
-    this.getValue = this.getValue.bind(this);
-
-  }
-
-  getValue(item){
-    let value = this.refs.inputResort.value;
-    return this.props.onChange(value);
-  }
-  render() {
-    return (
-      <div>
-        <input ref="inputResort"
-               type="text"
-               list="tahoe-resorts"
-               onChange={this.getValue}/>
-        <datalist id="tahoe-resorts">
-          {this.props.options.map(
-            (opt, i) =>
-              <option key={i}>
-                {opt}
-              </option>
-          )}
-        </datalist>
-      </div>
-    );
-  }
-}
-
-AutoComplete.propTypes = {
-  onChange: PropTypes.string.isRequired,
-  options: PropTypes.options
-};
-
 export default class AddDayForm extends Component {
   constructor(props) {
     super(props);
@@ -57,6 +22,7 @@ export default class AddDayForm extends Component {
     this.setDate = this.setDate.bind(this);
     this.setPowder = this.setPowder.bind(this);
     this.setBackCountry = this.setBackCountry.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   submit(e) {
@@ -67,14 +33,13 @@ export default class AddDayForm extends Component {
       powder: this._powder.checked,
       backcountry: this._backcountry.checked
     });
-    this._resort = '',
-    this._date.value = '',
-    this._powder.checked = false,
+    this._resort = '';
+    this._date.value = '';
+    this._powder.checked = false;
     this._backcountry.checked = false;
   }
 
   setResort(value) {
-    console.log(value);
     this._resort = value;
   }
 
@@ -91,10 +56,10 @@ export default class AddDayForm extends Component {
   }
 
   render() {
-    const { resort, date, powder, backcountry } = this.props;
+    const { date, powder, backcountry } = this.props;
 
     return (
-      <form onSubmit={(e) => this.submit(e)}  className="add-day">
+      <form onSubmit={this.submit}  className="add-day">
         <label htmlFor="resort">Resort Name</label>
         <AutoComplete options={tahoeResorts}
                       onChange={this.setResort}
