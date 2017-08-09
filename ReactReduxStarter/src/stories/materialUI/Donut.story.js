@@ -7,8 +7,12 @@ import Donut from './../common/Donut';
 
 storiesOf('Donut', module)
   .add('Default', () => (
-    <Donut></Donut>
+    <Donut />
   ))
-  .add('Primary', () => (
-    <Donut primary></Donut>
+  .add('Multiple donuts', () => (
+    <div>
+      <Donut percent={25} />
+      <Donut percent={50}/>
+      <Donut percent={75}/>
+    </div>
   ));

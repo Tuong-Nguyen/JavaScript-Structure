@@ -20,29 +20,38 @@ const styleSheet = createStyleSheet(theme => ({
 
 class Donut extends Component {
   state = {
-    percent: 0
+    percent: 0,
+    colorDefault: 'grey',
+    color: 'blue'
   };
 
   componentDidMount(){
-    this.setState((state) => ({ percent: 85 }))
+    const colorPalette = this.props.theme.palette;
+    const donutColor = this.props.percent > 25 ? (this.props.percent > 50 ? colorPalette.error[400] : colorPalette.accent[400])
+                                                : colorPalette.primary[400];
+    console.log('componentDidMount ---- ' + this.props.percent);
+    this.setState((state) => ({
+      percent: this.props.percent,
+      colorDefault: colorPalette.grey[200],
+      color: donutColor
+    }))
   }
 
   render() {
-    const {variant, theme} = this.props;
-    console.log(variant);
-
+    console.log('render --- ' + this.state.percent);
     return (
       <Grid item xs={6} sm={3}>
-        <Motion style={{percent: spring(this.state.percent, {stiffness: 70, damping: 30})}}>
+        <Motion style={{slicePercent: spring(this.state.percent, {stiffness: 70, damping: 30})}}>
           {
-            ({percent}) =>
+            ({slicePercent}) =>
               <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut">
-                <circle class="donut-ring" cx="21" cy="21" r="15" fill="transparent" stroke={theme.palette.primary[200]}
+                <circle class="donut-ring" cx="21" cy="21" r="15" fill="transparent" stroke={this.state.colorDefault}
                         strokeWidth="5"></circle>
                 <circle class="donut-segment" cx="21" cy="21" r="15" fill="transparent"
-                        stroke={theme.palette.primary[500]} strokeWidth="5"
-                        strokeDasharray={percent + ' ' + (100 - percent)}
+                        stroke={this.state.color} strokeWidth="5"
+                        strokeDasharray={slicePercent + ' ' + (100 - slicePercent)}
                         strokeDashoffset="25"></circle>
+                <text x="50%" y="55%" textAnchor="middle" fontSize={8} fill="grey">{(Math.round(slicePercent))}%</text>
               </svg>
           }
         </Motion>
@@ -51,12 +60,12 @@ class Donut extends Component {
   }
 }
 
+Donut.defaultProps = {
+  percent: 50
+};
 
 Donut.propTypes = {
-  children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
-  variant: PropTypes.oneOf(['primary'])
+  percent: PropTypes.number
 };
 
 // 2. We inject the styles.
