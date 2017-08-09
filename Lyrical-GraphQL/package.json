@@ -9,6 +9,9 @@
   },
   "scripts": {
     "dev": "nodemon index.js --ignore client",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -45,8 +48,22 @@
     "webpack-dev-middleware": "^1.9.0"
   },
   "devDependencies": {
+    "@storybook/addon-storyshots": "^3.2.3",
     "@storybook/react": "^3.2.3",
+    "babel-jest": "^20.0.3",
+    "enzyme": "^2.9.1",
     "eslint": "^4.4.1",
-    "nodemon": "^1.11.0"
+    "jest": "^20.0.4",
+    "nodemon": "^1.11.0",
+    "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "^15.6.1"
+  },
+  "jest": {
+    "testMatch": [
+      "**/?(*.)test.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
