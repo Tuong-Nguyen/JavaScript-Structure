@@ -12,21 +12,25 @@ const Donut = ({percent, theme}) => {
   const donutColor = percent > 25 ? (percent > 50 ? colorPalette.error[400] : colorPalette.accent[400])
     : colorPalette.primary[400];
   console.log('render --- ' + percent);
+
+  const render = ({slicePercent}) => {
+    return (
+      <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut">
+        <circle class="donut-ring" cx="21" cy="21" r="15" fill="transparent" stroke={colorPalette.grey[200]}
+                strokeWidth="5"></circle>
+        <circle class="donut-segment" cx="21" cy="21" r="15" fill="transparent"
+                stroke={donutColor} strokeWidth="5"
+                strokeDasharray={slicePercent + ' ' + (100 - slicePercent)}
+                strokeDashoffset="25"></circle>
+        <text x="50%" y="55%" textAnchor="middle" fontSize={8} fill="grey">{(Math.round(slicePercent))}%</text>
+      </svg>
+    );
+  };
+
   return (
     <Grid item xs={6} sm={3}>
       <Motion defaultStyle={{slicePercent: 0}} style={{slicePercent: spring(percent, {stiffness: 70, damping: 30})}}>
-        {
-          ({slicePercent}) =>
-            <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut">
-              <circle class="donut-ring" cx="21" cy="21" r="15" fill="transparent" stroke={colorPalette.grey[200]}
-                      strokeWidth="5"></circle>
-              <circle class="donut-segment" cx="21" cy="21" r="15" fill="transparent"
-                      stroke={donutColor} strokeWidth="5"
-                      strokeDasharray={slicePercent + ' ' + (100 - slicePercent)}
-                      strokeDashoffset="25"></circle>
-              <text x="50%" y="55%" textAnchor="middle" fontSize={8} fill="grey">{(Math.round(slicePercent))}%</text>
-            </svg>
-        }
+        {render}
       </Motion>
     </Grid>
   );
