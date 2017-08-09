@@ -12,6 +12,9 @@ storiesOf('SongList', module)
             <SongList songs={songs} isLoading={false} />
         );
     })
-    .add('isLoading', () => {
+    .add('isLoading = true - show Loading', () => {
         return (<SongList isLoading={true}/>);
+    })
+    .add('no props values - show Loading', () => {
+        return (<SongList />);
     });
