@@ -12,6 +12,7 @@
 // import './course/CourseList';
 // import './home/HomePage';
 
+import './materialUI/StaggeredCard.story';
 import './materialUI/Donut.story';
 import './materialUI/ButtonWithTheme.story';
 import './materialUI/ReactMotion.story';
