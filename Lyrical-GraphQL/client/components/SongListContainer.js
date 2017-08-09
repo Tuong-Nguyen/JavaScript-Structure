@@ -5,7 +5,7 @@ import {SongList} from "./SongList";
 
 export class SongListContainer extends Component {
     render() {
-        return (<SongList songs={this.props.songList} isLoading={this.props.isLoading}></SongList>);
+        return (<SongList songs={this.props.songList} isLoading={this.props.isLoading}/>);
     }
 }
 
