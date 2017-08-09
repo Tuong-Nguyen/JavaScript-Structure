@@ -5,7 +5,7 @@ import {SongList} from "./SongList";
 
 export class SongListContainer extends Component {
     render() {
-        return (<SongList songs={this.props.songs} isLoading={this.props.isLoading}></SongList>);
+        return (<SongList songs={this.props.songList} isLoading={this.props.isLoading}></SongList>);
     }
 }
 
@@ -13,7 +13,7 @@ SongListContainer.propTypes = {
     /**
      * Array of songs { id, title }
      */
-    songs: PropTypes.arrayOf(PropTypes.shape({
+    songList: PropTypes.arrayOf(PropTypes.shape({
 
         id: PropTypes.string.required,
         title: PropTypes.string.required
@@ -35,7 +35,7 @@ const query = gql`
 
 export function mapResponseToProps({data}) {
     return {
-        songs: data.songs,
+        songList: data.songs,
         isLoading: data.loading
     };
 }
