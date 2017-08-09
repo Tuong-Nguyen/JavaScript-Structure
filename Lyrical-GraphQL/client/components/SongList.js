@@ -1,16 +1,31 @@
 import React, {PropTypes} from 'react';
 
-export const SongList = ({songs}) => {
+export const SongList = ({songs, isLoading}) => {
     return (
         <div>
             <h1>Song List</h1>
-            <ul>
-                {songs.map((song) => <li>{song.title}</li>)}
-            </ul>
+            {isLoading ?
+                <div>Loading...</div>
+                :
+                <ul>
+                    {songs.map((song) => <li key={song.id}>{song.title}</li>)}
+                </ul>
+            }
         </div>
     );
 };
 
 SongList.propTypes = {
-  songs: PropTypes.array.required
+    /**
+     * Array of songs { id, title }
+     */
+    songs: PropTypes.arrayOf(PropTypes.shape({
+
+        id: PropTypes.string.required,
+        title: PropTypes.string.required
+    })),
+    /**
+     * Song is loading or not
+     */
+    isLoading: PropTypes.bool.required
 };
