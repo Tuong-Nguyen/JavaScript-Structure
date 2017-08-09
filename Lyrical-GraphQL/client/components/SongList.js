@@ -14,7 +14,7 @@ export const SongList = ({songs, isLoading}) => {
             {isLoading !== false ?
                 <div>Loading...</div>
                 :
-                <ul>
+                <ul className="collection">
                     {songs.map((song) => <li key={song.id}>{song.title}</li>)}
                 </ul>
             }
