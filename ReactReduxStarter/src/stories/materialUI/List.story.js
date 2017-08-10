@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import List, {ListItem, ListItemSecondaryAction, ListItemIcon, ListItemText} from 'material-ui/List';
 import Settings from 'material-ui-icons/Settings';
@@ -17,7 +18,7 @@ import avata from './../resources/avata.jpg';
 import Checkbox from 'material-ui/Checkbox';
 
 storiesOf ('material-ui.List', module)
-  .add('Normal List', () =>(
+  .add('Normal List', withInfo("Info")(() =>(
     <List>
       <ListItem button onClick={action('clicked')}>
         <ListItemText primary="About" />
@@ -26,21 +27,22 @@ storiesOf ('material-ui.List', module)
         <ListItemText primary="Help" />
       </ListItem>
     </List>
-  )).add('Normal List + Divider', () =>(
-  <List>
-    <ListItem button onClick={action('clicked')}>
-      <ListItemText primary="About" />
-    </ListItem>
+  )))
+  .add('Normal List + Divider', withInfo("Info")(() =>(
+    <List>
+      <ListItem button onClick={action('clicked')}>
+        <ListItemText primary="About" />
+      </ListItem>
 
-    <Divider/>
+      <Divider/>
 
-    <ListItem button onClick={action('clicked')}>
-      <ListItemText primary="Help" />
-    </ListItem>
-  </List>
-))
+      <ListItem button onClick={action('clicked')}>
+        <ListItemText primary="Help" />
+      </ListItem>
+    </List>
+  )))
 // TODO: Add list with item that has secondary text
-  .add('SecondaryText', () =>(
+  .add('SecondaryText', withInfo("Info")(() =>(
     <List>
       <ListItem button onClick={action('clicked')}>
         <ListItemIcon>
@@ -49,8 +51,8 @@ storiesOf ('material-ui.List', module)
         <ListItemText primary="Admin" secondary="Config your page" />
       </ListItem>
     </List>
-  ))
-  .add('IconList', () =>(
+  )))
+  .add('IconList', withInfo("Info")(() =>(
     <List>
       <ListItem button onClick={action('clicked')}>
         <ListItemIcon>
@@ -66,8 +68,8 @@ storiesOf ('material-ui.List', module)
         <ListItemText primary="Actions" />
       </ListItem>
     </List>
-  ))
-  .add('AvataList', () =>(
+  )))
+  .add('AvataList', withInfo("Info")(() =>(
     <List>
       <ListItem button onClick={action('clicked')}>
         <Avatar>
@@ -85,8 +87,8 @@ storiesOf ('material-ui.List', module)
         </ListItemSecondaryAction>
       </ListItem>
     </List>
-  ))
-  .add('Secondary action List', () =>(
+  )))
+  .add('Secondary action List', withInfo("Info")(() =>(
     <List>
       <ListItem button onClick={action('clicked')}>
         <Avatar alt="Gal Gadot" src={avata}>
@@ -107,4 +109,4 @@ storiesOf ('material-ui.List', module)
         </ListItemSecondaryAction>
       </ListItem>
     </List>
-  ));
+  )));

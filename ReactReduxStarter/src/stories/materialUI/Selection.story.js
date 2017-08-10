@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import {storiesOf} from '@storybook/react';
+import {withInfo} from '@storybook/addon-info';
 import Checkbox from 'material-ui/Checkbox';
 import Radio, {RadioGroup} from 'material-ui/Radio';
 import {FormGroup, FormControlLabel,FormControl, FormLabel} from 'material-ui/Form';
@@ -11,7 +12,7 @@ import SwitchComponent from './../MaterialUiComponents/SwitchComponent';
 import RadioGroupComponent from './../MaterialUiComponents/RadioGroupComponent';
 storiesOf("material-ui.Selection", module)
   // TODO: Add disable and custom color checkboxes
-  .add("Check box", ()=>(
+  .add("Check box", withInfo("Info")(()=>(
     <div>
       <FormGroup>
         <FormControlLabel control={<Checkbox value="1"/>} label="CheckA"/>
@@ -20,15 +21,15 @@ storiesOf("material-ui.Selection", module)
         <FormControlLabel control={<Checkbox value="4" style={{color: "#00FF00"}}/>} label="Green" />
       </FormGroup>
     </div>
-    ))
+    )))
   // TODO: Add radio group with a label
   // TODO: Add disabled radio button
-  .add("Radio", ()=>(
+  .add("Radio", withInfo("Info")(()=>(
     <RadioGroupComponent/>
-  ))
+  )))
   // TODO: Add disabled and custom color switches
   // TODO: Add switches with label
-  .add("Switches", ()=>(
+  .add("Switches", withInfo("Info")(()=>(
     <div>
       <FormGroup>
         <FormGroup row>
@@ -38,8 +39,8 @@ storiesOf("material-ui.Selection", module)
         </FormGroup>
       </FormGroup>
     </div>
-  ))
-  .add("Form Switches", ()=>(
+  )))
+  .add("Form Switches", withInfo("Info")(()=>(
     <div>
       <FormGroup >
           <FormControlLabel control={<Switch checked="true"/>} label="A"/>
@@ -47,4 +48,4 @@ storiesOf("material-ui.Selection", module)
           <FormControlLabel control={<Switch />} label="C" disabled/>
       </FormGroup>
     </div>
-  ));
+  )));

@@ -41,6 +41,7 @@
     "toastr": "2.1.2"
   },
   "devDependencies": {
+    "@storybook/addon-info": "^3.2.0",
     "autosuggest-highlight": "^3.1.0",
     "babel-cli": "6.8.0",
     "babel-core": "6.8.0",

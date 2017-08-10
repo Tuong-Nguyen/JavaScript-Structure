@@ -49,7 +49,7 @@ export default class DialogComponent extends React.Component {
               Agree
             </Button>
           </DialogActions>
-      </Dialog>
+        </Dialog>
       </div>
     );
   }

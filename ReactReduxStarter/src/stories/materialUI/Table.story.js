@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import {storiesOf} from '@storybook/react';
+import {withInfo} from '@storybook/addon-info';
 import Table, {TableRow, TableCell, TableBody, TableHead} from 'material-ui/Table';
 import Checkbox from 'material-ui/Checkbox';
 import SelectTable, {SortTable} from './../MaterialUiComponents/TableComponent';
@@ -20,7 +21,7 @@ var isSelected = id => columnData[id].selected = true;
 
 // TODO: Add table with numeric table cell
 storiesOf("material-ui.Table", module)
-  .add("Text Table", ()=>(
+  .add("Text Table", withInfo("Info")(()=>(
     <div>
       <Table>
         <TableHead>
@@ -57,12 +58,12 @@ storiesOf("material-ui.Table", module)
         </TableBody>
       </Table>
     </div>
-  ))
-  .add("Select Table", ()=>(
+  )))
+  .add("Select Table", withInfo("Info")(()=>(
     <SelectTable data={columnData}/>
-  ))
-  .add("Sort Table", ()=>(
+  )))
+  .add("Sort Table", withInfo("Info")(()=>(
   <div>
     <SortTable data={columnData}/>
   </div>
-));
+)));

@@ -4,6 +4,7 @@
  */
 import React from 'react';
 import {storiesOf} from '@storybook/react';
+import {withInfo} from '@storybook/addon-info';
 import Paper from 'material-ui/Paper';
 import Avatar from 'material-ui/Avatar';
 import Typography from 'material-ui/Typography';
@@ -12,7 +13,7 @@ import img from './../resources/avata.jpg';
 
 storiesOf("material-ui.Paper", module)
 // TODO: Add paper with shadow depth 4dp
-  .add("Paper With Shadow", ()=>(
+  .add("Paper With Shadow", withInfo("Info")(()=>(
     <div>
       <Paper elevation={4}>
         <Avatar alt="avata" src={img}></Avatar>
@@ -24,9 +25,9 @@ storiesOf("material-ui.Paper", module)
         </Typography>
       </Paper>
     </div>
-  ))
+  )))
 // TODO: Add paper with not rounded corners
-  .add("Paper With Not Rounded Corners", ()=>(
+  .add("Paper With Not Rounded Corners", withInfo("Info")(()=>(
     <div>
       <Paper elevation={1} square>
         <Avatar alt="avata" src={img}></Avatar>
@@ -38,8 +39,8 @@ storiesOf("material-ui.Paper", module)
         </Typography>
       </Paper>
     </div>
-  ))
-  .add("Paper", ()=>(
+  )))
+  .add("Paper", withInfo("Info")(()=>(
     <div>
       <Paper>
         <Avatar alt="avata" src={img}></Avatar>
@@ -51,4 +52,4 @@ storiesOf("material-ui.Paper", module)
         </Typography>
       </Paper>
     </div>
-  ));
+  )));

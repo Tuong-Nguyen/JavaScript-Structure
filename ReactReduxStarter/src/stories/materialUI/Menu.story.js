@@ -3,12 +3,28 @@
  */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
+import Menu, {MenuItem} from 'material-ui/Menu';
 import MenuComponent from './../MaterialUiComponents/MenuComponent';
 
 
+const arr= [1,3,5,7,9];
 storiesOf("Material-ui.Menu", module)
-.add("Simple Menu", ()=>(
+.add("Menu Info", withInfo("infor")(()=>(
   <div>
-    <MenuComponent/>
+    <Menu
+      open={false}
+    >
+      {arr.map((item, index) => (
+        <MenuItem key={item}>
+          {item}
+        </MenuItem>
+      ))}
+    </Menu>
   </div>
+)))
+.add("Simple Menu", ()=>(
+<div>
+  <MenuComponent/>
+</div>
 ));

@@ -3,10 +3,8 @@
  */
 import React from 'react';
 import {storiesOf} from '@storybook/react';
+import {withInfo} from '@storybook/addon-info';
 import Progress, {CircularProgress, LinearProgress} from 'material-ui/Progress';
-import Button from 'material-ui/Button';
-import CheckIcon from 'material-ui-icons/Check';
-import SaveIcon from 'material-ui-icons/Save';
 import LinearProgressComponent, {CircularProgressComponent, CircularInteractiveProgressComponent} from './../MaterialUiComponents/ProgressComponent';
 
 
@@ -15,17 +13,18 @@ var progressStatus = {
   success: true
 }
 storiesOf("material-ui.Progress", module)
-  .add('Circular Progress', ()=>(
+  .add('Circular Progress', withInfo()(()=>(
     <div>
       <CircularProgress size={50} />
       <CircularProgress color='accent' />
     </div>
-  )).add('Lineer Progress', ()=>(
+  )))
+  .add('Lineer Progress', withInfo()(()=>(
     <div>
       <LinearProgress  />
       <LinearProgress color="accent"/>
     </div>
-  ))
+  )))
 // TODO: Add circular determinate progress
   .add('Circular Determinate Progress', ()=>(
     <div>
@@ -33,9 +32,9 @@ storiesOf("material-ui.Progress", module)
     </div>
   ))
 // TODO: Add circular interactive integration progress
-  .add('Circular Interactive Integration', ()=>(
-    <CircularInteractiveProgressComponent/>
-  ))
+//   .add('Circular Interactive Integration', ()=>(
+//     <CircularInteractiveProgressComponent/>
+//   ))
 // TODO: Add linear determinate progress
   .add('Lineer Determinate Progress', ()=>(
     <div>

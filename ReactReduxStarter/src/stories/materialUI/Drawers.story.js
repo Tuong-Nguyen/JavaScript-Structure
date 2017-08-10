@@ -3,9 +3,17 @@
  */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
 import MaterialDrawer from './../MaterialUiComponents/DrawerComponent';
+import Drawer from 'material-ui/Drawer';
+import {MaterialList} from './../MaterialUiComponents/ListComponent';
 
 storiesOf('material-ui.Drawers', module)
+  .add('Drawer info', withInfo('Info')(() =>(
+    <Drawer open={false}>
+      <MaterialList/>
+    </Drawer>
+  )))
   .add('Left Drawers', () =>(
     <MaterialDrawer anchor="left"/>
   ))
