@@ -24,5 +24,6 @@ import './materialUI/Tabs.story';
 import './materialUI/Cards.story';
 import './materialUI/Chips.story';
 import './materialUI/Progress.story';
+import './materialUI/Reponsive.story';
 import './SpheraUI/SpheraUI.story';
 

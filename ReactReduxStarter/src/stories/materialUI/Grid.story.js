@@ -5,6 +5,7 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
+import GridComponent from './../MaterialUiComponents/GridComponent';
 
 storiesOf('Material-ui.Grid', module)
   .add('Simple Grid', ()=>(
@@ -26,7 +27,7 @@ storiesOf('Material-ui.Grid', module)
       </Grid>
     </Grid>
   ))
-  .add('Gutter Grid', ()=>(
+  .add('Fullwidth Grid', ()=>(
   <Grid container spacing={24}>
     <Grid item xs={12}>
       <Paper>xs=12</Paper>
@@ -50,4 +51,32 @@ storiesOf('Material-ui.Grid', module)
       <Paper>xs=6 sm=3</Paper>
     </Grid>
   </Grid>
+  ))
+  .add('Centered Grid', ()=>(
+    <Grid container spacing={24}>
+      <Grid item xs={12}>
+        <Paper>xs=12</Paper>
+      </Grid>
+      <Grid item xs={12}>
+        <Paper>xs=12</Paper>
+      </Grid>
+      <Grid item xs={12}>
+        <Paper>xs=12</Paper>
+      </Grid>
+      <Grid item xs={6}>
+        <Paper>xs=6</Paper>
+      </Grid>
+      <Grid item xs={6}>
+        <Paper>xs=6</Paper>
+      </Grid>
+      <Grid item xs={6}>
+        <Paper>xs=6</Paper>
+      </Grid>
+      <Grid item xs={6}>
+        <Paper>xs=6</Paper>
+      </Grid>
+    </Grid>
+  ))
+  .add('Custom Grid', ()=>(
+    <GridComponent/>
   ));
