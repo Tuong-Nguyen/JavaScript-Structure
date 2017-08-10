@@ -10,11 +10,7 @@ export class SongFormContainer extends Component {
     }
 
     saveSong(title) {
-        this.props.addSong({
-            variables: {
-                title: title
-            }
-        });
+        this.props.addSong(title);
     }
 
     render() {
@@ -28,9 +24,15 @@ SongFormContainer.propTypes = {
     addSong: PropTypes.func
 };
 
-function mapResponseToProps({mutate}) {
+export function mapGraphqlMutateToProps({mutate}) {
     return {
-      addSong: mutate
+      addSong: (title) => {
+          return mutate({
+              variables: {
+                  title: title
+              }
+          });
+      }
     };
 }
 
@@ -43,4 +45,4 @@ const mutation = gql`
     }
 `;
 
-export default graphql(mutation, {props: mapResponseToProps})(SongFormContainer);
+export default graphql(mutation, {props: mapGraphqlMutateToProps})(SongFormContainer);

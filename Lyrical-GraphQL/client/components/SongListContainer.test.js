@@ -12,7 +12,7 @@ describe('SongListContainer', ()=>{
        });
    });
 
-   describe('#mapResponseToProps', () => {
+   describe('#mapGraphqlMutateToProps', () => {
        test('data.loading and data.songs are returned', () => {
             const result = mapResponseToProps({data: {loading: true, songs: []}});
             expect(result).toMatchObject({isLoading: true, songList: []});
