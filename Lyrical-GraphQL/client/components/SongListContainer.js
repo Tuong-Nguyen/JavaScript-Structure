@@ -6,7 +6,7 @@ import gql from 'graphql-tag';
 
 export class SongListContainer extends Component {
     render() {
-        return (<SongList songs={this.props.songList} isLoading={this.props.isLoading}/>);
+        return (<SongList songs={this.props.songList} isLoading={this.props.isLoading} deleteSong={this.props.deleteSong}/>);
     }
 }
 
@@ -22,14 +22,18 @@ SongListContainer.propTypes = {
     /**
      * Song is loading or not
      */
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    /**
+     * deleteSong handler
+     */
+    deleteSong: PropTypes.func
 };
 
-export function mapResponseToProps({data, deleteSong}) {
+export function mapResponseToProps({data, ownProps}) {
     return {
         songList: data.songs,
         isLoading: data.loading,
-        deleteSong: deleteSong
+        deleteSong: ownProps.deleteSong
     };
 }
 
@@ -49,8 +53,8 @@ export function mapGraphqlMutationToProps({mutate}) {
                   id: id
               } 
            });
-       } 
+       }
     };
 }
 
-export default graphql(deleteSong, mapGraphqlMutationToProps)(graphql(fetchSongs, {props: mapResponseToProps})(SongListContainer));
+export default graphql(deleteSong, {props: mapGraphqlMutationToProps})(graphql(fetchSongs, {props: mapResponseToProps})(SongListContainer));
