@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import gql from 'graphql-tag';
+import {fetchSongs} from '../queries/fetchSongs';
 import {graphql} from 'react-apollo';
 import {SongList} from "./SongList";
 
@@ -24,15 +24,6 @@ SongListContainer.propTypes = {
     isLoading: PropTypes.bool
 };
 
-const query = gql`
-    query RootQueryType {
-        songs {
-            id
-            title
-        }
-    }
-`;
-
 export function mapResponseToProps({data}) {
     return {
         songList: data.songs,
@@ -40,4 +31,4 @@ export function mapResponseToProps({data}) {
     };
 }
 
-export default graphql(query, {props: mapResponseToProps})(SongListContainer);
+export default graphql(fetchSongs, {props: mapResponseToProps})(SongListContainer);

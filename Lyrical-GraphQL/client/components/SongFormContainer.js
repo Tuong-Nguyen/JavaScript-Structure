@@ -3,6 +3,7 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {SongForm} from "./SongForm";
 import {hashHistory} from "react-router";
+import {fetchSongs} from "../queries/fetchSongs";
 
 export class SongFormContainer extends Component {
     constructor(props){
@@ -32,7 +33,8 @@ export function mapGraphqlMutateToProps({mutate}) {
           return mutate({
               variables: {
                   title: title
-              }
+              },
+              refetchQueries: [{query: fetchSongs}]
           });
       }
     };

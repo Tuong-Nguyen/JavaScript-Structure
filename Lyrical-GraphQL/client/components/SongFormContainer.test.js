@@ -5,6 +5,8 @@ import {shallow} from "enzyme";
 jest.mock('react-router');
 import {hashHistory} from 'react-router';
 
+import {fetchSongs} from '../queries/fetchSongs';
+
 beforeEach(()=>{
    jest.resetModules('react-router');
 });
@@ -49,7 +51,8 @@ describe('SongFormContainer', () => {
             expect(mockMutation).toBeCalledWith({
                 variables: {
                     title: 'Hello'
-                }
+                },
+                refetchQueries: [{query: fetchSongs}]
             });
             expect(result).toBe(successivePromise);
         });
