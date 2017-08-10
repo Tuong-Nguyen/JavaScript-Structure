@@ -18,18 +18,18 @@ export class SongForm extends Component {
 
     handleSubmit(eventObject) {
         eventObject.preventDefault();
-        this.props.saveSong({title: this.title});
+        this.props.saveSong(this.title);
     }
 
     render() {
         return (
             <div>
-                <h1>Create a song</h1>
-                <div>
+                <h3>Create a song</h3>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor="title">Title:</label>
                     <input type="text" name="title" onChange={this.handleChange}/>
-                    <input type="submit" onSubmit={this.handleSubmit} value="Submit"/>
-                </div>
+                    <input type="submit"  value="Submit"/>
+                </form>
             </div>
         );
     }

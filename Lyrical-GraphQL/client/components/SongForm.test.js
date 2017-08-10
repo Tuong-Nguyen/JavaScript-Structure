@@ -9,9 +9,9 @@ describe('SongForm', () => {
         wrapper.find('input[type="text"]').simulate('change', {target: {value: 'Simple'}});
 
         // arrange
-        wrapper.find('input[type="submit"]').simulate('submit', {});
+        wrapper.find('input[type="submit"]').simulate('submit');
 
         // act
-        expect(mockSaveSong).toBeCalledWith({title: 'Simple'});
+        expect(mockSaveSong).toBeCalledWith('Simple');
     });
 });
