@@ -13,19 +13,24 @@ import { red, purple, grey } from 'material-ui/colors';
 const white = grey[100];
 
 storiesOf('materialUI.Button', module)
-  .add('Flat button with UPPERCASE TEXT', () => (
-    <Button>Hello world</Button>
-  ))
   .add('Primary raised button', () => (
-    // TODO: color purple not working, please make it work or use primary color
     <Button raised color="primary">
       Primary
     </Button>
   ))
   .add('Diable raised button', () => (
-    // TODO: color does not effect with disabled button
     <Button raised disabled>
       Disabled
+    </Button>
+  ))
+  .add('Flat button', () => (
+    <Button flat color="primary" >
+      Flat Button
+    </Button>
+  ))
+  .add('Disable Flat button', () => (
+    <Button flat disabled>
+      Flat Button
     </Button>
   ))
   .add('Floating button', () => (

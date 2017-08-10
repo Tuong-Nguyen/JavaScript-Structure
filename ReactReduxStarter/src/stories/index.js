@@ -13,17 +13,21 @@
 // import './home/HomePage';
 
 import './materialUI/Button.story';
-import './materialUI/List.story';
-import './materialUI/Drawers.story';
 import './materialUI/TextField.story';
-import './materialUI/Paper.story';
-import './materialUI/Selection.story';
 import './materialUI/Table.story';
-import './materialUI/Grid.story';
-import './materialUI/Tabs.story';
-import './materialUI/Cards.story';
-import './materialUI/Chips.story';
+import './materialUI/List.story';
+import './materialUI/Selection.story';
+import './materialUI/Paper.story';
+import './materialUI/Typogrphy.story';
+import './materialUI/Drawers.story';
+import './materialUI/Menu.story';
+import './materialUI/Dialog.story';
 import './materialUI/Progress.story';
-import './materialUI/Reponsive.story';
-import './SpheraUI/SpheraUI.story';
+
+// import './materialUI/Grid.story';
+// import './materialUI/Tabs.story';
+// import './materialUI/Cards.story';
+// import './materialUI/Chips.story';
+// import './materialUI/Reponsive.story';
+// import './SpheraUI/SpheraUI.story';
 
