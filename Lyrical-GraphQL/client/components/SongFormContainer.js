@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {SongForm} from "./SongForm";
+import {hashHistory} from "react-router";
 
 export class SongFormContainer extends Component {
     constructor(props){
@@ -10,7 +11,8 @@ export class SongFormContainer extends Component {
     }
 
     saveSong(title) {
-        this.props.addSong(title);
+        this.props.addSong(title)
+            .then(() => hashHistory.push('/'));
     }
 
     render() {
