@@ -38,14 +38,15 @@ describe("Axios", () => {
     .onAny().reply(200, "Any request");
 
 
+
   axios.interceptors.request.use(function(config) {
     console.log('Intercepting request');
     console.log(config);
     return config;
   }, function (error) {
-    console.log("Intercepting request error");
-    console.log(error);
-    return Promise.reject(error);
+      console.log("Intercepting request error");
+      console.log(error);
+      return Promise.reject(error);
   });
 
   axios.interceptors.response.use(function(response) {
@@ -60,70 +61,70 @@ describe("Axios", () => {
 
 
 
-  // test("get method success", () => {
-  //   return axios.get('http://example.com/users')
-  //     .then(res => {
-  //       expect(res.data.length).toBe(2);
-  //     });
-  //
-  // });
-  //
-  // test("get method failure", () => {
-  //   return axios.get('http://example.com/users/100')
-  //     .catch(error => {
-  //       expect(error.message).toBe('An error was thrown');
-  //     });
-  //
-  // });
-  //
-  // test("post method success", () => {
-  //   return axios.post('http://example.com/users', {id: "abc", name: "AAA"} )
-  //     .then(res => {
-  //       expect(res.status).toBe(201);
-  //     });
-  //
-  // });
-  //
-  // test("post method failure", () => {
-  //   return axios.post('http://example.com/users', {id: "def", name: "BBB"} )
-  //     .catch(error => {
-  //       expect(error.message).toMatch(/failed/);
-  //       expect(error.response.data).toMatch(/already exist/);
-  //     });
-  //
-  // });
+  test("get method success", () => {
+    return axios.get('http://example.com/users')
+      .then(res => {
+        expect(res.data.length).toBe(2);
+      });
 
-  // test("intercepting request", () => {
-  //
-  //   return axios.get('http://example.com/users/interceptor')
-  //     .then(res => {
-  //       console.log("Receive the response");
-  //       expect(res.data).toMatch(/Intercepting/);
-  //     });
-  //
-  // });
-  //
-  // test("intercepting response", () => {
-  //
-  //   return axios.get('http://example.com/users/interceptor')
-  //     .then(res => {
-  //       console.log("Receive the response");
-  //       expect(res.data).toMatch(/Intercepting/);
-  //     });
-  //
-  // });
+  });
 
-  // test("intercepting response error", () => {
-  //
-  //   return axios.get('http://example.com/users/interceptor/error')
-  //     .catch(error => {
-  //       console.log("Response error");
-  //       expect(error.message).toMatch(/response error/);
-  //     })
-  //
-  // });
+  test("get method failure", () => {
+    return axios.get('http://example.com/users/100')
+      .catch(error => {
+        expect(error.message).toBe('An error was thrown');
+      });
 
-  test("All axios", () => {
+  });
+
+  test("post method success", () => {
+    return axios.post('http://example.com/users', {id: "abc", name: "AAA"} )
+      .then(res => {
+        expect(res.status).toBe(201);
+      });
+
+  });
+
+  test("post method failure", () => {
+    return axios.post('http://example.com/users', {id: "def", name: "BBB"} )
+      .catch(error => {
+        expect(error.message).toMatch(/failed/);
+        expect(error.response.data).toMatch(/already exist/);
+      });
+
+  });
+
+  test("intercepting request", () => {
+
+    return axios.get('http://example.com/users/interceptor')
+      .then(res => {
+        console.log("Receive the response");
+        expect(res.data).toMatch(/Intercepting/);
+      });
+
+  });
+
+  test("intercepting response", () => {
+
+    return axios.get('http://example.com/users/interceptor')
+      .then(res => {
+        console.log("Receive the response");
+        expect(res.data).toMatch(/Intercepting/);
+      });
+
+  });
+
+  test("intercepting response error", () => {
+
+    return axios.get('http://example.com/users/interceptor/error')
+      .catch(error => {
+        console.log("Response error");
+        expect(error.message).toMatch(/response error/);
+      })
+
+  });
+
+  test("Multiple requests", () => {
 
     return axios.all([
       axios.get('/any1'),
@@ -138,7 +139,23 @@ describe("Axios", () => {
 
   });
 
+  test("Cancelation", () => {
+    var CancelToken = axios.CancelToken;
+    var source = CancelToken.source();
 
+    source.cancel("Cancel request");
+
+    return axios.get('http://example.com/users', {
+      cancelToken: source.token
+    })
+      .then(res => {
+        console.log('run into then block');
+      })
+      .catch(function(error){
+        expect(axios.isCancel(error)).toBe(true);
+        expect(error.message).toBe("Cancel request");
+      });
+  });
 
 
 });
