@@ -5,38 +5,58 @@
  * @returns {XML}
  * @constructor
  */
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Component} from 'react';
 import {Link} from "react-router";
 
-export const SongList = ({songs, isLoading}) => {
-    return (
-        <div>
-            <h1>Song List</h1>
-            {isLoading !== false ?
-                <div>Loading...</div>
-                :
-                <ul className="collection">
-                    {songs.map((song) => <li key={song.id}>{song.title}</li>)}
-                </ul>
-            }
-            <Link to="/song/create" className="btn-floating btn-large red right">
-                <i className="material-icons">add</i>
-            </Link>
-        </div>
-    );
-};
+export class SongList extends Component {
+
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event){
+        this.props.deleteSong(event.target.parentElement.attributes['data-key'].value);
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Song List</h1>
+                {this.props.isLoading !== false ?
+                    <div>Loading...</div>
+                    :
+                    <ul className="collection">
+                        {
+                            this.props.songs.map((song) => <li key={song.id} data-key={song.id}>
+                                {song.title}
+                                <i className="material-icons" onClick={this.handleClick}>delete</i>
+                            </li>)
+                        }
+                    </ul>
+                }
+                <Link to="/song/create" className="btn-floating btn-large red right">
+                    <i className="material-icons">add</i>
+                </Link>
+            </div>
+        );
+    }
+}
 
 SongList.propTypes = {
     /**
      * Array of songs { id, title }
      */
     songs: PropTypes.arrayOf(PropTypes.shape({
-
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired
     })),
     /**
      * Song is loading or not
      */
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    /**
+     * deleteSong handler
+     */
+    deleteSong: PropTypes.func
 };
