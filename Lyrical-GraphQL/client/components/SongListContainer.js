@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {fetchSongs} from '../queries/fetchSongs';
 import {graphql} from 'react-apollo';
 import {SongList} from "./SongList";
+import gql from 'graphql-tag';
 
 export class SongListContainer extends Component {
     render() {
@@ -24,11 +25,32 @@ SongListContainer.propTypes = {
     isLoading: PropTypes.bool
 };
 
-export function mapResponseToProps({data}) {
+export function mapResponseToProps({data, deleteSong}) {
     return {
         songList: data.songs,
-        isLoading: data.loading
+        isLoading: data.loading,
+        deleteSong: deleteSong
     };
 }
 
-export default graphql(fetchSongs, {props: mapResponseToProps})(SongListContainer);
+const deleteSong = gql`
+    mutation deleteSong($id: ID){
+        deleteSong(id: $id){
+            id
+        }
+    }
+`;
+
+export function mapGraphqlMutationToProps({mutate}) {
+    return {
+       deleteSong: (id) => {
+           return mutate({
+              variables: {
+                  id: id
+              } 
+           });
+       } 
+    };
+}
+
+export default graphql(deleteSong, mapGraphqlMutationToProps)(graphql(fetchSongs, {props: mapResponseToProps})(SongListContainer));

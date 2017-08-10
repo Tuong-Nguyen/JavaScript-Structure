@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {mapResponseToProps, SongListContainer} from "./SongListContainer";
+import {mapGraphqlMutationToProps, mapResponseToProps, SongListContainer} from "./SongListContainer";
 
 describe('SongListContainer', ()=>{
    describe('#render', ()=> {
@@ -18,4 +18,23 @@ describe('SongListContainer', ()=>{
             expect(result).toMatchObject({isLoading: true, songList: []});
        });
    });
+
+    describe('#mapGraphqlMutationToProps', () => {
+        test("map mutate's deleteSong to deleteSong", () => {
+            const mockMutate = jest.fn();
+            const dummyReturnValue = {};
+            mockMutate.mockReturnValue(dummyReturnValue);
+            const dummyId = {};
+            const {deleteSong} = mapGraphqlMutationToProps({mutate: mockMutate});
+
+            const result = deleteSong(dummyId);
+
+            expect(mockMutate).toBeCalledWith({
+                variables: {
+                    id: dummyId
+                }
+            });
+            expect(result).toBe(dummyReturnValue);
+        });
+    });
 });
