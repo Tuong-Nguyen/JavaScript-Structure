@@ -2,28 +2,10 @@
  * Created by lnthao on 8/9/2017.
  */
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
-import Card, { CardContent } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
 import {StaggeredMotion, spring} from 'react-motion';
+import WordCard from './WordCard';
 
-const styleSheet = createStyleSheet(theme => ({
-  card: {
-    minWidth: 275
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-    color: theme.palette.text.secondary
-  },
-  pos: {
-    marginBottom: 12,
-    color: theme.palette.text.secondary
-  }
-}));
-
-const StaggedCard = ({cards, classes}) => {
+const StaggedCard = ({cards}) => {
   const defaultStyle = [];
   const effect = {stiffness: 120, damping: 20};
   cards.map((card) => {
@@ -42,23 +24,7 @@ const StaggedCard = ({cards, classes}) => {
       <div>
         {interpolatingStyles.map((style, i) =>
         <div key={i} style={{opacity: style.o, height: style.h}}>
-          <Card className={classes.card}>
-            <CardContent>
-              <Typography type="body1" className={classes.title}>
-                {cards[i].title}
-              </Typography>
-              <Typography type="headline" component="h2">
-                {cards[i].pronunciation}
-              </Typography>
-              <Typography type="body1" className={classes.pos}>
-                {cards[i].type}
-              </Typography>
-              <Typography component="p">
-                {cards[i].meaning}<br />
-                {cards[i].sample}
-              </Typography>
-            </CardContent>
-          </Card>
+          <WordCard {...cards[i]}/>
         </div>
         )}
       </div>
@@ -67,8 +33,4 @@ const StaggedCard = ({cards, classes}) => {
   );
 };
 
-StaggedCard.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styleSheet)(StaggedCard);
+export default StaggedCard;
