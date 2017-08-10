@@ -21,7 +21,7 @@ const styleSheet = createStyleSheet('OverridesClasses', {
   }
 });
 
-function OverridesClasses(props) {
+function CandyButton(props) {
   return (
     <Button
       classes={{
@@ -34,9 +34,9 @@ function OverridesClasses(props) {
   );
 }
 
-OverridesClasses.propTypes = {
+CandyButton.propTypes = {
   children: PropTypes.node,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styleSheet)(OverridesClasses);
+export default withStyles(styleSheet)(CandyButton);

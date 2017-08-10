@@ -10,7 +10,9 @@ import createPalette from 'material-ui/styles/palette';
 import purple from 'material-ui/colors/purple';
 import green from 'material-ui/colors/green';
 import red from 'material-ui/colors/red';
-import OverrideClasses from './../common/OverrideClasses';
+import CandyButton from '../common/CandyButton';
+import Badge  from 'material-ui/Badge';
+import MailIcon from 'material-ui-icons/Mail';
 
 const theme = createMuiTheme({
   palette: createPalette({
@@ -37,15 +39,15 @@ const overrideTheme = createMuiTheme({
   }
 });
 
-storiesOf('materialUI.Button', module)
-  .add('Flat button with default theme', () => (
-    <Button color="primary">
+storiesOf('Button with theme', module)
+  .add('Button with default theme', () => (
+    <Button raised color="primary">
       {'Primary'}
     </Button>
   ))
-  .add('Flat button with new theme', () => (
+  .add('Button with new theme purple color', () => (
     <MuiThemeProvider theme={theme}>
-      <Button color="primary">
+      <Button raised color="primary">
         {'Primary'}
       </Button>
     </MuiThemeProvider>
@@ -53,13 +55,14 @@ storiesOf('materialUI.Button', module)
   .add('Button with override theme', () => (
     <MuiThemeProvider theme={overrideTheme}>
       <Button>
-        {'Overrides'}
+        {'Candy'}
       </Button>
     </MuiThemeProvider>
   ))
   .add('Button with override classes vs Button', () => (
     <div>
-      <OverrideClasses> Override Classes </OverrideClasses>
+      <CandyButton> Candy </CandyButton>
+      <br/>
       <Button raised>Button</Button>
     </div>
   ));
