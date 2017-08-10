@@ -1,5 +1,3 @@
-import React, {PropTypes} from 'react';
-
 /**
  * Presentation component which shows a list of song.titles and show "Loading..." if the data is loading
  * @param songs
@@ -7,6 +5,9 @@ import React, {PropTypes} from 'react';
  * @returns {XML}
  * @constructor
  */
+import React, {PropTypes} from 'react';
+import {Link} from "react-router";
+
 export const SongList = ({songs, isLoading}) => {
     return (
         <div>
@@ -18,6 +19,9 @@ export const SongList = ({songs, isLoading}) => {
                     {songs.map((song) => <li key={song.id}>{song.title}</li>)}
                 </ul>
             }
+            <Link to="/song/create" className="btn-floating btn-large red right">
+                <i className="material-icons">add</i>
+            </Link>
         </div>
     );
 };
