@@ -23,45 +23,48 @@ describe("Axios", () => {
     )
     .onGet('http://example.com/users/100')
     .reply(function(){
-      throw new Error('An error was thrown');
+      throw new Error('Error: Id is not exist.');
     })
     .onGet('http://example.com/users/interceptor')
     .reply(200, "Intercepting request and response")
     .onGet('http://example.com/users/interceptor/error')
     .reply(function() {
-      throw new Error('Intercepting response error');
+      throw new Error('Intercepting Response error');
     })
     .onPost('http://example.com/users', {id: "abc", name: "AAA"})
     .reply(201)
     .onPost('http://example.com/users', {id: "def", name: "BBB"})
     .reply(500, "Id is already exist.")
-    .onAny().reply(200, "Any request");
+    .onAny().reply(200, "Response data");
 
 
 
   axios.interceptors.request.use(function(config) {
-    console.log('Intercepting request');
-    console.log(config);
+    config.headers.token = "abcabc";
     return config;
   }, function (error) {
-      console.log("Intercepting request error");
-      console.log(error);
       return Promise.reject(error);
   });
 
   axios.interceptors.response.use(function(response) {
-    console.log('Intercepting response');
-    console.log(response);
+    if(typeof response.data === 'string'){
+      if( response.data.includes('Intercepting')){
+        let res = response.data.toUpperCase();
+        response.data = res;
+      }
+    }
     return response;
   }, function (error) {
-    console.log("Intercepting response error");
-    console.log(error);
+    if (error.message.includes('Intercepting')){
+      let res = error.message.toUpperCase();
+      error.message = res;
+    }
     return Promise.reject(error);
   });
 
 
 
-  test("get method success", () => {
+  test("return data when the get request success", () => {
     return axios.get('http://example.com/users')
       .then(res => {
         expect(res.data.length).toBe(2);
@@ -69,15 +72,15 @@ describe("Axios", () => {
 
   });
 
-  test("get method failure", () => {
+  test("return an error when the get request failed", () => {
     return axios.get('http://example.com/users/100')
       .catch(error => {
-        expect(error.message).toBe('An error was thrown');
+        expect(error.message).toBe('Error: Id is not exist.');
       });
 
   });
 
-  test("post method success", () => {
+  test("return response with status success when the post method success", () => {
     return axios.post('http://example.com/users', {id: "abc", name: "AAA"} )
       .then(res => {
         expect(res.status).toBe(201);
@@ -85,46 +88,43 @@ describe("Axios", () => {
 
   });
 
-  test("post method failure", () => {
+  test("return an error when the post method failure", () => {
     return axios.post('http://example.com/users', {id: "def", name: "BBB"} )
       .catch(error => {
-        expect(error.message).toMatch(/failed/);
-        expect(error.response.data).toMatch(/already exist/);
+        expect(error.response.status).toBe(500);
+        expect(error.response.data).toMatch(/Id is already exist/);
       });
 
   });
 
-  test("intercepting request", () => {
+  test("return token which is add by request interceptor in the header", () => {
 
     return axios.get('http://example.com/users/interceptor')
       .then(res => {
-        console.log("Receive the response");
-        expect(res.data).toMatch(/Intercepting/);
+        expect(res.config.headers.token).toMatch("abcabc");
       });
 
   });
 
-  test("intercepting response", () => {
+  test("return data which is in uppercase by response interceptor ", () => {
 
     return axios.get('http://example.com/users/interceptor')
       .then(res => {
-        console.log("Receive the response");
-        expect(res.data).toMatch(/Intercepting/);
+        expect(res.data).toMatch(/INTERCEPTING/);
       });
 
   });
 
-  test("intercepting response error", () => {
+  test("return an error whose message is in uppercase by response interceptor ", () => {
 
     return axios.get('http://example.com/users/interceptor/error')
       .catch(error => {
-        console.log("Response error");
-        expect(error.message).toMatch(/response error/);
-      })
+        expect(error.message).toMatch(/RESPONSE ERROR/);
+      });
 
   });
 
-  test("Multiple requests", () => {
+  test("return multiple response by parameters of spread function when sending multiple requests", () => {
 
     return axios.all([
       axios.get('/any1'),
@@ -132,14 +132,14 @@ describe("Axios", () => {
       axios.get('/any3')
     ])
       .then(axios.spread(function (Response1, Response2, Response3) {
-        console.log(Response1.data);
-        console.log(Response2.data);
-        console.log(Response3.data);
+        expect(Response1.data).toBe('Response data');
+        expect(Response2.data).toBe('Response data');
+        expect(Response3.data).toBe('Response data');
       }));
 
   });
 
-  test("Cancelation", () => {
+  test("return an error when a request is canceled.", () => {
     var CancelToken = axios.CancelToken;
     var source = CancelToken.source();
 
