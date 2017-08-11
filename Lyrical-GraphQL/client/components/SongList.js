@@ -23,15 +23,16 @@ export class SongList extends Component {
         return (
             <div>
                 <h1>Song List</h1>
-                {this.props.isLoading !== false ?
+                {
+                    this.props.isLoading !== false ?
                     <div>Loading...</div>
                     :
                     <ul className="collection">
                         {
-                            this.props.songs.map((song) => <li key={song.id} data-key={song.id}>
+                            this.props.songs.map((song) => (<li key={song.id} data-key={song.id} className="collection-item">
                                 {song.title}
                                 <i className="material-icons" onClick={this.handleClick}>delete</i>
-                            </li>)
+                            </li>))
                         }
                     </ul>
                 }

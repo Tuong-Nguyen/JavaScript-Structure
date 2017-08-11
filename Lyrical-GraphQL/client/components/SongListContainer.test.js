@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {mapGraphqlMutationToProps, mapResponseToProps, SongListContainer} from "./SongListContainer";
+import {mapGraphqlMutationToProps, mapDataToProps, SongListContainer} from "./SongListContainer";
 
 describe('SongListContainer', ()=>{
    describe('#render', ()=> {
@@ -12,10 +12,10 @@ describe('SongListContainer', ()=>{
        });
    });
 
-   describe('#mapGraphqlMutateToProps', () => {
+   describe('#mapDataToProps', () => {
        test('data.loading and data.songs are returned', () => {
-            const result = mapResponseToProps({data: {loading: true, songs: []}});
-            expect(result).toMatchObject({isLoading: true, songList: []});
+            const result = mapDataToProps({data: {loading: true, songs: []}, ownProps: {deleteSong: {}}});
+            expect(result).toMatchObject({isLoading: true, songList: [], deleteSong: {}});
        });
    });
 

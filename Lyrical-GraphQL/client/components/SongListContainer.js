@@ -29,7 +29,7 @@ SongListContainer.propTypes = {
     deleteSong: PropTypes.func
 };
 
-export function mapResponseToProps({data, ownProps}) {
+export function mapDataToProps({data, ownProps}) {
     return {
         songList: data.songs,
         isLoading: data.loading,
@@ -57,4 +57,4 @@ export function mapGraphqlMutationToProps({mutate}) {
     };
 }
 
-export default graphql(deleteSong, {props: mapGraphqlMutationToProps})(graphql(fetchSongs, {props: mapResponseToProps})(SongListContainer));
+export default graphql(deleteSong, {props: mapGraphqlMutationToProps})(graphql(fetchSongs, {props: mapDataToProps})(SongListContainer));
