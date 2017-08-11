@@ -7,6 +7,7 @@
  */
 import React, {PropTypes, Component} from 'react';
 import {Link} from "react-router";
+import '../style/style.css';
 
 export class SongList extends Component {
 
