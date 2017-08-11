@@ -1,7 +1,7 @@
 /**
  * Created by nttao on 8/10/2017.
  */
-import React from 'react';
+import React,{ PropTypes} from 'react';
 import Dialog, {
   DialogActions,
   DialogContent,
@@ -54,3 +54,6 @@ export default class DialogComponent extends React.Component {
     );
   }
 }
+DialogComponent.propTypes = {
+  classes: PropTypes.object.isRequired
+};

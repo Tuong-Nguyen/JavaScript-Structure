@@ -3,15 +3,13 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import AddAlert from 'material-ui-icons/AddAlert';
 import Add from 'material-ui-icons/Add';
-import { red, purple, grey } from 'material-ui/colors';
-
-const white = grey[100];
 
 storiesOf('materialUI.Button', module)
   .add('Primary raised button', withInfo("Info")(() => (

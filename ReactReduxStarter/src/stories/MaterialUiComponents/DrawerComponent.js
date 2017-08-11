@@ -19,7 +19,8 @@ export default class MaterialDrawer extends React.Component{
     this.setState({open: status});
   }
   render(){
-    return (<div>
+    return (
+    <div>
       <IconButton onClick={this.menuCLick}>
         <Menu/>
       </IconButton>

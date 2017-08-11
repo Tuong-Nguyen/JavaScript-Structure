@@ -1,5 +1,5 @@
-import React from 'react';
-import Table, {TableRow, TableCell, TableBody, TableHead} from 'material-ui/Table';
+import React, {PropTypes} from 'react';
+import Table, {TableRow, TableCell, TableBody, TableHead, TableSortLabel} from 'material-ui/Table';
 import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
 import TrendingUp from 'material-ui-icons/TrendingUp';
@@ -44,7 +44,7 @@ export default class SelectTable extends React.Component{
           <TableHead>
             <TableRow>
               <TableCell>
-                Name
+                  Name
               </TableCell>
               <TableCell>
                 Age
@@ -93,11 +93,13 @@ export class SortTable extends React.Component{
     super();
     this.state = {
       selected:[],
-      IncreaseSort: true
+      IncreaseSort: true,
+      direct:'asc'
     };
     this.isSelected = this.isSelected.bind(this);
     this.onItemSelect = this.onItemSelect.bind(this);
     this.sortAge = this.sortAge.bind(this);
+    this.sortName = this.sortName.bind(this);
   }
   onItemSelect(event, id){
     let selected = this.state.selected;
@@ -133,7 +135,19 @@ export class SortTable extends React.Component{
       });
     }
   }
-
+  sortName(){
+  if(this.state.direct == 'asc'){
+    this.setState({direct: 'desc'});
+    return this.props.data.sort(function(a, b){
+      return (a.name > b.name);
+    });
+  }else{
+    this.setState({direct: 'asc'});
+    return this.props.data.sort(function(a, b){
+      return (b.name > a.name);
+    });
+  }
+}
   render(){
     const columnData = this.props.data;
     return (
@@ -142,7 +156,9 @@ export class SortTable extends React.Component{
           <TableHead>
             <TableRow>
               <TableCell>
-                Name
+                <TableSortLabel active={true} direction={this.state.direct} onClick={this.sortName}>
+                  Name
+                </TableSortLabel>
               </TableCell>
               <TableCell>
                 <IconButton onClick={this.sortAge}>
@@ -186,4 +202,7 @@ export class SortTable extends React.Component{
       </div>
     );
   }
+}
+SelectTable.propTypes = {
+  data: PropTypes.object.isRequired
 }

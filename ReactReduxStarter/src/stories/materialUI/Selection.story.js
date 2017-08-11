@@ -14,12 +14,11 @@ storiesOf("material-ui.Selection", module)
   // TODO: Add disable and custom color checkboxes
   .add("Check box", withInfo("Info")(()=>(
     <div>
-      <FormGroup>
-        <FormControlLabel control={<Checkbox value="1"/>} label="CheckA"/>
-        <FormControlLabel control={<Checkbox value="2"/>} label="CheckB" />
-        <FormControlLabel control={<Checkbox value="3"/>} label="Disable" disabled/>
+      <Checkbox value="1"/> <br />
+        <FormControlLabel control={<Checkbox value="1"/>} label="CheckA"/><br />
+        <FormControlLabel control={<Checkbox value="2"/>} label="CheckB" /><br />
+        <FormControlLabel control={<Checkbox value="3"/>} label="Disable" disabled/><br />
         <FormControlLabel control={<Checkbox value="4" style={{color: "#00FF00"}}/>} label="Green" />
-      </FormGroup>
     </div>
     )))
   // TODO: Add radio group with a label
@@ -33,7 +32,7 @@ storiesOf("material-ui.Selection", module)
     <div>
       <FormGroup>
         <FormGroup row>
-          <Switch checked="true"/>
+          <Switch checked="true"/> <span>A</span>
           <Switch />
           <SwitchComponent/>
         </FormGroup>

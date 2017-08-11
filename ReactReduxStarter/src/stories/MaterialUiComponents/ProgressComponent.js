@@ -2,14 +2,14 @@
  * Created by nttao on 8/8/2017.
  */
 import React from 'react';
-import {withStyle, ceateStyleSheet} from 'material-ui/styles';
+import PropTypes from 'prop-types';
 import {CircularProgress, LinearProgress} from 'material-ui/Progress';
 import Button from 'material-ui/Button';
 import CheckIcon from 'material-ui-icons/Check';
 import SaveIcon from 'material-ui-icons/Save';
 
-
 export default class LinearProgressComponent extends React.Component{
+  timer;
   constructor(){
     super();
     this.state={
@@ -17,7 +17,10 @@ export default class LinearProgressComponent extends React.Component{
     };
   }
   componentDidMount(){
-    setInterval(this.progress,500);
+    this.timer = setInterval(this.progress,500);
+  }
+  componentWillUnmount(){
+    clearInterval(this.timer);
   }
   progress = () => {
     const { completed } = this.state;
@@ -39,6 +42,9 @@ export default class LinearProgressComponent extends React.Component{
     );
   }
 }
+LinearProgressComponent.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export class CircularProgressComponent extends React.Component{
   constructor(){
@@ -48,7 +54,10 @@ export class CircularProgressComponent extends React.Component{
     };
   }
   componentDidMount(){
-    setInterval(this.progress,500);
+    this.timer = setInterval(this.progress,500);
+  }
+  componentWillUnmount(){
+    clearInterval(this.timer);
   }
   progress = () => {
     const { completed } = this.state;
@@ -115,3 +124,9 @@ export class CircularInteractiveProgressComponent extends React.Component{
     );
   }
 }
+CircularProgressComponent.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+CircularInteractiveProgressComponent.propTypes = {
+  classes: PropTypes.object.isRequired
+};
