@@ -20,7 +20,7 @@ export class LyricCreate extends Component {
     render() {
         return (
             <div>
-                <h3>Add Lyric</h3>
+                <h4>Add Lyric</h4>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" onChange={this.handleChange}/>
                 </form>
