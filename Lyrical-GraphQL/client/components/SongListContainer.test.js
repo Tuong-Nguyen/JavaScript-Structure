@@ -9,13 +9,14 @@ describe('SongListContainer', ()=>{
 
            expect(wrapper.prop('isLoading')).toBe(wrapper.instance().props.isLoading);
            expect(wrapper.prop('songs')).toBe(wrapper.instance().props.songList);
+           expect(wrapper.prop('deleteSong')).toBe(wrapper.instance().deleteSong);
        });
    });
 
    describe('#mapDataToProps', () => {
-       test('data.loading and data.songs are returned', () => {
-            const result = mapDataToProps({data: {loading: true, songs: []}, ownProps: {deleteSong: {}}});
-            expect(result).toMatchObject({isLoading: true, songList: [], deleteSong: {}});
+       test('data.loading, data.songs, data.refetch and ownProps.deleteSong are returned', () => {
+            const result = mapDataToProps({data: {loading: true, songs: [], refetch: {}}, ownProps: {deleteSong: {}}});
+            expect(result).toMatchObject({isLoading: true, songList: [], refetchSongs: {}, deleteSong: {}});
        });
    });
 

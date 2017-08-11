@@ -5,8 +5,18 @@ import {SongList} from "./SongList";
 import gql from 'graphql-tag';
 
 export class SongListContainer extends Component {
+    constructor(props){
+        super(props);
+        this.deleteSong = this.deleteSong.bind(this);
+    }
+
+    deleteSong(id){
+        this.props.deleteSong(id)
+            .then(() => this.props.refetchSongs());
+    }
+
     render() {
-        return (<SongList songs={this.props.songList} isLoading={this.props.isLoading} deleteSong={this.props.deleteSong}/>);
+        return (<SongList songs={this.props.songList} isLoading={this.props.isLoading} deleteSong={this.deleteSong}/>);
     }
 }
 
@@ -24,6 +34,10 @@ SongListContainer.propTypes = {
      */
     isLoading: PropTypes.bool,
     /**
+     * refetchSongs function
+     */
+    refetchSongs: PropTypes.func,
+    /**
      * deleteSong handler
      */
     deleteSong: PropTypes.func
@@ -33,6 +47,7 @@ export function mapDataToProps({data, ownProps}) {
     return {
         songList: data.songs,
         isLoading: data.loading,
+        refetchSongs: data.refetch,
         deleteSong: ownProps.deleteSong
     };
 }
