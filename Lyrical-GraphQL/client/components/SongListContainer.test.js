@@ -3,13 +3,41 @@ import {shallow} from 'enzyme';
 import {mapGraphqlMutationToProps, mapDataToProps, SongListContainer} from "./SongListContainer";
 
 describe('SongListContainer', ()=>{
-   describe('#render', ()=> {
-       test('configure child component correctly', () => {
+   describe('SongListContainer', ()=> {
+       test('#render configure child component correctly', () => {
            const wrapper = shallow(<SongListContainer isLoading={true} songList={[]}/>);
 
            expect(wrapper.prop('isLoading')).toBe(wrapper.instance().props.isLoading);
            expect(wrapper.prop('songs')).toBe(wrapper.instance().props.songList);
            expect(wrapper.prop('deleteSong')).toBe(wrapper.instance().deleteSong);
+       });
+
+       describe('#deleteSong', () => {
+           let mockDeleteSong;
+           let dummyPromise;
+
+           beforeEach(() => {
+               mockDeleteSong = jest.fn();
+               dummyPromise = new Promise(resolver => resolver());
+               mockDeleteSong.mockReturnValue(dummyPromise);
+           });
+
+           test('call props.deleteSong', () => {
+               const wrapper = shallow(<SongListContainer isLoading={true} songList={[]} deleteSong={mockDeleteSong}/>);
+               wrapper.instance().deleteSong('10');
+
+               expect(mockDeleteSong).toBeCalledWith('10');
+           });
+
+           test('call props.refetchSong after deleteSong succeeds', () => {
+               const mockRefetchSong = jest.fn();
+               const wrapper = shallow(<SongListContainer isLoading={true} songList={[]} deleteSong={mockDeleteSong} refetchSongs={mockRefetchSong}/>);
+               wrapper.instance().deleteSong('10');
+
+               return dummyPromise.then(() => {
+                   expect(mockRefetchSong).toBeCalled();
+               });
+           });
        });
    });
 
