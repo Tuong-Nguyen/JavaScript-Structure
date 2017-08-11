@@ -59,6 +59,20 @@ storiesOf('Button with theme', module)
       </Button>
     </MuiThemeProvider>
   ))
+  .add('Nested theme', () => (
+    <MuiThemeProvider theme={theme}>
+      <div>
+        <Button raised color="primary">
+          {'Normal'}
+        </Button>
+      <MuiThemeProvider theme={overrideTheme}>
+        <Button>
+          {'Candy'}
+        </Button>
+      </MuiThemeProvider>
+      </div>
+    </MuiThemeProvider>
+  ))
   .add('Button with override classes vs Button', () => (
     <div>
       <CandyButton> Candy </CandyButton>
