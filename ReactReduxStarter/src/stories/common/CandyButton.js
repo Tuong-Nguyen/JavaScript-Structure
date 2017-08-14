@@ -1,10 +1,12 @@
 /**
  * Created by lnthao on 7/27/2017.
  */
+//import React, {PropTypes} from 'react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Button from 'material-ui/Button';
+import AddAlarm from 'material-ui-icons/AddAlarm';
 
 const styleSheet = createStyleSheet('OverridesClasses', {
   raised: {
@@ -21,7 +23,7 @@ const styleSheet = createStyleSheet('OverridesClasses', {
   }
 });
 
-function CandyButton(props) {
+export const CandyButton = (props) => {
   return (
     <Button
       classes={{
@@ -29,14 +31,13 @@ function CandyButton(props) {
         label: props.classes.label // className, e.g. `OverridesClasses-label-X`
       }}
     >
-      {props.children ? props.children : 'classes'}
+      <AddAlarm/>
     </Button>
   );
 }
 
 CandyButton.propTypes = {
-  children: PropTypes.node,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object
 };
 
 export default withStyles(styleSheet)(CandyButton);
