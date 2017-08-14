@@ -87,7 +87,7 @@ class Header extends React.Component{
             <div>
               <div className={classes.notificationBar}>
                 <Badge badgeContent={2} color="primary" classes={classes.badge}>
-                  <Notifications/>
+                    <Notifications/>
                 </Badge>
                 <Button fab color="primary" style={{fontSize:20,
                   width:40,
