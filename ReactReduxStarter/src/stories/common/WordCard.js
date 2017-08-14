@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Card, { CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
-import {makeUpperCaseAndLimitLetter} from '../HOC/MakeUpperCaseAndLimitLetter';
+import {makeUpperCase} from '../HOC/MakeUpperCase';
+import {limitLetter} from '../HOC/LimitLetter';
+import {compose} from 'recompose';
 
 const styleSheet = createStyleSheet(theme => ({
   card: {
@@ -49,4 +51,4 @@ WordCard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styleSheet)(makeUpperCaseAndLimitLetter(10)(WordCard));
+export default withStyles(styleSheet)(compose(makeUpperCase, limitLetter(10))(WordCard));
