@@ -2,7 +2,6 @@ import * as types from '../actions/actionTypes';
 import initialState from "./initialState";
 
 export default function authorReducer(state = initialState.authors, action) {
-  console.log('reducer of author ' + action.authors);
   switch (action.type) {
     case types.LOAD_AUTHORS_SUCCESS:
       return action.authors;

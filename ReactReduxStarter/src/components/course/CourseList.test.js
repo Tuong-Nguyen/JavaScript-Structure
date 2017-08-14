@@ -78,7 +78,7 @@ describe('Course Page', () => {
     //act
 
     //assert
-    //expect(wrapper).toMatchSnapshot();
+    expect(wrapper.toMatchSnapshot);
   });
 
 });

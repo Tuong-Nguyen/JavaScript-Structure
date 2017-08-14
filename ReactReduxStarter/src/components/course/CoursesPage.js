@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseList from './CourseList';
 import { browserHistory } from 'react-router';
+import { setStateOfCourse } from "../../selectors/selectors";
 
 class CoursesPage extends Component {
   redirectToAddCoursePage() {
@@ -12,11 +13,11 @@ class CoursesPage extends Component {
 
   constructor(props, context) {
     super(props, context);
-
+    this.state = {
+      clicked: false
+    };
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
   }
-
-
 
   render() {
     const { courses } = this.props;
@@ -41,7 +42,8 @@ CoursesPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    courses: state.courses
+    courses: setStateOfCourse(state)
+    //courses: state.courses
   };
 }
 function mapDispatchToProps(dispatch) {
