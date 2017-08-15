@@ -3,6 +3,7 @@
  * Created by nttao on 8/1/2017.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
@@ -11,27 +12,22 @@ import Home from 'material-ui-icons/Home';
 import Settings from 'material-ui-icons/Settings';
 import NoteAdd from 'material-ui-icons/NoteAdd';
 import Avatar from 'material-ui/Avatar';
+import Typography from 'material-ui/Typography';
 import FolderIcon from 'material-ui-icons/Folder';
 import CommentIcon from 'material-ui-icons/Comment';
 // eslint-disable-next-line import/namespace,import/default
 import avata from './../resources/avata.jpg';
 
-export default class MenuBar extends React.Component{
-  constructor(props){
-    super(props);
-  }
-  menuItemClick(){
-    console.log('clicked');
-  }
+export class  MenuContent extends React.Component{
   render(){
-    const {isOpen, openMenu} = this.props;
     return(
-      <Drawer
-        open={isOpen}
-        onClick={openMenu}>
-        <IconButton>
-          <Home/>
-        </IconButton>
+      <div>
+        <Typography type="headline">
+          <h2><IconButton>
+            <Home/>
+          </IconButton>
+          Phera</h2>
+        </Typography>
         <List>
           <ListItem button onClick={this.menuItemClick}>
             <ListItemIcon>
@@ -60,7 +56,32 @@ export default class MenuBar extends React.Component{
             <ListItemText primary="Logout" />
           </ListItem>
         </List>
+      </div>
+    );
+  }
+}
+
+export default class DrawerMenu extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  menuItemClick(){
+    console.log('clicked');
+  }
+  render(){
+    const {isOpen, openMenu} = this.props;
+    return(
+      <Drawer
+        open={isOpen}
+        onClick={openMenu}>
+        <MenuContent/>
       </Drawer>
     );
   }
 }
+MenuContent.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+Drawer.propTypes = {
+  classes: PropTypes.object.isRequired
+};

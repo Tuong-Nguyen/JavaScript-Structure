@@ -3,6 +3,7 @@
  * Created by nttao on 8/2/2017.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {withStyles, createStyleSheet} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Avata from 'material-ui/Avatar';
@@ -88,4 +89,7 @@ class PaperComponent extends React.Component{
     );
   }
 }
+PaperComponent.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styleSheet)(PaperComponent);

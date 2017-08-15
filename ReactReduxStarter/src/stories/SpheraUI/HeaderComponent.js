@@ -2,6 +2,7 @@
  * Created by nttao on 8/1/2017.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Menu from 'material-ui-icons/Menu';
 import Search from 'material-ui-icons/Search';
 import IconButton from 'material-ui/IconButton';
@@ -9,7 +10,7 @@ import Button from 'material-ui/Button';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import MenuBar from "./MenuBar";
+import DrawerMenu from "./MenuBar";
 import Badge from 'material-ui/Badge';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
@@ -18,6 +19,7 @@ import SearchBox from './SearchBox';
 import Notifications from 'material-ui-icons/Notifications';
 import Add from 'material-ui-icons/Add';
 import FilterList from 'material-ui-icons/FilterList';
+import Hidden from 'material-ui/Hidden';
 
 const styleSheet = createStyleSheet({
   root: {
@@ -32,7 +34,8 @@ const styleSheet = createStyleSheet({
   tab: {
     fontSize:12,
     textAlign:'left',
-    color:"#FFFFFF"
+    color:"#FFFFFF",
+    width:50
   },
   notificationBar: {
     marginLeft: 10,
@@ -67,23 +70,27 @@ class Header extends React.Component{
     const classes = this.props.classes;
     return(
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" color="primary">
           <Toolbar>
-            <IconButton color="contrast" aria-label="Menu">
-              <Menu onClick={this.openMenu} />
-            </IconButton>
+            <Hidden mdUp>
+              <IconButton color="contrast" aria-label="Menu">
+                <Menu onClick={this.openMenu} />
+              </IconButton>
+            </Hidden>
             <div className={classes.tabs}>
-              <Typography type="headline" color="inherit" component="h5">
+              <Typography type="headline" color="inherit" component="h6">
                 Actions
               </Typography>
-              <Typography type="body1">
+              <Typography type="body2">
                 <Tabs>
                   <Tab className={classes.tab} label="Action1"/>
                   <Tab className={classes.tab} label="Action2"/>
                 </Tabs>
               </Typography>
             </div>
-            <SearchBox/>
+            <Hidden xsDown>
+             <SearchBox/>
+            </Hidden>
             <div>
               <div className={classes.notificationBar}>
                 <Badge badgeContent={2} color="primary" classes={classes.badge}>
@@ -109,11 +116,14 @@ class Header extends React.Component{
                 </IconButton>
               </div>
             </div>
-            <MenuBar isOpen={this.state.isMenuOpen} openMenu={this.openMenu}/>
+            <DrawerMenu isOpen={this.state.isMenuOpen} openMenu={this.openMenu}/>
           </Toolbar>
         </AppBar>
       </div>
     );
   }
 }
+Header.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styleSheet)(Header);

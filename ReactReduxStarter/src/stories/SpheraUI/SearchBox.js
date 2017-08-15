@@ -2,6 +2,7 @@
  * Created by nttao on 8/4/2017.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import Search from 'material-ui-icons/Search';
 import IconButton from 'material-ui/IconButton';
@@ -143,4 +144,7 @@ class SearchBox extends React.Component{
     );
   }
 }
+SearchBox.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styleSheet)(SearchBox);

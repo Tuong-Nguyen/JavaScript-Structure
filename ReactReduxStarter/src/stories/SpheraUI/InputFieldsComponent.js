@@ -2,6 +2,7 @@
  * Created by nttao on 8/2/2017.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import {withStyles, createStyleSheet} from 'material-ui/styles';
 import Menu, { MenuItem } from 'material-ui/Menu';
@@ -47,6 +48,7 @@ const suggestions = [
 
 const styleSheet = createStyleSheet({
   container:{
+    marginLeft:10,
     marginTop:20,
     backgroundColor: "#F5F5F5"
   },
@@ -108,4 +110,7 @@ class InputFields extends React.Component{
     );
   }
 }
+InputFields.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styleSheet)(InputFields);

@@ -2,6 +2,7 @@
  * Created by nttao on 8/3/2017.
  */
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import Autosuggest from 'react-autosuggest';
 import {withStyles, createStyleSheet} from 'material-ui/styles';
@@ -115,4 +116,7 @@ class Autocomplet extends Component {
     );
   }
 }
+Autocomplet.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 export default withStyles(styleSheet)(Autocomplet);

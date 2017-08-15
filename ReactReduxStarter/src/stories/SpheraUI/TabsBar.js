@@ -2,6 +2,7 @@
  * Created by nttao on 7/31/2017.
  */
 import React from 'react'
+import PropTypes from 'prop-types';
 import Tabs, {Tab} from 'material-ui/Tabs';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Typography, {Ty} from 'material-ui/Typography';
@@ -18,7 +19,9 @@ const styleSheet = createStyleSheet(theme => ({
     backgroundColor: theme.palette.background.paper
   }
 }));
-
+TabContainer.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default class TabsComponent extends React.Component{
   constructor(props){

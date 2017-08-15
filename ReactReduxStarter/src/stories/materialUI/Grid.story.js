@@ -54,8 +54,8 @@ storiesOf('Material-ui.Grid', module)
   ))
   .add('Centered Grid', ()=>(
     <Grid container spacing={24}>
-      <Grid item xs={12}>
-        <Paper>xs=12</Paper>
+      <Grid item sm={12} hidden={{xsDown: true}}>
+        <Paper>xs=12, smDown</Paper>
       </Grid>
       <Grid item xs={12}>
         <Paper>xs=12</Paper>
