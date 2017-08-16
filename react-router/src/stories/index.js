@@ -1,14 +1,4 @@
 /**
  * Created by nkim on 8/16/2017.
  */
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-
-storiesOf('Button', module)
-    .add('with text', () => (
-        <button onClick={action('clicked')}>Hello Button</button>
-    ))
-    .add('with some emoji', () => (
-        <button onClick={action('clicked')}>😀 😎 👍 💯</button>
-    ));
+import './react-routerV4/BasicRoutesApp.story';
