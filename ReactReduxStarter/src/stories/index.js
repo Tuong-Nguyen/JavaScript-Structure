@@ -1,24 +1,21 @@
+// Jest and enzyme
+//
+// Higher order component
+
 import React from 'react';
-import { MuiThemeProvider, withStyles, createStyleSheet } from 'material-ui/styles';
+import { MuiThemeProvider } from 'material-ui/styles';
 import { addDecorator } from '@storybook/react';
 
-import theme from '../common/theme';
-
-const styleSheet = createStyleSheet(theme => ({
-  decorator: {
-    fontFamily: theme.typography.fontFamily
-  }
-}));
+import theme from '../app/theme';
 
 const ThemeDecorator = (storyFn) => (
   <MuiThemeProvider theme={theme}>
-    <div style={{ fontFamily: theme.typography.fontFamily }}>
-      {storyFn()}
-    </div>
+    {storyFn()}
   </MuiThemeProvider>
 )
 
 addDecorator(ThemeDecorator);
 
 // import is hoisting!!!
-require('../layout/Header/Header.story');
+require('../login/LoginPage.story');
+require('../soundcloud/SoundCloud.story');
