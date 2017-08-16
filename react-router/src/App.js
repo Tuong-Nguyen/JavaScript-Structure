@@ -9,6 +9,22 @@ import {
     NavLink} from 'react-router-dom';
 import './App.css';
 
+const Home = (props) => {
+    console.log(props)
+    return <h1>Home</h1>
+}
+
+const App = () => (
+    <Router>
+        <div>
+            <Route path="/" component={Home} />
+            <Route path="/about" render={() => <h1>About</h1>} />
+            <Route path="/children"
+                   children={({match}) =>  match && <h1>Children</h1> } />
+        </div>
+    </Router>
+);
+///////////////////////////////////////////////////////////////
 // const isActiveFunc = (match, location) => {
 //     console.log(match, location)
 //     return match;
@@ -68,7 +84,7 @@ import './App.css';
 //         <Link to={{pathname: '/', search: 'id=456'}}>Object</Link>
 //     </nav>
 // )
-//
+
 // const App = (props) => (
 //     <Router>
 //         <div>
@@ -164,6 +180,7 @@ import './App.css';
 //     <Router>
 //         <div>
 //             <Links />
+//
 //         </div>
 //     </Router>
 // )
@@ -175,7 +192,7 @@ import './App.css';
 //         <Link to="/menu/food">Food</Link>
 //         <Link to="/menu/drink">Drinks</Link>
 //         <Link to="/menu/sides">Sides</Link>
-//         <Route path="/menu/:section"
+//         <Route path="/:section"
 //                render={({match}) => <h2>{match.params.section}</h2>} />
 //     </div>
 // )
@@ -219,31 +236,31 @@ import './App.css';
 //     </Router>
 // )
 //////////////////////////////////////////////////////////////////
-const Home = () => (<h1>Home</h1>)
-class Form extends React.Component {
-    state = {dirty: false}
-    setDirty = () => this.setState({dirty: true})
-    render(){
-        return (
-            <div>
-                <h1>Form</h1>
-                <input type="text" onInput={this.setDirty}/>
-                <Prompt
-                    when={this.state.dirty}
-                    message="Data will be lost"
-                />
-            </div>
-        )
-    }
-}
-const App = () => (
-    <Router>
-        <div>
-            <Link to="/">Home</Link>
-            <Link to="/form">Form</Link>
-            <Route exact path="/" component={Home} />
-            <Route path="/form" component={Form} />
-        </div>
-    </Router>
-)
+// const Home = () => (<h1>Home</h1>)
+// class Form extends React.Component {
+//     state = {dirty: false}
+//     setDirty = () => this.setState({dirty: true})
+//     render(){
+//         return (
+//             <div>
+//                 <h1>Form</h1>
+//                 <input type="text" onInput={this.setDirty}/>
+//                 <Prompt
+//                     when={this.state.dirty}
+//                     message="Data will be lost"
+//                 />
+//             </div>
+//         )
+//     }
+// }
+// const App = () => (
+//     <Router>
+//         <div>
+//             <Link to="/">Home</Link>
+//             <Link to="/form">Form</Link>
+//             <Route exact path="/" component={Home} />
+//             <Route path="/form" component={Form} />
+//         </div>
+//     </Router>
+// )
 export default App
