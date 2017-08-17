@@ -11,6 +11,7 @@ import {
     Prompt,
     NavLink} from 'react-router-dom';
 import '../App.css';
+import PropTypes from 'prop-types';
 
 
 const Home = () => <h1>Home</h1>

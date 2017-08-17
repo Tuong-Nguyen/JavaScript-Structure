@@ -42,3 +42,7 @@ a.active {
 .content {
   border: 1px solid red;
 }
+
+a.gold {
+  color: gold;
+}
