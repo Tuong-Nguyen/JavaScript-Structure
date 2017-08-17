@@ -25,21 +25,26 @@ const URLPrametersApp = ({optional}) => (
         <div>
             <Links />
             {optional ?
-                <Route path="/:page?/:subpage?" render={({match}) => (
-                    <h1>
-                        PAGE: {match.params.page || 'Home' }<br />
-                        SUBPAGE: {match.params.subpage}<br />
-                        Route path: '{match.path}'
-                    </h1>
-                )} />
+                <div>
+                    <h2>Route path: '/:page?/:subpage?'</h2>
+                    <Route path="/:page?/:subpage?" render={({match}) => (
+                        <h1>
+                            PAGE: {match.params.page || 'Home' }<br />
+                            SUBPAGE: {match.params.subpage}<br />
+                        </h1>
+                    )} />
+                </div>
+
                 :
-                <Route path="/:page/:subpage" render={({match}) => (
-                    <h1>
-                        PAGE: {match.params.page || 'Home' }<br />
-                        SUBPAGE: {match.params.subpage}<br />
-                        Route path: '{match.path}'
-                    </h1>
-                )} />
+                <div>
+                    <h2>Route path: '/:page/:subpage'</h2>
+                    <Route path="/:page/:subpage" render={({match}) => (
+                        <h1>
+                            PAGE: {match.params.page || 'Home' }<br />
+                            SUBPAGE: {match.params.subpage}<br />
+                        </h1>
+                    )} />
+                </div>
             }
         </div>
     </Router>
