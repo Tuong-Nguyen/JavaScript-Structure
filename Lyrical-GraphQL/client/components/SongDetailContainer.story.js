@@ -8,7 +8,7 @@ storiesOf('SongDetailContainer', module)
         const song = {
             title: 'Hello',
             id: '1',
-            lyrics: [{id: '1', content: 'I have'}]
+            lyrics: [{id: '1', content: 'I have', likes:1}]
         };
         return (<SongDetailContainer song={song} isLoading={false}/>);
     });
