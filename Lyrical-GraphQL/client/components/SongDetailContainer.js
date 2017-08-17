@@ -3,6 +3,7 @@ import {LyricList} from "./LyricList";
 import {LyricCreate} from "./LyricCreate";
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
+import {Link} from 'react-router';
 
 export class SongDetailContainer extends Component {
     constructor(props) {
@@ -17,9 +18,16 @@ export class SongDetailContainer extends Component {
     render() {
         return (
             <div>
-                <h2>{this.props.song.title}</h2>
-                <LyricList lyrics={this.props.song.lyrics} isLoading={this.props.isLoading}
-                           likeLyric={this.props.likeLyric}/>
+                <Link to="/">Back</Link>
+                {
+                    this.props.isLoading === false ?
+                        <div>
+                            <h2>{this.props.song.title}</h2>
+                            <LyricList lyrics={this.props.song.lyrics} isLoading={this.props.isLoading}
+                                       likeLyric={this.props.likeLyric}/>
+                        </div>
+                        : null
+                }
                 <LyricCreate addLyric={this.handleAddLyric}/>
             </div>
         );
@@ -72,7 +80,7 @@ const addLyricToSongMutation = gql`
 `;
 
 const songDetailQuery = gql`
-    query song($id: ID) {
+    query song($id: ID!) {
         song(id: $id) {
             id
             title
@@ -80,10 +88,22 @@ const songDetailQuery = gql`
                 id
                 likes
                 content
-                song
             }
         }
     }
 `;
 
-export default graphql(addLyricToSongMutation, {props: mapMutationToProp})(graphql(songDetailQuery, {props: mapDataToProp})(SongDetailContainer));
+export default graphql(addLyricToSongMutation, {props: mapMutationToProp})(
+    graphql(songDetailQuery,
+        {
+            options: (props) => {
+                return {
+                    variables: {
+                        id: props.params.id
+                    }
+
+                };
+            },
+            props: mapDataToProp
+        })(SongDetailContainer)
+);
