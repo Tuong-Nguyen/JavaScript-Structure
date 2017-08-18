@@ -6,6 +6,6 @@ import { storiesOf } from '@storybook/react';
 import NestedRoutesApp from '../../components/NestedRoutesApp';
 
 storiesOf('Nested Routes', module)
-    .add('Example', () => (
+    .add('Route to a component defines other routes', () => (
         <NestedRoutesApp/>
     ));

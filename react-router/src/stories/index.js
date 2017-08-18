@@ -9,3 +9,5 @@ import './react-routerV4/RegexRouteApp.story';
 import './react-routerV4/QueryParametersApp.story';
 import './react-routerV4/CatchAllRoutesApp.story';
 import './react-routerV4/NestedRoutesApp.story';
+import './react-routerV4/RedirectApp.story';
+import './react-routerV4/PromptApp.story';
