@@ -32,10 +32,10 @@ storiesOf('Material-ui.Grid', module)
     <Grid item xs={12}>
       <Paper>xs=12</Paper>
     </Grid>
-    <Grid item xs={12} sm={6}>
+    <Grid item xs={12} sm={6} lg={3}>
       <Paper>xs=12 sm=6</Paper>
     </Grid>
-    <Grid item xs={12} sm={6}>
+    <Grid item xs={12} sm={6} lg={3}>
       <Paper>xs=12 sm=6</Paper>
     </Grid>
     <Grid item xs={6} sm={3}>

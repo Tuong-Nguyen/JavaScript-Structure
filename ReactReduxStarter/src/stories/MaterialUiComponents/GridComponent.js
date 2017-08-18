@@ -29,9 +29,10 @@ class GridComponent extends React.Component{
     super(props);
     this.state = {
       direction: 'row',
+      wrap: 'wrap',
       justify: 'center',
       align: 'center',
-      spacing: 0
+      spacing: '0'
     }
   }
   handleChange = key =>(event, value)=>{
@@ -41,31 +42,27 @@ class GridComponent extends React.Component{
   };
   render(){
     const classes = this.props.classes;
-    const {align, direction, justify, spacing} = this.state;
+    const {align, direction, justify, spacing, wrap} = this.state;
     return(
-      <div>
-        <Grid container className={classes.root}>
-          <Grid container xs={12}
-            >
+      <Grid container className={classes.root}>
+          <Grid xs={12}>
             <Grid
               container
               className={classes.demo}
               align={align}
               direction={direction}
               justify={justify}
-              spacing={spacing}
+              spacing={Number(spacing)}
+              wrap={wrap}
             >
               {[0, 1, 2].map(value =>
                 <Grid key={value} item>
-                  {/*<Paper*/}
-                    {/*className={classes.paper}*/}
-                    {/*style={{ paddingTop: (value + 1) * 10, paddingBottom: (value + 1) * 10 }}*/}
-                  {/*>*/}
-                    {/*{`Cell ${value + 1}`}*/}
-                  {/*</Paper>*/}
-                  <div style={{backgroundColor: "#eb15ff"}}>
-                    <span>{value}</span>
-                  </div>
+                  <Paper
+                    className={classes.paper}
+                    style={{ paddingTop: (value + 1) * 10, paddingBottom: (value + 1) * 10 }}
+                  >
+                    {`Cell ${value + 1}`}
+                  </Paper>
                 </Grid>,
               )}
             </Grid>
@@ -125,26 +122,42 @@ class GridComponent extends React.Component{
                     <FormControlLabel value="baseline" control={<Radio />} label="baseline" />
                   </RadioGroup>
                 </Grid>
-                <Grid item xs={12} sm={12}>
-                  <FormLabel>Spacing</FormLabel>
-                  <RadioGroup
-                    name="spacing"
-                    aria-label="spacing"
-                    selectedValue={spacing}
-                    onChange={this.handleChange('spacing')}
-                  >
-                    <FormControlLabel value={0} control={<Radio />} label="0" />
-                    <FormControlLabel value={8} control={<Radio />} label="8" />
-                    <FormControlLabel value={16} control={<Radio />} label="16" />
-                    <FormControlLabel value={24} control={<Radio />} label="24" />
-                    <FormControlLabel value={40} control={<Radio />} label="40" />
-                  </RadioGroup>
+              </Grid>
+              <Grid item xs={12}>
+                <Grid container>
+                  <Grid item xs={6} sm={4}>
+                    <FormLabel>wrap</FormLabel>
+                    <RadioGroup
+                      name="wrap"
+                      aria-label="wrap"
+                      selectedValue={wrap}
+                      onChange={this.handleChange('wrap')}
+                    >
+                      <FormControlLabel value="nowrap" control={<Radio />} label="nowrap" />
+                      <FormControlLabel value="wrap" control={<Radio />} label="wrap" />
+                      <FormControlLabel value="'rap-reverse" control={<Radio />} label="'wrap-reverse" />
+                    </RadioGroup>
+                  </Grid>
+                  <Grid item xs={6} sm={4}>
+                    <FormLabel>spacing</FormLabel>
+                    <RadioGroup
+                      name="spacing"
+                      aria-label="spacing"
+                      selectedValue={spacing}
+                      onChange={this.handleChange('spacing')}
+                    >
+                      <FormControlLabel value="0" control={<Radio />} label="0" />
+                      <FormControlLabel value="8" control={<Radio />} label="8" />
+                      <FormControlLabel value="16" control={<Radio />} label="16" />
+                      <FormControlLabel value="24" control={<Radio />} label="24" />
+                      <FormControlLabel value="40" control={<Radio />} label="40" />
+                    </RadioGroup>
+                  </Grid>
                 </Grid>
               </Grid>
             </Paper>
           </Grid>
         </Grid>
-      </div>
     );
   }
 }

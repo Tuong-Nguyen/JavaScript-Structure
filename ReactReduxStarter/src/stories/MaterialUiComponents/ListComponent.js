@@ -2,6 +2,7 @@
  * Created by nttao on 7/26/2017.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import List, {ListItem, ListItemSecondaryAction, ListItemIcon, ListItemText} from 'material-ui/List';
 import Settings from 'material-ui-icons/Settings';
@@ -78,4 +79,7 @@ export const MaterialList = React.createClass({
       );
     }
   });
+MaterialList.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 

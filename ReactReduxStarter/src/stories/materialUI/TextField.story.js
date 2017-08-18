@@ -4,6 +4,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import TextField from 'material-ui/TextField';
+import DropdownBoxComponent from './../MaterialUiComponents/DropdownBoxComponent';
 import {withStyles, createStyleSheet} from 'material-ui/styles';
 
 const styleSheet = createStyleSheet({
@@ -35,7 +36,7 @@ storiesOf("material-ui.TextFields", module)
        shrink: true
      }}/>
   )).add("Date TextFields", ()=>(
-    <TextField id="txtDate" label="Date" margin="normal" type="date" defaultValue="01-01-2017"
+    <TextField id="txtDate" label="Date" margin="normal" type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
       InputLabelProps={{
         shrink: true
       }}/>
@@ -44,4 +45,6 @@ storiesOf("material-ui.TextFields", module)
      InputLabelProps={{
        shrink: true
      }}/>
+  )).add("Dropdwon TextFields", ()=>(
+    <DropdownBoxComponent/>
   ));
