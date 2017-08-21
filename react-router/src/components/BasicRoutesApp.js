@@ -24,7 +24,7 @@ const About = (props) => {
 const Links = () => (
     <nav>
         <Link to="/">Home</Link>
-        <Link to={{pathname: '/about/'}}>About</Link>
+        <Link to={{pathname: '/about'}}>About</Link>
         <Link replace to="/contact">Contact</Link>
         <Link to="/content">Content</Link>
     </nav>
@@ -34,7 +34,8 @@ const BasicRoutesApp = () => (
     <Router>
         <div>
             <Links />
-            <Route exact path="/" component={Home} />
+
+            <Route path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/contact" render={() => <h1>Contact</h1>} />
             <Route path="/content" children={() => <h1>Content</h1>} />

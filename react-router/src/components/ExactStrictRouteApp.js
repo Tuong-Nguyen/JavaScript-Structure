@@ -83,13 +83,4 @@ const ExactStrictRouteApp = ({exactHome, exactAbout, strictAbout, exactContact, 
 )
 
 
-// ExactStrictRouteApp.defaultProps = {
-//     exactHome: false,
-//     exactAbout: false,
-//     strictAbout: false,
-//     exactContact: false,
-//     strictContact: false,
-//
-// };
-
 export default ExactStrictRouteApp
