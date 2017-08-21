@@ -35,7 +35,7 @@ const BasicRoutesApp = () => (
         <div>
             <Links />
 
-            <Route path="/" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/contact" render={() => <h1>Contact</h1>} />
             <Route path="/content" children={() => <h1>Content</h1>} />
