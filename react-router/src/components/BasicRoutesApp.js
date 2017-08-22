@@ -27,6 +27,7 @@ const Links = () => (
         <Link to={{pathname: '/about'}}>About</Link>
         <Link replace to="/contact">Contact</Link>
         <Link to="/content">Content</Link>
+        <Link to="/abc">/abc</Link>
     </nav>
 )
 
