@@ -59,7 +59,6 @@ class GridComponent extends React.Component{
                 <Grid key={value} item>
                   <Paper
                     className={classes.paper}
-                    style={{ paddingTop: (value + 1) * 10, paddingBottom: (value + 1) * 10 }}
                   >
                     {`Cell ${value + 1}`}
                   </Paper>
