@@ -14,14 +14,14 @@ import '../App.css';
 
 const Home = () => (<h1>Home</h1>)
 
-const Menu = () => {
+const Menu = (props) => {
     return (
         <div>
             <h1>Menu</h1>
             <Link to="/menu/food">Food</Link>
             <Link to="/menu/drink">Drinks</Link>
             <Link to="/menu/sides">Sides</Link>
-            <Route path="/menu/:section"
+            <Route path={`${props.match.url}/:section`}
                    render={({match}) => <h2>{match.params.section}</h2>}/>
         </div>)
 
