@@ -43,7 +43,14 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
         disabled={saving}
         value={saving ? 'Saving...' : 'Save'}
         className="btn btn-primary"
-        onClick={onSave}/>
+        onClick={function (event){
+          event.preventDefault();
+
+          let type = event.target.type;
+          let value = event.target.value;
+
+          onSave(value, type);
+        }}/>
     </form>
   );
 };

@@ -9,7 +9,7 @@ import CourseForm from './CourseForm';
 import {authorsFormattedForDropdown} from '../../selectors/selectors';
 import toastr from 'toastr';
 
-export class ManageCoursePage extends React.Component {
+class ManageCoursePage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -19,6 +19,7 @@ export class ManageCoursePage extends React.Component {
     };
     this.updateCourseState = this.updateCourseState.bind(this);
     this.saveCourse = this.saveCourse.bind(this);
+    this.saveCourseTwoParams = this.saveCourseTwoParams.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -60,6 +61,12 @@ export class ManageCoursePage extends React.Component {
       });
   }
 
+  saveCourseTwoParams(a, b){
+    console.log('Save Course');
+    console.log(a);
+    console.log(b);
+  }
+
   redirect(){
     this.setState({saving: false});
     toastr.success('Course saved');
@@ -71,7 +78,7 @@ export class ManageCoursePage extends React.Component {
       <CourseForm
         allAuthors={this.props.authors}
         onChange={this.updateCourseState}
-        onSave={this.saveCourse}
+        onSave={this.saveCourseTwoParams}
         course={this.state.course}
         errors={this.state.errors}
         saving={this.state.saving} />
@@ -103,16 +110,10 @@ function mapStateToProps(state, ownProps) {
   if (courseId && state.courses.length > 0) {
     course = getCourseById(state.courses, courseId);
   }
-  const authorsFormatterForDropdown = state.authors.map(author => {
-    return {
-      value: author.id,
-      text: author.firstName + ' ' + author.lastName
-    };
-  });
 
   return {
     course: course,
-    authors: authorsFormatterForDropdown(state.authors)
+    authors: authorsFormattedForDropdown(state.authors)
   };
 }
 
